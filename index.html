@@ -14,8 +14,8 @@
         <ul class="nav_links">
             <li><a href="/">Accueil</a></li>
             <li><a href="/events.html">Évènements</a></li>
-            <li><a href="#">Nos partenaires</a></li>
-            <li><a href="#">Qui somme-nous</a></li>
+            <li><a href="/partners.html">Nos partenaires</a></li>
+            <li><a href="/about.html">Qui somme-nous</a></li>
             <li>
                 <div class="btn">
                     <a href="#" class="contactBtn">Contact <i class="fa-solid fa-chevron-right"></i></a>
@@ -40,6 +40,7 @@
     </section>
 
     <section id="nous">
+        <div class="textes"></div>
         <div class="nous">
             <div class="star"></div>
             <div class="star2"><i class="fa-solid fa-people-group"></i></div>
@@ -47,6 +48,17 @@
             <p>Le CFA a besoin de sang neuf et des idées nouvelles. Nous ne serons jamais trop nombreux pour faire fonctionner le comité des fêtes, 
                 organiser des manifestations et animations. Toutes les bonnes volontés sont les bienvenues.</p>
         </div>
-    </section>    
+    </section>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            var repeatCount = 11 * 6;
+            var textToRepeat = "Fête ";
+            var textContainer = document.querySelector('.textes');
+            for (var i = 0; i < repeatCount; i++) {
+                textContainer.innerHTML += textToRepeat;
+            }
+        });
+    </script>
 </body>
 </html>

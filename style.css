@@ -246,7 +246,9 @@ a.contactBtn:hover i {
 /* sections */
 section#home,
 section#nous,
-section#events {
+section#events,
+section#partners,
+section#about {
     height: auto;
     width: 100vw;
     display: flex;
@@ -323,6 +325,8 @@ section#home .btn {
 /* nous */
 section#nous {
     background-color: var(--color-blanc);
+    position: relative;
+    height: 65vh;
 }
 
 section#nous .nous {
@@ -438,6 +442,26 @@ section#nous .star2::after {
     height: 64px;
 }
 
+.textes {
+    position: absolute;
+    top: 0;
+    left: 0;
+    max-width: 100vw;
+    white-space: initial;
+    font-size: 72px;
+    line-height: 100px;
+    font-family: 'Space Grotesk', sans-serif;
+    font-weight: 700;
+    color: transparent; /* Couleur du texte */
+    -webkit-text-stroke: 2.3px var(--color-gris-noir);
+    opacity: .25;
+    overflow: hidden;
+    height: 65vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
 /* events */
 section#events {
     height: 100vh;
@@ -451,7 +475,9 @@ section#events .events {
     justify-content: center;
 }
 
-section#events h1 {
+section#events h1,
+section#partners h1,
+section#about h1 {
     font-size: 36px;
     font-weight: 700;
     font-family: 'Space Grotesk', sans-serif;
@@ -467,7 +493,6 @@ section#events .grid {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     grid-gap: 70px;
-    margin-top: 20px;
     justify-items: center;
     align-items: center;
 }
@@ -509,4 +534,138 @@ section#events .grid .card p {
     font-weight: 500;
     letter-spacing: -.48px;
     color: #0f0f0f;
+}
+
+/* partners */
+section#partners {
+    padding-block: 150px;
+    background-color: var(--color-background);
+}
+
+section#partners .partners {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+section#partners h1 {
+    color: #031926;
+}
+
+section#partners .grid {
+    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-gap: 70px;
+    justify-items: center;
+    align-items: center;
+}
+
+section#partners .grid .card {
+    width: 23vw;
+    /* height: 55.5vh; */
+    padding: 24px;
+    background: var(--color-blanc);
+    display: flex;
+    justify-content: start;
+    align-items: center;
+    flex-direction: column;
+    border-radius: 30px;
+    border: #000 2.5px solid;
+}
+
+section#partners .grid .card:nth-child(1) {
+    background: #dac3ff;
+}
+
+section#partners .grid .card:nth-child(2) {
+    background: #dcf7e7;
+}
+
+section#partners .grid .card:nth-child(3) {
+    background: #ffa352;
+}
+
+section#partners .grid .card:nth-child(4) {
+    background: #F2F3AE;
+}
+
+section#partners .grid .card:nth-child(5) {
+    background: #7bd389;
+}
+
+section#partners .grid .card:nth-child(6) {
+    background: #8FBFE0;
+}
+
+section#partners .grid .card img {
+    width: 100%;
+    height: 250px;
+    object-fit: cover;
+    border-radius: 30px;
+    border: #000 2.5px solid;
+}
+
+section#partners .grid .card h2 {
+    font-size: 1.6em;
+    margin-block: 15px;
+    font-weight: 700;
+    font-family: 'Space Grotesk', sans-serif;
+    line-height: 30px;
+    letter-spacing: -.48px;
+    color: #0f0f0f;
+}
+
+section#partners .grid .card p {
+    font-size: 1.1em;
+    font-weight: 500;
+    letter-spacing: -.48px;
+    color: #0f0f0f;
+}
+
+section#partners .grid .card .btn {
+    margin-top: 24px;
+}
+
+section#partners .grid .card a.contactBtn {
+    font-weight: 600;
+    font-size: 1.15em;
+    padding: 7px 15px;
+    border: #000 2px solid;
+    letter-spacing: -.36px;
+    text-transform: none;
+    background-color: var(--color-blanc);
+    color: var(--color-noir);
+}
+
+/* about */
+section#about {
+    padding-block: 150px;
+    background-color: var(--color-primary);
+}
+
+section#about .about {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+section#about h1 {
+    color: var(--color-blanc);
+    font-size: 48px;
+    text-transform: none;
+    line-height: 62px;
+    letter-spacing: -1px;
+    margin-bottom: 0;
+}
+
+
+section#about h2 {
+    font-size: 48px;
+    text-transform: none;
+    line-height: 62px;
+    letter-spacing: -1px;
+    margin-bottom: 0;
 }
