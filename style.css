@@ -7,9 +7,9 @@
     --color-gris-clair: #ebebeb;
     --color-texte: hsl(210, 19%, 71%);
     --color-background: #f1f6f1;
-    --color-container: hsl(228, 15%, 15%);
     --color-header: #1b1d24;
     --color-primary: #0080ff;
+    --color-primary-stars: #0080ff9a;
     --color-primary-hover: hsl(210, 100%, 25%);
 }
 
@@ -149,7 +149,12 @@ header a.title {
     color: var(--color-primary);
 }
 
+a.contactBtn,
 .nav_links li a.contactBtn {
+    font-weight: 600;
+    font-size: 1.15em;
+    font-family: 'Space Grotesk', sans-serif;
+    text-transform: capitalize;
     padding: 12px 24px;
     background-color: var(--color-primary);
     border: #000 2.5px solid;
@@ -159,27 +164,33 @@ header a.title {
     display: flex;
     align-items: center;
     justify-content: center;
-    transform: translate(-4px, -4px);
+    transform: translate(-3px, -3px);
     transition: transform .15s ease-in-out;
     position: relative;
     z-index: 2;
 }
 
-.nav_links li a.contactBtn:hover {
+.nav_links li a.contactBtn:hover,
+a.contactBtn:hover {
     transform: translate(0, 0);
 }
 
-.nav_links li .btn {
-    content: '';
+.btn {
     background-color: var(--color-noir);
     border-radius: 30px;
 }
 
-.nav_links li a.contactBtn i {
-    margin-left: 10px;
+a.contactBtn i {
+    margin-left: 8px;
     font-size: .9em;
     position: relative;
     top: 1.75px;
+    transition: transform .15s ease-in-out;
+}
+
+.nav_links li a.contactBtn:hover i,
+a.contactBtn:hover i {
+    transform: translateX(4px);
 }
 
 /* responsive header */
@@ -221,8 +232,9 @@ header a.title {
 }
 
 /* sections */
-section#home {
-    height: 75vh;
+section#home,
+section#nous {
+    height: auto;
     width: 100vw;
     display: flex;
     flex-direction: row;
@@ -234,4 +246,139 @@ section#home {
 section#home {
     height: 100vh;
     /* padding-top: 90px; */
+}
+
+section#home .home {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+
+section#home h1 {
+    font-size: 2.5em;
+    font-weight: 700;
+    text-transform: capitalize;
+    width: 25vw;
+    font-family: 'Space Grotesk', sans-serif;
+    line-height: 50px;
+}
+
+section#home h2 {
+    font-size: 1.4em;
+    font-weight: 500;
+    line-height: 28px;
+    letter-spacing: -.18px;
+    margin-top: 10px;
+}
+
+section#home .btn {
+    margin-top: 45px;
+}
+
+/* nous */
+section#nous {
+    background-color: var(--color-blanc);
+}
+
+section#nous .nous {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    background-color: #dcf7e7;
+    padding: 56px 48px;
+    border-radius: 30px;
+    border: #000 2.5px solid;
+    box-shadow: 6px 6px #000;
+    margin-block: 160px;
+    max-width: 730px;
+    position: relative;
+}
+
+section#nous h2 {
+    font-size: 36px;
+    font-weight: 700;
+    text-transform: capitalize;
+    font-family: 'Space Grotesk', sans-serif;
+    line-height: 47px;
+    letter-spacing: -.72px;
+    margin-bottom: 24px;
+    color: #031926;
+}
+
+section#nous p {
+    font-size: 18px;
+    font-weight: 500;
+    text-align: center;
+    line-height: 28.8px;
+    letter-spacing: -.2px;
+    color: #1c303c;
+}
+
+section#nous .star{
+    position: absolute;
+    top: -31px;
+    left: -50px;
+    clip-path: polygon(50% 0%, 61% 35%, 98% 35%, 68% 57%, 79% 91%, 50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%);
+    background-color: var(--color-noir);
+    width: 100px;
+    height: 100px;
+    z-index: 1;
+}
+
+section#nous .star::before,
+section#nous .star2::before {
+    content: "";
+    position: absolute;
+    left: 6.5px;
+    top: 6.5px;
+    clip-path: polygon(50% 0%, 61% 35%, 98% 35%, 68% 57%, 79% 91%, 50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%);
+    background-color: var(--color-blanc);
+    width: 87px;
+    height: 87px;
+    z-index: 2;
+}
+
+section#nous .star::after,
+section#nous .star2::after {
+    content: "";
+    position: absolute;
+    left: 6.5px;
+    top: 6.5px;
+    clip-path: polygon(50% 0%, 61% 35%, 98% 35%, 68% 57%, 79% 91%, 50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%);
+    background-color: var(--color-primary-stars);
+    width: 87px;
+    height: 87px;
+    z-index: 3;
+}
+
+section#nous .star2 {
+    position: absolute;
+    top: -25px;
+    right: -25px;
+    clip-path: circle(50% at 50% 50%);
+    background-color: var(--color-noir);
+    width: 70px;
+    height: 70px;
+    z-index: 1;
+}
+
+section#nous .star2::before {
+    left: 3px;
+    top: 3px;
+    clip-path: circle(50% at 50% 50%);
+    width: 64px;
+    height: 64px;
+}
+
+section#nous .star2::after {
+    left: 3px;
+    top: 3px;
+    clip-path: circle(50% at 50% 50%);
+    background-color: var(--color-primary-stars);
+    width: 64px;
+    height: 64px;
 }
