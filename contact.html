@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Comité des Fêtes d'Auzielle</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://kit.fontawesome.com/7a0b90407e.js" crossorigin="anonymous"></script>
+    <link rel="icon" href="images/logo.ico" type="image/x-icon">
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+    <script type="text/javascript">
+        (function () {
+            emailjs.init("");
+        })();
+    </script>
+</head>
+
+<body>
+    <header class="eventHeader">
+        <a href="#" class="title">Comité des Fêtes <br> d'Auzielle</a>
+        <ul class="nav_links">
+            <li><a href="/">Accueil</a></li>
+            <li><a href="/events.html">Évènements</a></li>
+            <li><a href="/partners.html">Nos partenaires</a></li>
+            <li><a href="/about.html">Qui somme-nous</a></li>
+            <li>
+                <div class="btn">
+                    <a href="/contact.html" class="contactBtn">Contact <i class="fa-solid fa-chevron-right"></i></a>
+                </div>
+            </li>
+        </ul>
+    </header>
+
+    <div class="header_responsive">
+        <a href="#" class="title">Comité des Fêtes d'Auzielle</a>
+    </div>
+    <i class="fa-solid fa-bars menu_hamburger"></i>
+
+    <section id="contact">
+        <div class="contacts">
+            <div class="title">
+                <h1>Vous souhaitez nous contacter ?</h1>
+            </div>
+            <div class="rowContact">
+                <div class="formulaire">
+                    <form id="contactForm">
+                        <div class="row">
+                            <div class="column">
+                                <label for="name">Votre nom</label>
+                                <input type="text" name="name" placeholder="Quel est votre nom ?">
+                            </div>
+                            <div class="column">
+                                <label for="email">Votre email</label>
+                                <input type="email" name="email" placeholder="Quel est votre email ?">
+                            </div>
+                        </div>
+                        <div class="column">
+                            <label for="message">Votre message</label>
+                            <textarea name="message" placeholder="Quel est votre message ?"></textarea>
+                        </div>
+                        <div class="row second">
+                            <div class="btn">
+                                <button type="submit" class="contactBtn">Envoyer le message <i
+                                        class="fa-solid fa-paper-plane"></i></a>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+
+                <div class="columnContact">
+                    <div class="columnContact2">
+                        <h2>Adresse</h2>
+                        <p>Comité des Fêtes d'Auzielle</p>
+                        <p>Village</p>
+                        <p>Auzielle 31650</p>
+                        <p>France</p>
+                    </div>
+
+                    <iframe
+                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2892.112216824981!2d1.5636290768389658!3d43.54170267110767!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x12ae942e4668d965%3A0xc896674dab003536!2sMairie%20d&#39;Auzielle!5e0!3m2!1sfr!2sfr!4v1707327332174!5m2!1sfr!2sfr"
+                        width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy"
+                        referrerpolicy="no-referrer-when-downgrade"></iframe>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <script>
+        const USER_ID = '5512K-AZX12fCBtPK';
+
+        const handleSubmit = (e) => {
+            e.preventDefault();
+
+            const form = document.getElementById('contactForm');
+            const formData = new FormData(form);
+
+            const name = formData.get('name');
+            const email = formData.get('email');
+            const message = formData.get('message');
+
+            if (!name || !email || !message) {
+                alert('Veuillez remplir tous les champs du formulaire.');
+                return;
+            }
+
+            emailjs.send('service_ajykrdq', 'template_taaikfc', {
+                from_name: formData.get('name'),
+                to_name: 'CFA',
+                from_email: formData.get('email'),
+                to_email: '',
+                message: formData.get('message')
+            }, USER_ID)
+                .then(() => {
+                    alert('Merci pour votre message. Je vous contacte très rapidement.');
+                })
+                .catch((error) => {
+                    console.error(error);
+                    alert('Quelque chose s\'est mal passé.');
+                });
+        };
+
+        const form = document.getElementById('contactForm');
+        form.addEventListener('submit', handleSubmit);
+    </script>
+</body>
+
+</html>

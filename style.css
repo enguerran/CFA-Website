@@ -76,7 +76,7 @@ body::-webkit-scrollbar-track {
 
 @supports (scrollbar-color: red blue) {
     body {
-        scrollbar-color: var(--color-blanc) var(--color-container);
+        scrollbar-color: var(--color-blanc) var(--color-background);
         scrollbar-width: auto;
     }
 }
@@ -181,6 +181,7 @@ header.eventHeader .nav_links li a:not(.contactBtn):hover {
 }
 
 a.contactBtn,
+button.contactBtn,
 .nav_links li a.contactBtn {
     font-weight: 600;
     font-size: 1.15em;
@@ -199,9 +200,11 @@ a.contactBtn,
     transition: transform .15s ease-in-out;
     position: relative;
     z-index: 2;
+    cursor: pointer;
 }
 
 .nav_links li a.contactBtn:hover,
+button.contactBtn:hover,
 a.contactBtn:hover {
     transform: translate(0, 0);
 }
@@ -211,7 +214,9 @@ a.contactBtn:hover {
     border-radius: 30px;
 }
 
-a.contactBtn i {
+.nav_links li a.contactBtn i,
+a.contactBtn i,
+button.contactBtn i {
     margin-left: 8px;
     font-size: .9em;
     position: relative;
@@ -220,6 +225,7 @@ a.contactBtn i {
 }
 
 .nav_links li a.contactBtn:hover i,
+button.contactBtn:hover i,
 a.contactBtn:hover i {
     transform: translateX(4px);
 }
@@ -267,7 +273,8 @@ section#home,
 section#nous,
 section#events,
 section#partners,
-section#about {
+section#about,
+section#contact {
     height: auto;
     width: 100vw;
     display: flex;
@@ -489,7 +496,8 @@ section#events .events {
 
 section#events h1,
 section#partners h1,
-section#about h1 {
+section#about h1,
+section#contact h1 {
     font-size: 36px;
     font-weight: 700;
     font-family: 'Space Grotesk', sans-serif;
@@ -707,6 +715,148 @@ section#about img {
     box-shadow: 6px 6px #000;
 }
 
+/* contact */
+section#contact {
+    height: 100vh;
+    background-color: var(--color-primary-stars);
+}
+
+section#contact .contacts {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+}
+
+section#contact .rowContact {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    width: 60%;
+    /* border: white solid; */
+}
+
+section#contact .columnContact {
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    justify-content: center;
+    margin-left: 10%;
+}
+
+section#contact .columnContact iframe {
+    width: 30vw;
+    height: 35vh;
+    max-width: 600px;
+    border-radius: 30px;
+}
+
+section#contact .columnContact2 {
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    justify-content: center;
+    background-color: var(--color-blanc);
+    border-radius: 30px;
+    padding: 15px 20px;
+    border: #000 2.5px solid;
+    margin-bottom: 30px;
+}
+
+section#contact .columnContact2 h2 {
+    font-size: 1.6em;
+    margin-block: 0 15px;
+    font-weight: 700;
+    font-family: 'Space Grotesk', sans-serif;
+    line-height: 30px;
+    letter-spacing: -.48px;
+    color: #0f0f0f;
+    color: var(--color-secondary);
+}
+
+section#contact .columnContact2 p {
+    font-size: 1.15em;
+    font-weight: 500;
+    letter-spacing: -.48px;
+    color: #0f0f0f;
+}
+
+section#contact .columnContact2 p:nth-child(2) {
+    font-weight: 900;
+}
+
+section#contact .contacts .formulaire {
+    width: 35%;
+    min-width: 500px;
+}
+
+section#contact .contacts .formulaire form .row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 25px;
+    width: 100%;
+}
+
+section#contact .contacts .formulaire form .row.second {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-block: 40px 0;
+}
+
+section#contact .contacts .formulaire form .column {
+    display: flex;
+    align-items: start;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 100%;
+}
+
+section#contact .contacts .formulaire form label {
+    color: var(--color-noir);
+    font-weight: 600;
+    font-size: 1.1em;
+    margin-bottom: 15px;
+    line-height: 1;
+}
+
+section#contact .contacts .formulaire form input,
+section#contact .contacts .formulaire form textarea {
+    background: var(--color-blanc);
+    outline: none;
+    border: none;
+    width: 100%;
+    padding: 16px 24px;
+    font-size: 1em;
+    line-height: 1.2;
+    font-weight: 500;
+    color: var(--color-noir);
+    min-width: 230px;
+    border-radius: 15px;
+    border: #000 2.5px solid;
+    box-shadow: 4px 4px #000;
+}
+
+section#contact .contacts .formulaire form input:focus,
+section#contact .contacts .formulaire form textarea:focus {
+    border: 2px solid var(--color-secondary);
+}
+
+section#contact .contacts .formulaire form textarea {
+    min-height: 300px;
+    min-width: 485px;
+}
+
+section#contact .contacts .formulaire form .column:nth-child(1) {
+    margin-right: 25px;
+}
+
+section#contact .contacts .formulaire form .contactBtn {
+    text-transform: none;
+}
 
 /* home bubbles */
 .text-container {
