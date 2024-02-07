@@ -11,7 +11,7 @@
 </head>
 
 <body>
-    <header>
+    <header class="clear">
         <a href="#" class="title">Comité des Fêtes <br> d'Auzielle</a>
         <ul class="nav_links">
             <li><a href="/">Accueil</a></li>
@@ -31,63 +31,37 @@
     </div>
     <i class="fa-solid fa-bars menu_hamburger"></i>
 
-
-    <div class="text-container">
-        Bubbles
-    </div>
-    <div class="gradient-bg">
-        <svg xmlns="http://www.w3.org/2000/svg">
-            <defs>
-                <filter id="goo">
-                    <feGaussianBlur in="SourceGraphic" stdDeviation="10" result="blur" />
-                    <feColorMatrix in="blur" mode="matrix" values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 18 -8"
-                        result="goo" />
-                    <feBlend in="SourceGraphic" in2="goo" />
-                </filter>
-            </defs>
-        </svg>
-        <div class="gradients-container">
-            <div class="g1"></div>
-            <div class="g2"></div>
-            <div class="g3"></div>
-            <div class="g4"></div>
-            <div class="g5"></div>
-            <div class="interactive"></div>
-        </div>
-    </div>
-
-    <!-- <section id="home">
-        <div class="home">
+    <section id="home">
+        <div class="text-container">
             <h1>Fournisseur officiel de gens <span>heureux</span></h1>
             <h2>Le comité des fêtes...C'est pour faire la fête !!!</h2>
             <div class="btn">
                 <a href="/events.html" class="contactBtn">Faisons la fête <i class="fa-solid fa-chevron-right"></i></a>
             </div>
         </div>
+        <div class="gradient-bg">
+            <svg xmlns="http://www.w3.org/2000/svg">
+                <defs>
+                    <filter id="goo">
+                        <feGaussianBlur in="SourceGraphic" stdDeviation="10" result="blur" />
+                        <feColorMatrix in="blur" mode="matrix" values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 18 -8"
+                            result="goo" />
+                        <feBlend in="SourceGraphic" in2="goo" />
+                    </filter>
+                </defs>
+            </svg>
+            <div class="gradients-container">
+                <div class="g1"></div>
+                <div class="g2"></div>
+                <div class="g3"></div>
+                <div class="g4"></div>
+                <div class="g5"></div>
+                <div class="interactive"></div>
+            </div>
+        </div>
     </section>
 
-    <section id="nous">
-        <div class="textes"></div>
-        <div class="nous">
-            <div class="star"></div>
-            <div class="star2"><i class="fa-solid fa-people-group"></i></div>
-            <h2>Le CFA</h2>
-            <p>Le CFA a besoin de sang neuf et des idées nouvelles. Nous ne serons jamais trop nombreux pour faire fonctionner le comité des fêtes, 
-                organiser des manifestations et animations. Toutes les bonnes volontés sont les bienvenues.</p>
-        </div>
-    </section> -->
-
     <script>
-        document.addEventListener('DOMContentLoaded', function () {
-            var repeatCount = 11 * 6;
-            var textToRepeat = "Fête ";
-            var textContainer = document.querySelector('.textes');
-            for (var i = 0; i < repeatCount; i++) {
-                textContainer.innerHTML += textToRepeat;
-            }
-        });
-
-
         let curX = 0;
         let curY = 0;
         let tgX = 0;

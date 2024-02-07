@@ -8,6 +8,15 @@
     --color-primary: #cc0d0d;
     --color-secondary: #0080ff;
     --color-primary-stars: #cc0d0d9a;
+    
+    --color1: 18, 113, 255;
+    --color2: 221, 74, 255;
+    --color3: 100, 220, 255;
+    --color4: 200, 50, 50;
+    --color5: 180, 180, 50;
+    --color-interactive: 140, 100, 255;
+    --circle-size: 80%;
+    --blending: hard-light;
 }
 
 @font-face {
@@ -100,6 +109,10 @@ header {
     overflow: hidden;
     z-index: 999;
     backdrop-filter: blur(15px);
+}
+
+.clear {
+    backdrop-filter: none;
 }
 
 header a.title {
@@ -267,14 +280,6 @@ section#about {
 section#home {
     height: 100vh;
     /* padding-top: 90px; */
-}
-
-section#home .home {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
 }
 
 section#home h1 {
@@ -649,7 +654,7 @@ section#partners .grid .card a.contactBtn {
 /* about */
 section#about {
     /* padding-block: 150px; */
-    background-color: var(--color-primary-stars);
+    background-color: var(--color-background);
     height: 100vh;
 }
 
@@ -661,8 +666,8 @@ section#about .about {
 }
 
 section#about h1 {
-    color: var(--color-blanc);
-    font-size: 48px;
+    color: var(--color-noir);
+    font-size: 36px;
     text-transform: none;
     line-height: 62px;
     letter-spacing: -1px;
@@ -673,7 +678,7 @@ section#about h2 {
     font-size: 24px;
     line-height: 36px;
     letter-spacing: -.5px;
-    color: var(--color-blanc);
+    color: var(--color-gris-noir);
     margin-block: 16px 100px;
 }
 
@@ -703,7 +708,7 @@ section#about img {
 }
 
 
-
+/* home bubbles */
 .text-container {
     z-index: 100;
     width: 100vw;
@@ -714,25 +719,9 @@ section#about img {
     left: 0;
     justify-content: center;
     align-items: center;
-    font-size: 96px;
-    color: white;
-    opacity: 0.8;
+    flex-direction: column;
     user-select: none;
-    text-shadow: 1px 1px rgba(0, 0, 0, 0.1);
-    font-family: 'Dongle', sans-serif;
-}
-
-:root {
-    --color-bg1: rgb(108, 0, 162);
-    --color-bg2: rgb(0, 17, 82);
-    --color1: 18, 113, 255;
-    --color2: 221, 74, 255;
-    --color3: 100, 220, 255;
-    --color4: 200, 50, 50;
-    --color5: 180, 180, 50;
-    --color-interactive: 140, 100, 255;
-    --circle-size: 80%;
-    --blending: hard-light;
+    color: var(--color-noir);
 }
 
 @keyframes moveInCircle {
@@ -777,24 +766,24 @@ section#about img {
     }
 }
 
-
 .gradient-bg {
     width: 100vw;
     height: 100vh;
     position: relative;
     overflow: hidden;
-    background: linear-gradient(40deg, var(--color-bg1), var(--color-bg2));
+    /* background: linear-gradient(40deg, var(--color-bg1), var(--color-bg2)); */
+    background: var(--color-blanc);
     top: 0;
     left: 0;
 }
 
-svg {
+.gradient-bg svg {
     display: none;
 }
 
 
 .gradients-container {
-    filter: url(#goo) blur(5px);
+    filter: url(#goo) blur(10px);
     /* filter: url(#goo) blur(40px); */
     width: 100%;
     height: 100%;

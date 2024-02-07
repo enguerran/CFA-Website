@@ -11,7 +11,7 @@
 </head>
 
 <body>
-    <header class="eventHeader">
+    <header>
         <a href="#" class="title">Comité des Fêtes <br> d'Auzielle</a>
         <ul class="nav_links">
             <li><a href="/">Accueil</a></li>
@@ -37,14 +37,20 @@
             <h2>2013 : Renaissance du Comité des Fêtes d’Auzielle</h2>
             <div class="row">
                 <p>Cette année-là, nous avons eu le plaisir d’officialiser la création du nouveau comité des fêtes
-                    d’Auzielle (C.F.A.). En effet, le précédent comité avait souhaité se retirer après plus de 40 années de
-                    bons et loyaux services. Après quelques mois de sommeil, le passage de relais a donc eu lieu le vendredi
+                    d’Auzielle (C.F.A.). En effet, le précédent comité avait souhaité se retirer après plus de 40 années
+                    de
+                    bons et loyaux services. Après quelques mois de sommeil, le passage de relais a donc eu lieu le
+                    vendredi
                     22 février 2013. <br>
-                    C’est à cette date que plusieurs Auziellois (habitants de longue date, nouveaux arrivants, membres du
+                    C’est à cette date que plusieurs Auziellois (habitants de longue date, nouveaux arrivants, membres
+                    du
                     conseil municipal, etc…) se sont rassemblés à la salle des fêtes du village pour élire le nouveau
-                    bureau, et commencer à préparer comme il se doit les nombreux événements prévus pour cette année. <br>
-                    2013 a donc été une année charnière, permettant à la nouvelle équipe de prendre ses repères, en prenant
-                    en compte l’expérience des membres de l’ancien comité, et en proposant de nouvelles idées et activités
+                    bureau, et commencer à préparer comme il se doit les nombreux événements prévus pour cette année.
+                    <br>
+                    2013 a donc été une année charnière, permettant à la nouvelle équipe de prendre ses repères, en
+                    prenant
+                    en compte l’expérience des membres de l’ancien comité, et en proposant de nouvelles idées et
+                    activités
                     pour réveiller et rassembler le peuple Auziellois, autour de festivités diverses et variées, tout au
                     long de l’année.
                 </p>
@@ -52,6 +58,29 @@
             </div>
         </div>
     </section>
+
+    <section id="nous">
+        <div class="textes"></div>
+        <div class="nous">
+            <div class="star"></div>
+            <div class="star2"><i class="fa-solid fa-people-group"></i></div>
+            <h2>Le CFA</h2>
+            <p>Le CFA a besoin de sang neuf et des idées nouvelles. Nous ne serons jamais trop nombreux pour faire
+                fonctionner le comité des fêtes,
+                organiser des manifestations et animations. Toutes les bonnes volontés sont les bienvenues.</p>
+        </div>
+    </section>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            var repeatCount = 11 * 6;
+            var textToRepeat = "Fête ";
+            var textContainer = document.querySelector('.textes');
+            for (var i = 0; i < repeatCount; i++) {
+                textContainer.innerHTML += textToRepeat;
+            }
+        });
+    </script>
 </body>
 
 </html>
