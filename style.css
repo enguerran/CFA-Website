@@ -8,11 +8,11 @@
     --color-primary: #cc0d0d;
     --color-secondary: #0080ff;
     --color-primary-stars: #cc0d0d9a;
-    
-    --color1: 18, 113, 255;
+
+    --color1: 0, 128, 255;
     --color2: 221, 74, 255;
     --color3: 100, 220, 255;
-    --color4: 200, 50, 50;
+    --color4: 204, 13, 13;
     --color5: 180, 180, 50;
     --color-interactive: 140, 100, 255;
     --circle-size: 80%;
@@ -978,10 +978,10 @@ section#contact .contacts .formulaire form .contactBtn {
     background: radial-gradient(circle at center, rgba(var(--color3), 0.8) 0, rgba(var(--color3), 0) 50%) no-repeat;
     mix-blend-mode: var(--blending);
 
-    width: calc(var(--circle-size) * 0.5);
-    height: calc(var(--circle-size)  * 0.5);
-    top: calc(50% - (var(--circle-size) * 0.25) + 200px);
-    left: calc(50% - (var(--circle-size) * 0.25) - 500px);
+    width: var(--circle-size);
+    height: var(--circle-size);
+    top: calc(50% - var(--circle-size) / 2 + 200px);
+    left: calc(50% - var(--circle-size) / 2 - 500px);
 
     transform-origin: calc(50% + 400px);
     animation: moveInCircle 40s linear infinite;
@@ -1010,10 +1010,10 @@ section#contact .contacts .formulaire form .contactBtn {
     background: radial-gradient(circle at center, rgba(var(--color5), 0.8) 0, rgba(var(--color5), 0) 50%) no-repeat;
     mix-blend-mode: var(--blending);
 
-    width: calc(var(--circle-size) * 1.4);
-    height: calc(var(--circle-size) * 1.4);
-    top: calc(50% - (var(--circle-size) * 0.7));
-    left: calc(50% - (var(--circle-size) * 0.7));
+    width: calc(var(--circle-size) * 2);
+    height: calc(var(--circle-size) * 2);
+    top: calc(50% - var(--circle-size));
+    left: calc(50% - var(--circle-size));
 
     transform-origin: calc(50% - 800px) calc(50% + 200px);
     animation: moveInCircle 20s ease infinite;
