@@ -294,6 +294,7 @@ section#home h1 {
     font-weight: 700;
     text-transform: capitalize;
     width: 28vw;
+    min-width: 520px;
     font-family: 'Space Grotesk', sans-serif;
     line-height: 70px;
     letter-spacing: -.5px;
@@ -519,7 +520,8 @@ section#events .grid {
 
 section#events .grid .card {
     width: 20vw;
-    height: 51.5vh;
+    min-width: 350px;
+    min-height: 51.5vh;
     padding: 32px;
     background: var(--color-blanc);
     display: flex;
