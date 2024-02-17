@@ -404,7 +404,7 @@ section#home #toggleAnimation {
 
 /* nous */
 section#nous {
-    background-color: var(--color-blanc);
+    background-color: var(--color-background);
     position: relative;
     height: 65vh;
 }
@@ -415,7 +415,7 @@ section#nous .nous {
     align-items: center;
     justify-content: center;
     text-align: center;
-    background-color: #dcf7e7;
+    background-color: #d2f6e0;
     padding: 56px 48px;
     border-radius: 30px;
     border: #000 2.5px solid;
