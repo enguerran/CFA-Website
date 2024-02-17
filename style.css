@@ -348,6 +348,60 @@ section#home #toggleAnimation {
     bottom: 10px;
 }
 
+/* animation site btn */
+.toggle_animation_site {
+    position: fixed;
+    right: 20px;
+    bottom: 20px;
+    z-index: 9999;
+}
+
+.toggle_animation_site i {
+    font-size: 18px;
+}
+
+.toggle_animation_site .checkbox {
+    display: none;
+}
+
+.toggle_animation_site .label {
+    height: 34px;
+    width: 67px;
+    background: none;
+    backdrop-filter: blur(200px);
+    padding-inline: 8px;
+    border-radius: 50px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    position: relative;
+    transform: scale(1.2);
+    border: 2px solid var(--color-secondary);
+}
+
+.toggle_animation_site .label .ball {
+    background: var(--color-secondary);
+    border-radius: 50px;
+    height: 26px;
+    width: 26px;
+    position: absolute;
+    top: 2px;
+    left: 3px;
+    transform: translateX(0px);
+    transition: transform 0.4s cubic-bezier(.45, -1.12, .35, 1.78);
+    box-shadow: 2px 1px 1px var(--color-secondary);
+}
+
+.toggle_animation_site .checkbox:checked+.label .ball {
+    transform: translateX(29px);
+}
+
+.toggle_animation_site .fa-moon,
+.toggle_animation_site .fa-sun {
+    color: var(--color-noir);
+}
+
 /* nous */
 section#nous {
     background-color: var(--color-blanc);
