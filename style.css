@@ -182,6 +182,7 @@ header.eventHeader .nav_links li a:not(.contactBtn):hover {
 
 a.contactBtn,
 button.contactBtn,
+button#toggleAnimation,
 .nav_links li a.contactBtn {
     font-weight: 600;
     font-size: 1.15em;
@@ -339,6 +340,12 @@ section#home h2 {
 
 section#home .btn {
     margin-top: 45px;
+}
+
+section#home #toggleAnimation {
+    position: fixed;
+    right: 10px;
+    bottom: 10px;
 }
 
 /* nous */
@@ -1032,4 +1039,8 @@ section#contact .contacts .formulaire form .contactBtn {
     left: -50%;
 
     opacity: 0.7;
+}
+
+.no-animation {
+    animation: none !important;
 }

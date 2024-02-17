@@ -38,6 +38,7 @@
             <div class="btn">
                 <a href="/events.html" class="contactBtn">Faisons la fête <i class="fa-solid fa-chevron-right"></i></a>
             </div>
+            <button id="toggleAnimation">Animation</button>
         </div>
         <div class="gradient-bg">
             <svg xmlns="http://www.w3.org/2000/svg">
@@ -51,14 +52,15 @@
                 </defs>
             </svg>
             <div class="gradients-container">
-                <div class="g1"></div>
-                <div class="g2"></div>
-                <div class="g3"></div>
-                <div class="g4"></div>
-                <div class="g5"></div>
+                <div class="g1 no-animation g"></div>
+                <div class="g2 no-animation g"></div>
+                <div class="g3 no-animation g"></div>
+                <div class="g4 no-animation g"></div>
+                <div class="g5 no-animation g"></div>
                 <div class="interactive"></div>
             </div>
         </div>
+
     </section>
 
     <script>
@@ -66,27 +68,62 @@
         let curY = 0;
         let tgX = 0;
         let tgY = 0;
-
+        let isAnimationEnabled = false;
+    
         document.addEventListener('DOMContentLoaded', function () {
             const interBubble = document.querySelector('.interactive');
-
+            const toggleButton = document.getElementById('toggleAnimation');
+    
             function move() {
-                curX += (tgX - curX) / 20;
-                curY += (tgY - curY) / 20;
-                interBubble.style.transform = `translate(${Math.round(curX)}px, ${Math.round(curY)}px)`;
-                requestAnimationFrame(function () {
-                    move();
-                });
+                if (isAnimationEnabled) {
+                    curX += (tgX - curX) / 20;
+                    curY += (tgY - curY) / 20;
+                    interBubble.style.transform = `translate(${Math.round(curX)}px, ${Math.round(curY)}px)`;
+                    requestAnimationFrame(function () {
+                        move();
+                    });
+                }
             }
 
+            function positionElementsRandomly() {
+                const elements = document.querySelectorAll('.g');
+                elements.forEach(element => {
+                    const randomX = Math.random() * (window.innerWidth - element.offsetWidth);
+                    const randomY = Math.random() * (window.innerHeight - element.offsetHeight);
+                    element.style.left = `${randomX}px`;
+                    element.style.top = `${randomY}px`;
+                    element.classList.add('no-animation');
+                });
+            }
+    
+            toggleButton.addEventListener('click', function () {
+                isAnimationEnabled = !isAnimationEnabled;
+                const elements = document.querySelectorAll('.g');
+                if (isAnimationEnabled) {
+                    elements.forEach(element => {
+                        element.classList.remove('no-animation');
+                    });
+                    document.querySelector('.interactive').style.display = 'block';
+                    move();
+                    console.log('Animation activée');
+                } else {
+                    positionElementsRandomly();
+                    console.log('Animation désactivée');
+                    document.querySelector('.interactive').style.display = 'none';
+                }
+            });
+            
+            if (!isAnimationEnabled) {
+                positionElementsRandomly();
+                document.querySelector('.interactive').style.display = 'none';
+            }
+    
             window.addEventListener('mousemove', function (e) {
                 tgX = e.clientX;
                 tgY = e.clientY;
             });
-
-            move();
         });
-    </script>
+    </script>    
 </body>
 
 </html>
