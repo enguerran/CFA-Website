@@ -204,6 +204,10 @@ button#toggleAnimation,
     cursor: pointer;
 }
 
+header.eventHeader .nav_links li a.contactBtn    {
+    background-color: var(--color-gris-noir);
+}
+
 .nav_links li a.contactBtn:hover,
 button.contactBtn:hover,
 a.contactBtn:hover {
@@ -357,7 +361,7 @@ section#home #toggleAnimation {
 }
 
 .toggle_animation_site i {
-    font-size: 18px;
+    font-size: 14px;
 }
 
 .toggle_animation_site .checkbox {
@@ -368,7 +372,7 @@ section#home #toggleAnimation {
     height: 34px;
     width: 67px;
     background: none;
-    backdrop-filter: blur(200px);
+    backdrop-filter: blur(6000px);
     padding-inline: 8px;
     border-radius: 50px;
     cursor: pointer;
@@ -377,11 +381,11 @@ section#home #toggleAnimation {
     justify-content: space-between;
     position: relative;
     transform: scale(1.2);
-    border: 2px solid var(--color-secondary);
+    border: 2px solid #767676;
 }
 
 .toggle_animation_site .label .ball {
-    background: var(--color-secondary);
+    background: #767676;
     border-radius: 50px;
     height: 26px;
     width: 26px;
@@ -390,15 +394,15 @@ section#home #toggleAnimation {
     left: 3px;
     transform: translateX(0px);
     transition: transform 0.4s cubic-bezier(.45, -1.12, .35, 1.78);
-    box-shadow: 2px 1px 1px var(--color-secondary);
+    box-shadow: 2px 1px 1px #767676;
 }
 
 .toggle_animation_site .checkbox:checked+.label .ball {
     transform: translateX(29px);
 }
 
-.toggle_animation_site .fa-moon,
-.toggle_animation_site .fa-sun {
+.toggle_animation_site .fa-moon i,
+.toggle_animation_site .fa-sun i {
     color: var(--color-noir);
 }
 
