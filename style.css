@@ -1511,15 +1511,16 @@ section#contact .contacts .formulaire form .contactBtn {
     section#partners .grid .card {
         padding: 15px;
         min-width: 0;
-        width: 90%;
+        width: 81%;
         display: flex;
         flex-direction: column;
         justify-content: center;
         align-items: center;
+        grid-gap: 15px;
     }
 
     section#events .grid .card img {
-        width: 200px;
+        width: 100%;
         height: 130px;
     }
 
@@ -1527,6 +1528,7 @@ section#contact .contacts .formulaire form .contactBtn {
     section#partners .grid .card h2 {
         font-size: 1.43em;
         line-height: 1;
+        margin-block: 0;
     }
 
     section#events .grid .card p,
@@ -1535,14 +1537,6 @@ section#contact .contacts .formulaire form .contactBtn {
         line-height: 1.15;
         min-width: 0;
         width: 100%;
-    }
-
-    section#partners .grid .card {
-        grid-gap: 15px;
-    }
-
-    section#partners .grid .card h2 {
-        margin-block: 0;
     }
 
     section#events,
