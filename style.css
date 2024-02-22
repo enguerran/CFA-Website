@@ -115,7 +115,8 @@ header {
     backdrop-filter: none;
 }
 
-header a.title {
+header a.title,
+.header_responsive a.title {
     font-size: 1.25em;
     color: var(--color-primary);
     font-weight: 700;
@@ -123,7 +124,8 @@ header a.title {
     font-family: 'Space Grotesk', sans-serif;
 }
 
-header.eventHeader a.title {
+header.eventHeader a.title,
+.header_responsive.eventHeader a.title {
     color: var(--color-noir);
 }
 
@@ -275,20 +277,12 @@ a.contactBtn:hover i {
     /* backdrop-filter: blur(15px); */
 }
 
-.header_responsive a.title {
-    font-size: 1.3em;
-    color: var(--color-blanc);
-    font-weight: 500;
-    white-space: nowrap;
-    font-family: 'Space Grotesk', sans-serif;
-}
-
 .menu_hamburger {
     position: fixed;
     top: 20px;
     right: 10%;
     font-size: 2.5em;
-    color: var(--color-blanc);
+    color: var(--color-noir);
     display: none;
     visibility: hidden;
     cursor: pointer;
@@ -1185,11 +1179,139 @@ section#contact .contacts .formulaire form .contactBtn {
         margin-top: 40px;
     }
 
+    section#events .grid {
+        grid-gap: 2vw;
+    }
+}
+
+@media (max-width: 1150px) {
+    section#events h1 {
+        margin-bottom: 40px;
+    }
+
+    section#events .grid {
+        grid-template-columns: repeat(1, 1fr);
+        grid-gap: 40px;
+        margin-bottom: 40px;
+    }
+
+    section#events .grid .card {
+        width: 80%;
+        flex-direction: row;
+        justify-content: space-between;
+    }
+
+    section#events .grid .card img {
+        width: 25vw;
+        height: 200px;
+    }
+
+    section#events .grid .card h2 {
+        margin: 0 25px;
+        white-space: nowrap;
+    }
 }
 
 @media (max-width: 1090px) {
     header {
-        display: none;
+        flex-direction: column;
+        justify-content: flex-start;
+        position: fixed;
+        top: 0;
+        left: 0;
+        background: var(--color-blanc);
+        width: 100%;
+        height: 100vh;
+        margin-left: 100%;
+        padding-block: 90px;
+        transition: margin .35s ease-out;
+        z-index: 99999;
+        overflow-y: auto;
+    }
+
+    .menu_hamburger_active {
+        /* menu hamburger visibilité */
+        margin-left: 0;
+    }
+
+    .menu_hamburger {
+        display: block;
+        visibility: visible;
+    }
+
+    .progress-container {
+        top: 0;
+    }
+
+    .header_responsive {
+        display: flex;
+        max-width: 100vw;
+        overflow: hidden;
+    }
+
+    header a.title {
+        font-size: 1.3em;
+        margin-bottom: 50px;
+        text-align: center;
+    }
+
+    .nav_links {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .nav_links li {
+        margin-block: 15px;
+    }
+
+    .nav_links li a {
+        padding: 0 10px;
+    }
+
+    header.eventHeader .nav_links li a {
+        color: #031926;
+    }
+
+    header.eventHeader .nav_links li a:not(.contactBtn):after {
+        background-color: var(--color-primary);
+    }
+
+    header.eventHeader .nav_links li a:not(.contactBtn):hover {
+        color: var(--color-primary);
+    }
+
+    header.eventHeader .nav_links li a:not(.contactBtn).active {
+        color: var(--color-primary);
+    }
+
+    header.eventHeader .nav_links li a.contactBtn {
+        background-color: var(--color-primary);
+        color: var(--color-blanc);
+    }
+
+    section#events .grid .card img {
+        width: 200px;
+        height: 150px;
+    }
+
+    section#events .grid .card h2 {
+        margin: 0 20px;
+        white-space: initial;
+        font-size: 1.35em;
+        min-width: 100px;
+    }
+
+    section#events .grid .card p {
+        font-size: .95em;
+    }
+
+    section#events h1,
+    section#partners h1,
+    section#about h1,
+    section#contact h1 {
+        font-size: 1.8em;
+        line-height: 30px;
+        margin-bottom: 40px;
     }
 }
 
@@ -1228,6 +1350,44 @@ section#contact .contacts .formulaire form .contactBtn {
         font-size: 1.05em;
         padding: 10px 20px;
     }
+
+    section#events .grid {
+        grid-gap: 30px;
+    }
+
+
+    section#events .grid .card {
+        padding: 20px;
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        grid-gap: 20px;
+        justify-content: center;
+        align-items: center;
+    }
+
+    section#events .grid .card img {
+        width: 200px;
+        height: 150px;
+        grid-column-start: 1;
+        grid-column-end: 1;
+    }
+
+    section#events .grid .card h2 {
+        margin: 0;
+        font-size: 1.4em;
+        min-width: none;
+        width: 100%;
+        grid-column-start: 2;
+        grid-column-end: 2;
+        text-align: center;
+        line-height: 1.1;
+    }
+
+    section#events .grid .card p {
+        font-size: .95em;
+        grid-column-start: 1;
+        grid-column-end: span 2;
+    }
 }
 
 @media (max-width: 450px) {
@@ -1256,5 +1416,44 @@ section#contact .contacts .formulaire form .contactBtn {
     section#home a.contactBtn {
         font-size: 1em;
         padding: 8px 16px;
+    }
+
+    section#events .grid {
+        max-width: 100vw;
+    }
+
+    section#events .grid .card {
+        padding: 15px;
+        min-width: 0;
+        width: 90%;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+
+    section#events .grid .card img {
+        width: 200px;
+        height: 130px;
+    }
+
+    section#events .grid .card h2 {
+        font-size: 1.43em;
+        line-height: 1;
+    }
+
+    section#events .grid .card p {
+        font-size: .95em;
+        line-height: 1.15;
+        min-width: 0;
+        width: 100%;
+    }
+
+    section#events h1,
+    section#partners h1,
+    section#about h1,
+    section#contact h1 {
+        font-size: 1.7em;
+        max-width: 80%;
     }
 }
