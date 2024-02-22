@@ -1471,6 +1471,9 @@ section#contact .contacts .formulaire form .contactBtn {
 }
 
 @media (max-width: 450px) {
+    section#home {
+        max-height: 100vh;
+    }
     section#home h1 {
         font-size: 1.8em;
         min-width: 265px;
