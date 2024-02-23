@@ -796,6 +796,7 @@ section#about p {
 
 section#about img {
     width: 32vw;
+    min-width: 300px;
     object-fit: cover;
     border-radius: 30px;
     border: #000 2.5px solid;
@@ -1139,11 +1140,21 @@ section#contact .contacts .formulaire form .contactBtn {
 @media (max-height: 1000px) {
 
     section#events,
-    section#contact {
+    section#contact,
+    section#about {
         height: auto;
         min-height: 100vh;
         padding-top: 100px;
         align-items: start;
+    }
+
+    section#nous {
+        height: auto;
+        align-items: start;
+    }
+
+    section#nous .nous {
+        margin-block: 120px;
     }
 }
 
@@ -1184,6 +1195,10 @@ section#contact .contacts .formulaire form .contactBtn {
     section#events .grid,
     section#partners .grid {
         grid-gap: 2vw;
+    }
+
+    section#about h2 {
+        margin-block: 15px 50px;
     }
 }
 
@@ -1327,6 +1342,22 @@ section#contact .contacts .formulaire form .contactBtn {
         line-height: 30px;
         margin-bottom: 40px;
     }
+
+    section#about h1 {
+        margin-bottom: 0;
+    }
+
+    section#about h2 {
+        font-size: 1.3em;
+    }
+
+    section#nous h2 {
+        font-size: 1.85em;
+    }
+
+    section#about .row {
+        width: 80vw;
+    }
 }
 
 @media (max-width: 900px) {
@@ -1342,6 +1373,31 @@ section#contact .contacts .formulaire form .contactBtn {
 
     section#partners .grid .card h2 {
         margin-block: 12px 7px;
+    }
+
+    section#about .row {
+        flex-direction: column;
+        width: 78vw;
+    }
+
+    section#about h2 {
+        margin-bottom: 40px;
+    }
+
+    section#about p {
+        margin-right: 0;
+    }
+
+    section#about img {
+        min-width: 350px;
+        margin-block: 60px;
+    }
+
+    section#nous .nous {
+        margin-block: 20px;
+        padding: 40px;
+        max-width: none;
+        width: 78vw;
     }
 }
 
@@ -1468,6 +1524,33 @@ section#contact .contacts .formulaire form .contactBtn {
         font-size: .95em;
 
     }
+
+    section#about h2 {
+        font-size: 1.15em;
+    }
+
+    section#about p {
+        font-size: 1em;
+        line-height: 1.35;
+    }
+
+    section#about img {
+        width: 32vw;
+        min-width: 280px;
+    }
+
+    section#nous .nous {
+        padding: 25px;
+    }
+
+    section#nous h2 {
+        font-size: 1.6em;
+    }
+
+    section#nous p {
+        font-size: 1em;
+        line-height: 1.35;
+    }
 }
 
 @media (max-width: 450px) {
@@ -1475,6 +1558,7 @@ section#contact .contacts .formulaire form .contactBtn {
         max-height: 100vh;
         max-width: 100vw;
     }
+
     section#home h1 {
         font-size: 1.8em;
         min-width: 265px;
@@ -1532,7 +1616,9 @@ section#contact .contacts .formulaire form .contactBtn {
     }
 
     section#events .grid .card p,
-    section#partners .grid .card p {
+    section#partners .grid .card p,
+    section#nous p,
+    section#about p {
         font-size: .95em;
         line-height: 1.15;
         min-width: 0;
@@ -1555,6 +1641,91 @@ section#contact .contacts .formulaire form .contactBtn {
         margin-bottom: 30px;
     }
 
+    section#about h1 {
+        margin-bottom: 12px;
+    }
+
+    section#about .row {
+        width: 76vw;
+    }
+
+    section#about h2 {
+        margin-block: 0 30px;
+        font-size: 1.1em;
+        line-height: 1.3;
+        text-align: center;
+        margin-inline: 10px;
+    }
+
+    section#about img {
+        min-width: 76vw;
+        margin-block: 50px;
+        width: 76vw;
+    }
+
+    section#about p {
+        line-height: 1.25;
+    }
+
+    section#nous .nous {
+        margin-block: 20px;
+        padding: 15px;
+        width: 76vw;
+    }
+
+    section#nous h2 {
+        line-height: 1.6;
+        font-size: 1.43em;
+        margin-bottom: 10px;
+    }
+
+    section#nous p {
+        line-height: 1.25;
+    }
+
+
+    section#nous .star {
+        top: -29px;
+        left: -30px;
+        width: 70px;
+        height: 70px;
+    }
+
+    section#nous .star::before,
+    section#nous .star2::before {
+        width: 57px;
+        height: 57px;
+    }
+
+    section#nous .star::after,
+    section#nous .star2::after {
+        width: 57px;
+        height: 57px;
+    }
+
+    section#nous .star2 {
+        top: -25px;
+        right: -25px;
+        width: 60px;
+        height: 60px;
+    }
+
+    section#nous .star2::before {
+        width: 54px;
+        height: 54px;
+    }
+
+    section#nous .star2::after {
+        width: 54px;
+        height: 54px;
+    }
+
+    section#nous .star2 i {
+        left: 15px;
+        top: 18.5px;
+        font-size: 1.6em;
+    }
+
     /* shadows */
     section#home h1 span,
     section#nous .nous,
@@ -1572,6 +1743,7 @@ section#contact .contacts .formulaire form .contactBtn {
 }
 
 @media (max-width: 350px) {
+
     section#events .grid .card,
     section#partners .grid .card {
         width: 81%;
