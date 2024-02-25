@@ -820,10 +820,9 @@ section#contact .contacts {
 section#contact .rowContact {
     display: flex;
     flex-direction: row;
-    align-items: center;
-    justify-content: space-between;
-    width: 60%;
-    /* border: white solid; */
+    align-items: start;
+    justify-content: center;
+    width: 100%;
 }
 
 section#contact .columnContact {
@@ -831,13 +830,15 @@ section#contact .columnContact {
     flex-direction: column;
     align-items: start;
     justify-content: center;
-    margin-left: 10%;
+    margin-left: 5vw;
 }
 
 section#contact .columnContact iframe {
     width: 30vw;
     height: 35vh;
+    min-height: 300px;
     max-width: 600px;
+    min-width: 300px;
     border-radius: 30px;
 }
 
@@ -851,6 +852,7 @@ section#contact .columnContact2 {
     padding: 15px 20px;
     border: #000 2.5px solid;
     margin-bottom: 30px;
+    min-width: 300px;
 }
 
 section#contact .columnContact2 h2 {
@@ -1205,7 +1207,8 @@ section#contact .contacts .formulaire form .contactBtn {
 @media (max-width: 1150px) {
 
     section#events h1,
-    section#partners h1 {
+    section#partners h1,
+    section#contact h1 {
         margin-bottom: 40px;
     }
 
@@ -1316,6 +1319,17 @@ section#contact .contacts .formulaire form .contactBtn {
     header.eventHeader .nav_links li a.contactBtn {
         background-color: var(--color-primary);
         color: var(--color-blanc);
+        padding: 12px 0;
+        width: 10px;
+    }
+
+    header .nav_links li a.contactBtn {
+        padding: 7px 24px;
+    }
+
+    header .nav_links li .btn {
+        width: 82%;
+        margin-inline: auto;
     }
 
     section#events .grid .card img {
@@ -1358,6 +1372,62 @@ section#contact .contacts .formulaire form .contactBtn {
     section#about .row {
         width: 80vw;
     }
+
+    section#contact .contacts .formulaire {
+        min-width: 350px;
+    }
+
+    section#contact .contacts .formulaire form .row {
+        justify-content: start;
+        flex-direction: column;
+        margin-bottom: 0;
+    }
+
+    section#contact .contacts .formulaire form label {
+        font-size: 1.05em;
+        margin-bottom: 8px;
+    }
+
+    section#contact .contacts .formulaire form input,
+    section#contact .contacts .formulaire form textarea {
+        padding: 15px 17px;
+        min-width: auto;
+        margin-bottom: 20px;
+        border: #000 2px solid;
+    }
+
+    section#contact .contacts .formulaire form textarea {
+        margin-bottom: 0;
+    }
+
+    section#contact .contacts .formulaire form .column:nth-child(1) {
+        margin-right: 0;
+    }
+
+    section#contact .contacts .formulaire form .row.second {
+        margin-block: 30px;
+    }
+
+    section#contact .columnContact2 {
+        padding: 10px 20px;
+        border: #000 2px solid;
+        height: 170px;
+    }
+
+    section#contact .columnContact2 h2 {
+        font-size: 1.35em;
+        margin-block: 0 10px;
+        line-height: 25px;
+    }
+
+    section#contact .columnContact2 p {
+        font-size: 1.05em;
+    }
+
+    section#contact .columnContact iframe {
+        height: 403px;
+        width: 300px;
+    }
 }
 
 @media (max-width: 900px) {
@@ -1398,6 +1468,26 @@ section#contact .contacts .formulaire form .contactBtn {
         padding: 40px;
         max-width: none;
         width: 78vw;
+    }
+}
+
+@media (max-width: 780px) {
+    section#contact .contacts .formulaire {
+        min-width: 280px;
+    }
+
+    section#contact .contacts .formulaire form label {
+        font-size: 1em;
+    }
+
+    section#contact .columnContact2 h2 {
+        font-size: 1.3em;
+        margin-block: 0 15px;
+        line-height: 15px;
+    }
+
+    section#contact .columnContact2 p {
+        font-size: 1em;
     }
 }
 
@@ -1550,6 +1640,72 @@ section#contact .contacts .formulaire form .contactBtn {
     section#nous p {
         font-size: 1em;
         line-height: 1.35;
+    }
+
+    section#contact h1 {
+        text-align: center;
+        margin-inline: auto;
+    }
+
+    section#contact .rowContact {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    section#contact .contacts .formulaire {
+        min-width: none;
+        width: 70vw;
+        max-width: 400px;
+    }
+
+    section#contact .contacts .formulaire form label {
+        font-size: 1em;
+    }
+
+    section#contact .contacts .formulaire form input,
+    section#contact .contacts .formulaire form textarea {
+        margin-bottom: 18px;
+    }
+
+    section#contact .contacts .formulaire form textarea {
+        margin-bottom: 0;
+        min-height: 180px;
+    }
+
+    section#contact .contacts form .btn button.contactBtn {
+        font-size: 1.1em;
+        padding: 8px 20px;
+        border: #000 2px solid;
+    }
+
+    section#contact .columnContact2 {
+        padding: 17px 20px;
+        height: auto;
+        width: auto;
+    }
+
+    section#contact .columnContact2 h2 {
+        font-size: 1.3em;
+        margin-block: 0 10px;
+        line-height: 20px;
+    }
+
+    section#contact .columnContact2 p {
+        font-size: 1em;
+    }
+
+    section#contact .columnContact {
+        align-items: center;
+        justify-content: center;
+        margin-left: 0;
+        margin-block: 30px;
+        width: 100%;
+        max-width: 400px;
+    }
+
+    section#contact .columnContact iframe {
+        height: 35vh;
+        width: 100%;
     }
 }
 
@@ -1726,12 +1882,72 @@ section#contact .contacts .formulaire form .contactBtn {
         font-size: 1.6em;
     }
 
+    section#contact .contacts .formulaire {
+        width: 80vw;
+        min-width: 270px;
+    }
+
+    section#contact .contacts .formulaire form label {
+        font-size: 1em;
+        margin-bottom: 6px;
+    }
+
+    section#contact .contacts .formulaire form input,
+    section#contact .contacts .formulaire form textarea {
+        margin-bottom: 16px;
+        padding: 13px 16px;
+        font-size: .95em;
+    }
+
+    section#contact .contacts .formulaire form textarea {
+        min-height: 160px;
+    }
+
+    section#contact .columnContact2 {
+        padding: 15px 20px;
+        height: auto;
+        width: 100%;
+        margin-bottom: 20px;
+        min-width: auto;
+    }
+
+    section#contact .columnContact2 h2 {
+        font-size: 1.15em;
+        margin-block: 0 5px;
+        line-height: 20px;
+    }
+
+    section#contact .columnContact2 p {
+        font-size: .95em;
+    }
+
+    section#contact .columnContact {
+        margin-block: 20px;
+        width: 80vw;
+        min-width: 270px;
+    }
+
+    section#contact .contacts .formulaire form .row.second {
+        margin-block: 10px 30px;
+    }
+
+    section#contact .columnContact iframe {
+        width: 100%;
+        height: 35vh;
+        min-width: auto;
+        min-height: 100px;
+        max-height: 250px;
+    }
+
     /* shadows */
-    section#home h1 span,
     section#nous .nous,
     section#events .grid .card,
     section#about img {
         box-shadow: 4px 4px #000;
+    }
+
+    section#home h1 span {
+        box-shadow: 3px 3px #000;
     }
 
     a.contactBtn,
