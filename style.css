@@ -1300,6 +1300,10 @@ section#contact .contacts .formulaire form .contactBtn {
         padding: 0 10px;
     }
 
+    header.eventHeader a.title {
+        color: var(--color-primary);
+    }
+
     header.eventHeader .nav_links li a {
         color: #031926;
     }
@@ -1319,8 +1323,6 @@ section#contact .contacts .formulaire form .contactBtn {
     header.eventHeader .nav_links li a.contactBtn {
         background-color: var(--color-primary);
         color: var(--color-blanc);
-        padding: 12px 0;
-        width: 10px;
     }
 
     header .nav_links li a.contactBtn {
