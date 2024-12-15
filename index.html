@@ -8,32 +8,34 @@
     <link rel="stylesheet" href="style.css">
     <script src="https://kit.fontawesome.com/7a0b90407e.js" crossorigin="anonymous"></script>
     <link rel="icon" href="images/logo.ico" type="image/x-icon">
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+    <script type="text/javascript">
+        (function () {
+            emailjs.init("");
+        })();
+    </script>
 </head>
 
 <body>
     <header class="clear">
-        <a href="#" class="title">Comité des Fêtes <br> d'Auzielle</a>
+        <a href="/" class="title">Auzielle</a>
         <ul class="nav_links">
-            <li><a href="/">Accueil</a></li>
-            <li><a href="/events.html">Évènements</a></li>
-            <li><a href="/partners.html">Nos partenaires</a></li>
-            <li><a href="/about.html">Qui sommes-nous</a></li>
-            <li>
-                <div class="btn">
-                    <a href="/contact.html" class="contactBtn">Contact <i class="fa-solid fa-chevron-right"></i></a>
-                </div>
-            </li>
+            <li><a href="#">Accueil</a></li>
+            <li><a href="#events">Évènements</a></li>
+            <li><a href="#partners">Nos partenaires</a></li>
+            <li><a href="#about">Qui sommes-nous</a></li>
+            <li><a href="#contact">Nous contacter</a></li>
         </ul>
     </header>
 
     <div class="header_responsive">
-        <a href="#" class="title">Comité des Fêtes <br> d'Auzielle</a>
+        <a href="#" class="title">Auzielle</a>
     </div>
     <i class="fa-solid fa-bars menu_hamburger"></i>
 
     <section id="home">
         <div class="text-container">
-            <h1>Fournisseur officiel de gens <span>heureux</span></h1>
+            <h1>Comité des Fêtes d'Auzielle</h1>
             <h2>Le comité des fêtes...C'est pour faire la fête !!!</h2>
             <div class="btn">
                 <a href="/events.html" class="contactBtn">Faisons la fête <i class="fa-solid fa-chevron-right"></i></a>
@@ -70,6 +72,271 @@
         </div>
 
     </section>
+
+    <section id="events">
+        <div class="custom-shape-divider-bottom-1731860165">
+            <svg data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120"
+                preserveAspectRatio="none">
+                <path
+                    d="M0,0V46.29c47.79,22.2,103.59,32.17,158,28,70.36-5.37,136.33-33.31,206.8-37.5C438.64,32.43,512.34,53.67,583,72.05c69.27,18,138.3,24.88,209.4,13.08,36.15-6,69.85-17.84,104.45-29.34C989.49,25,1113-14.29,1200,52.47V0Z"
+                    opacity=".25" class="shape-fill"></path>
+                <path
+                    d="M0,0V15.81C13,36.92,27.64,56.86,47.69,72.05,99.41,111.27,165,111,224.58,91.58c31.15-10.15,60.09-26.07,89.67-39.8,40.92-19,84.73-46,130.83-49.67,36.26-2.85,70.9,9.42,98.6,31.56,31.77,25.39,62.32,62,103.63,73,40.44,10.79,81.35-6.69,119.13-24.28s75.16-39,116.92-43.05c59.73-5.85,113.28,22.88,168.9,38.84,30.2,8.66,59,6.17,87.09-7.5,22.43-10.89,48-26.93,60.65-49.24V0Z"
+                    opacity=".5" class="shape-fill"></path>
+                <path
+                    d="M0,0V5.63C149.93,59,314.09,71.32,475.83,42.57c43-7.64,84.23-20.12,127.61-26.46,59-8.63,112.48,12.24,165.56,35.4C827.93,77.22,886,95.24,951.2,90c86.53-7,172.46-45.71,248.8-84.81V0Z"
+                    class="shape-fill"></path>
+            </svg>
+        </div>
+
+        <div class="events">
+            <h1>Quels sont les évènements ?</h1>
+            <div class="grid">
+                <div class="card">
+                    <img src="images/carnaval.webp" alt="Image Evenements">
+                    <h2>Le Carnaval</h2>
+                    <p>Déguisements, défilé, animations, buvette sont les ingrédients incontournables d’un Carnaval
+                        réussi !
+                        Fin mars ou début avril, le Comité des Fêtes et l’ALAE des écoles maternelle et primaire
+                        organisent (pour le plaisir des petits et grands)
+                        le Carnaval du village.</p>
+                </div>
+                <div class="card">
+                    <img src="images/saint_jean.webp" alt="Image Evenements">
+                    <h2>La Saint-Jean</h2>
+                    <p>Apéritif au son des bandas, repas de village, lampions, feu, bal… <br>
+                        Célébrant le solstice d’été, la fête de la St Jean est l’occasion de réunir tous les
+                        Auziellois(es)
+                        autour d’un repas convivial et d’un bûcher géant.</p>
+                </div>
+                <div class="card">
+                    <img src="images/fete_village.webp" alt="Image Evenements">
+                    <h2>La Fête du Village</h2>
+                    <p>Du vendredi soir au dimanche après-midi, de nombreuses animations et moments conviviaux.
+                        Alors que les enfants reprennent le chemin de l’école, le Comité des Fêtes organise un week-end
+                        festif destiné à toutes les générations.</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="custom-shape-divider-top-1731859965">
+            <svg data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120"
+                preserveAspectRatio="none">
+                <path
+                    d="M0,0V46.29c47.79,22.2,103.59,32.17,158,28,70.36-5.37,136.33-33.31,206.8-37.5C438.64,32.43,512.34,53.67,583,72.05c69.27,18,138.3,24.88,209.4,13.08,36.15-6,69.85-17.84,104.45-29.34C989.49,25,1113-14.29,1200,52.47V0Z"
+                    opacity=".25" class="shape-fill"></path>
+                <path
+                    d="M0,0V15.81C13,36.92,27.64,56.86,47.69,72.05,99.41,111.27,165,111,224.58,91.58c31.15-10.15,60.09-26.07,89.67-39.8,40.92-19,84.73-46,130.83-49.67,36.26-2.85,70.9,9.42,98.6,31.56,31.77,25.39,62.32,62,103.63,73,40.44,10.79,81.35-6.69,119.13-24.28s75.16-39,116.92-43.05c59.73-5.85,113.28,22.88,168.9,38.84,30.2,8.66,59,6.17,87.09-7.5,22.43-10.89,48-26.93,60.65-49.24V0Z"
+                    opacity=".5" class="shape-fill"></path>
+                <path
+                    d="M0,0V5.63C149.93,59,314.09,71.32,475.83,42.57c43-7.64,84.23-20.12,127.61-26.46,59-8.63,112.48,12.24,165.56,35.4C827.93,77.22,886,95.24,951.2,90c86.53-7,172.46-45.71,248.8-84.81V0Z"
+                    class="shape-fill"></path>
+            </svg>
+        </div>
+    </section>
+
+    <section id="partners">
+        <div class="partners">
+            <h1>Nos partenaires !</h1>
+            <div class="grid">
+                <div class="card">
+                    <img src="images/mairie.webp" alt="Image Partenaires">
+                    <h2>La Mairie d'Auzielle</h2>
+                    <p>Auzielle offre un large éventail d'activités culturelles et sportives. Bien que de taille
+                        relativement modeste, les nombreux clubs et
+                        associations contribuent au dynamisme de notre village et entretiennent le lien social entre ses
+                        habitants. L'encadrement y est assuré par
+                        des animateurs professionnels. Si vous souhaitez élargir l'éventail de ces activités, n'hésitez
+                        pas à contacter la mairie !</p>
+
+                    <div class="btn">
+                        <a href="https://www.auzielle.fr" target="_blank" class="contactBtn">Voir le site web</a>
+                    </div>
+                </div>
+                <div class="card">
+                    <img src="images/sicoval.webp" alt="Image Partenaires">
+                    <h2>Sicoval</h2>
+                    <p>Le Sicoval est un territoire attractif pour les porteurs de projets et les entreprises déjà
+                        implantées. Découvrez des séries de témoignages
+                        d’acteurs locaux, qui ont marqué l’actualité par leur savoir-faire et leurs projets de
+                        développement. Nous soutenons au quotidien
+                        ces pépites qui contribuent à l’essor économique de notre territoire. Aujourd’hui, ils vous
+                        partagent leur expérience !</p>
+
+                    <div class="btn">
+                        <a href="https://www.sicoval.fr" target="_blank" class="contactBtn">Voir le site web</a>
+                    </div>
+                </div>
+                <div class="card">
+                    <img src="images/mjc.webp" alt="Image Partenaires">
+                    <h2>MJC Auzielle</h2>
+                    <p>Implantée au pôle culturel avec le cinéma Studio 7 et la bibliothèque, la MJC est une association
+                        culturelle qui organise des ateliers,
+                        animations et manifestations culturelles et ludiques pour tous publics.</p>
+
+                    <div class="btn">
+                        <a href="https://mjcauzielle.fr" target="_blank" class="contactBtn">Voir le site web</a>
+                    </div>
+                </div>
+                <div class="card">
+                    <img src="images/vival.webp" alt="Image Partenaires">
+                    <h2>Vival — Chez Niva</h2>
+                    <p>Épicerie et traiteur.</p>
+
+                    <div class="btn">
+                        <a href="https://www.facebook.com/CHEZNIVA/about" target="_blank" class="contactBtn">Voir le
+                            site web</a>
+                    </div>
+                </div>
+                <div class="card">
+                    <img src="images/lisa.webp" alt="Image Partenaires">
+                    <h2>Délices de Lisa</h2>
+                    <p>La biscuiterie, entreprise familiale, installée depuis 2008, fabrique et commercialise une large
+                        et sympathique gamme.</p>
+
+                    <div class="btn">
+                        <a href="https://www.delicesdelisa.fr" target="_blank" class="contactBtn">Voir le site web</a>
+                    </div>
+                </div>
+                <div class="card">
+                    <img src="images/aoc.webp" alt="Image Partenaires">
+                    <h2>Banda Les AOC's</h2>
+                    <p>« Animation d’Origine Contrôlée » ou AOC est un groupe de musique de rue d’une trentaine de
+                        musiciens se produisant dans tout le sud-ouest.</p>
+
+                    <div class="btn">
+                        <a href="http://aocs.musique.free.fr" target="_blank" class="contactBtn">Voir le site web</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="about">
+        <div class="about">
+            <h1>À propos de nous</h1>
+            <h2>2013 : Renaissance du Comité des Fêtes d’Auzielle</h2>
+            <div class="row">
+                <p>Cette année-là, nous avons eu le plaisir d’officialiser la création du nouveau comité des fêtes
+                    d’Auzielle (C.F.A.). En effet, le précédent comité avait souhaité se retirer après plus de 40 années
+                    de
+                    bons et loyaux services. Après quelques mois de sommeil, le passage de relais a donc eu lieu le
+                    vendredi
+                    22 février 2013. <br>
+                    C’est à cette date que plusieurs Auziellois (habitants de longue date, nouveaux arrivants, membres
+                    du
+                    conseil municipal, etc…) se sont rassemblés à la salle des fêtes du village pour élire le nouveau
+                    bureau, et commencer à préparer comme il se doit les nombreux événements prévus pour cette année.
+                    <br>
+                    2013 a donc été une année charnière, permettant à la nouvelle équipe de prendre ses repères, en
+                    prenant
+                    en compte l’expérience des membres de l’ancien comité, et en proposant de nouvelles idées et
+                    activités
+                    pour réveiller et rassembler le peuple Auziellois, autour de festivités diverses et variées, tout au
+                    long de l’année.
+                </p>
+                <img src="images/cfa.webp" alt="Image à propos de nous">
+            </div>
+        </div>
+    </section>
+
+    <section id="nous">
+        <div class="textes"></div>
+        <div class="nous">
+            <div class="star"></div>
+            <div class="star2"><i class="fa-solid fa-people-group"></i></div>
+            <h2>Le CFA</h2>
+            <p>Le CFA a besoin de sang neuf et des idées nouvelles. Nous ne serons jamais trop nombreux pour faire
+                fonctionner le comité des fêtes,
+                organiser des manifestations et animations. Toutes les bonnes volontés sont les bienvenues.</p>
+        </div>
+    </section>
+
+    <section id="contact">
+        <div class="contacts">
+            <div class="title">
+                <h1>Vous souhaitez nous contacter ?</h1>
+            </div>
+            <div class="rowContact">
+                <div class="formulaire">
+                    <form id="contactForm">
+                        <div class="row">
+                            <div class="column">
+                                <label for="name">Votre nom</label>
+                                <input type="text" name="name" placeholder="Quel est votre nom ?">
+                            </div>
+                            <div class="column">
+                                <label for="email">Votre email</label>
+                                <input type="email" name="email" placeholder="Quel est votre email ?">
+                            </div>
+                        </div>
+                        <div class="column">
+                            <label for="message">Votre message</label>
+                            <textarea name="message" placeholder="Quel est votre message ?"></textarea>
+                        </div>
+                        <div class="row second">
+                            <div class="btn">
+                                <button type="submit" class="contactBtn">Envoyer le message <i
+                                        class="fa-solid fa-paper-plane"></i></a>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+
+                <div class="columnContact">
+                    <iframe
+                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2892.112216824981!2d1.5636290768389658!3d43.54170267110767!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x12ae942e4668d965%3A0xc896674dab003536!2sMairie%20d&#39;Auzielle!5e0!3m2!1sfr!2sfr!4v1707327332174!5m2!1sfr!2sfr"
+                        width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy"
+                        referrerpolicy="no-referrer-when-downgrade"></iframe>
+
+                    <div class="columnContact2">
+                        <p>Comité des Fêtes d'Auzielle</p>
+                        <p>Village</p>
+                        <p>Auzielle 31650</p>
+                        <p>France</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <script>
+        const USER_ID = '5512K-AZX12fCBtPK';
+
+        const handleSubmit = (e) => {
+            e.preventDefault();
+
+            const form = document.getElementById('contactForm');
+            const formData = new FormData(form);
+
+            const name = formData.get('name');
+            const email = formData.get('email');
+            const message = formData.get('message');
+
+            if (!name || !email || !message) {
+                alert('Veuillez remplir tous les champs du formulaire.');
+                return;
+            }
+
+            emailjs.send('service_ajykrdq', 'template_taaikfc', {
+                from_name: formData.get('name'),
+                to_name: 'CFA',
+                from_email: formData.get('email'),
+                to_email: '',
+                message: formData.get('message')
+            }, USER_ID)
+                .then(() => {
+                    alert('Merci pour votre message. Je vous contacte très rapidement.');
+                })
+                .catch((error) => {
+                    console.error(error);
+                    alert('Quelque chose s\'est mal passé.');
+                });
+        };
+
+        const form = document.getElementById('contactForm');
+        form.addEventListener('submit', handleSubmit);
+    </script>
 
     <script>
         let curX = 0;
