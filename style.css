@@ -717,7 +717,8 @@ section#events .grid .card .column {
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: center;
+    justify-content: space-between;
+    height: 100%;
     width: 100%;
 }
 
@@ -1057,6 +1058,7 @@ section#contact .contacts .formulaire form .contactBtn {
 
     section#events .grid .card .column {
         margin-left: 24px;
+        height: auto;
     }
 
     section#partners .grid {
