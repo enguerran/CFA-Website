@@ -345,7 +345,7 @@ section#home .row a.link {
     border-radius: 32px;
     font-weight: 600;
     font-size: 1.1em;
-    backdrop-filter: blur(10px);
+    /* backdrop-filter: blur(10px); */
     white-space: nowrap;
 }
 
