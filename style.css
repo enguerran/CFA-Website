@@ -973,7 +973,7 @@ section#contact .contacts .formulaire form .contactBtn {
 .credit a {
     font-weight: 600;
     color: var(--color-gris-noir);
-    opacity: 0.5;
+    opacity: 0.4;
     text-decoration: underline;
     transition: opacity .3s;
     font-size: clamp(0.7em, 2vw, 1em);
