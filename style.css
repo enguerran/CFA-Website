@@ -120,7 +120,7 @@ header {
 
 header a.title,
 .header_responsive a.title {
-    font-size: 2.5em;
+    font-size: 2em;
     color: var(--color-primary);
     font-family: 'Relieve', sans-serif;
     font-weight: 600;
@@ -129,7 +129,7 @@ header a.title,
 }
 
 .header_responsive a.title {
-    font-size: clamp(1.5em, 4vw, 2em);
+    font-size: clamp(1.15em, 4vw, 2em);
     margin: 0;
 }
 
@@ -313,8 +313,8 @@ section#home {
 
 section#home h1 {
     margin-top: 52px;
-    font-size: 4em;
-    font-weight: 700;
+    font-size: 3em;
+    font-weight: 900;
     font-family: 'Relieve', sans-serif;
 }
 
@@ -328,7 +328,7 @@ section#home .btn {
     margin-block: 5%;
 }
 
-section#home .row:nth-child(4) {
+section#home .row:nth-child(3) {
     display: flex;
     flex-direction: row;
     align-items: center;
@@ -347,10 +347,12 @@ section#home .row a.link {
     font-weight: 600;
     font-size: 1.1em;
     backdrop-filter: blur(10px);
+    white-space: nowrap;
 }
 
 section#home .row a.link i {
     font-size: 1.3em;
+    margin-left: 0;
 }
 
 section#home .row a.link:nth-child(1) {
@@ -772,6 +774,7 @@ section#contact {
     /* background-color: var(--color-primary-stars); */
     position: relative;
     margin-block: 52px;
+    padding: 5%;
 }
 
 section#contact .contacts {
@@ -868,7 +871,6 @@ section#contact .contacts .formulaire form .column {
     flex-direction: column;
     justify-content: space-between;
     width: 100%;
-    ;
 }
 
 section#contact .contacts .formulaire form label {
@@ -949,11 +951,16 @@ section#contact .contacts .formulaire form .contactBtn {
 
 @media (max-width: 1300px) {
     section#home h1 {
-        font-size: 2.8em;
+        font-size: clamp(1.8em, 4vw, 2.8em);
     }
 
-    section#home h2 {
-        font-size: 1.3em;
+    section#home .row:nth-child(3) {
+        gap: 16px;
+    }
+
+    section#home .row:nth-child(3) a.link {
+        padding: 8px 16px;
+        gap: 16px;
     }
 
     section#events .grid,
@@ -963,6 +970,12 @@ section#contact .contacts .formulaire form .contactBtn {
 }
 
 @media (max-width: 1150px) {
+
+    section#home .row:nth-child(3) {
+        flex-wrap: wrap;
+        padding-inline: 5%;
+        bottom: 32px;
+    }
 
     section#events h1,
     section#partners h1,
@@ -994,6 +1007,11 @@ section#contact .contacts .formulaire form .contactBtn {
     section#partners .grid {
         grid-template-columns: repeat(2, 1fr);
         grid-gap: 48px;
+    }
+
+    section#contact .contacts .formulaire form textarea {
+        min-height: 30vh;
+        min-width: 40vw;
     }
 }
 
@@ -1049,6 +1067,16 @@ section#contact .contacts .formulaire form .contactBtn {
         padding: 0 8px;
     }
 
+    section#home .row:nth-child(3) {
+        bottom: 16px;
+    }
+
+    section#home .row:nth-child(3) a.link {
+        padding: 8px 16px;
+        font-size: .9em;
+        font-weight: 500;
+    }
+
     section#events .grid .card img {
         width: 200px;
         height: 150px;
@@ -1070,27 +1098,24 @@ section#contact .contacts .formulaire form .contactBtn {
     section#about h1,
     section#contact h1 {
         font-size: 1.8em;
-        margin-bottom: 40px;
+        margin-bottom: 48px;
     }
 
     section#about h1 {
-        margin-bottom: 0;
+        margin-bottom: 8px;
     }
 
-    section#about h2 {
-        font-size: 1.3em;
-    }
-
+    section#about h2,
     section#nous h2 {
-        font-size: 1.85em;
+        font-size: 1.2em;
     }
 
     section#about .row {
         width: 80vw;
     }
 
-    section#contact .contacts .formulaire {
-        min-width: 350px;
+    section#contact .contacts .formulaire form {
+        gap: 0px;
     }
 
     section#contact .contacts .formulaire form .row {
@@ -1114,6 +1139,7 @@ section#contact .contacts .formulaire form .contactBtn {
 
     section#contact .contacts .formulaire form textarea {
         margin-bottom: 0;
+        min-height: 25vh;
     }
 
     section#contact .contacts .formulaire form .column:nth-child(1) {
@@ -1121,27 +1147,22 @@ section#contact .contacts .formulaire form .contactBtn {
     }
 
     section#contact .contacts .formulaire form .row.second {
-        margin-block: 30px;
+        margin-block: 28px 0;
     }
 
     section#contact .columnContact2 {
-        padding: 10px 20px;
+        padding: 12px;
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 12px;
+        align-items: center;
+        justify-content: center;
         border: var(--color-noir) 2px solid;
-        height: 170px;
-    }
-
-    section#contact .columnContact2 h2 {
-        font-size: 1.35em;
-        margin-block: 0 10px;
     }
 
     section#contact .columnContact2 p {
         font-size: 1.05em;
-    }
-
-    section#contact .columnContact iframe {
-        height: 403px;
-        width: 300px;
+        text-align: center;
     }
 }
 
@@ -1166,7 +1187,7 @@ section#contact .contacts .formulaire form .contactBtn {
     }
 
     section#about h2 {
-        margin-bottom: 40px;
+        margin-bottom: 48px;
     }
 
     section#about p {
@@ -1178,26 +1199,17 @@ section#contact .contacts .formulaire form .contactBtn {
         margin-block: 60px;
     }
 
-    section#nous .nous {
-        margin-block: 20px;
-        padding: 40px;
+    section#about .nous {
+        margin-block: 24px;
+        padding: 48px;
         max-width: none;
         width: 78vw;
     }
 }
 
 @media (max-width: 780px) {
-    section#contact .contacts .formulaire {
-        min-width: 280px;
-    }
-
     section#contact .contacts .formulaire form label {
         font-size: 1em;
-    }
-
-    section#contact .columnContact2 h2 {
-        font-size: 1.3em;
-        margin-block: 0 15px;
     }
 
     section#contact .columnContact2 p {
@@ -1207,31 +1219,14 @@ section#contact .contacts .formulaire form .contactBtn {
 
 @media (max-width: 700px) {
     section#home h1 {
-        font-size: 2.1em;
+        font-size: 2em;
         min-width: 310px;
-    }
-
-    section#home h1 span {
-        padding: 8px 15px;
-    }
-
-    section#home h1 span::before {
-        font-size: .55em;
-        left: 4px;
-        top: 4px;
-        width: 73px;
-        height: 10px;
-        padding: 8px 15px;
-        border: var(--color-noir) 2px solid;
-    }
-
-    section#home h2 {
-        font-size: 1.2em;
-        margin-top: 8px;
+        margin-inline: 5%;
+        text-align: center;
     }
 
     section#home .btn {
-        margin-top: 30px;
+        margin-top: 32px;
     }
 
     section#home a.contactBtn {
@@ -1350,12 +1345,8 @@ section#contact .contacts .formulaire form .contactBtn {
         font-size: 1em;
     }
 
-    section#contact h1 {
-        text-align: center;
-        margin-inline: auto;
-    }
-
     section#contact .rowContact {
+        display: flex;
         flex-direction: column;
         align-items: center;
     }
@@ -1405,7 +1396,7 @@ section#contact .contacts .formulaire form .contactBtn {
         align-items: center;
         justify-content: center;
         margin-left: 0;
-        margin-block: 30px;
+        margin-top: 96px;
         width: 100%;
         max-width: 400px;
     }
@@ -1423,28 +1414,32 @@ section#contact .contacts .formulaire form .contactBtn {
     }
 
     section#home h1 {
-        font-size: 1.8em;
+        font-size: 1.6em;
         min-width: 265px;
     }
 
-    section#home h1 span::before {
-        font-size: .5em;
-        width: 60px;
-        height: 8px;
-    }
-
-    section#home h2 {
-        font-size: .95em;
-        margin-top: 5px;
-    }
-
     section#home .btn {
-        margin-top: 25px;
+        margin-top: 24px;
     }
 
     section#home a.contactBtn {
         font-size: 1em;
         padding: 8px 16px;
+    }
+
+    section#home .row:nth-child(3) a.link {
+        padding: 12px;
+        border-radius: 12px;
+        gap: 0;
+    }
+
+    section#home .row:nth-child(3) a.link i {
+        font-size: 1.45em;
+        margin-left: 0;
+    }
+
+    section#home .row:nth-child(3) a.link p {
+        display: none;
     }
 
     section#events .grid,
@@ -1500,6 +1495,12 @@ section#contact .contacts .formulaire form .contactBtn {
         margin-bottom: 30px;
     }
 
+    section#contact h1 {
+        max-width: none;
+        width: 100%;
+        text-align: center;
+    }
+
     section#about h1 {
         margin-bottom: 12px;
     }
@@ -1509,10 +1510,10 @@ section#contact .contacts .formulaire form .contactBtn {
     }
 
     section#about h2 {
-        margin-block: 0 30px;
-        font-size: 1.1em;
+        margin-block: 0 32px;
+        font-size: 1.05em;
         text-align: center;
-        margin-inline: 10px;
+        width: 76vw;
     }
 
     section#about img {
@@ -1531,7 +1532,6 @@ section#contact .contacts .formulaire form .contactBtn {
         font-size: 1.43em;
         margin-bottom: 10px;
     }
-
 
     section#nous .star {
         top: -29px;
@@ -1594,13 +1594,15 @@ section#contact .contacts .formulaire form .contactBtn {
 
     section#contact .contacts .formulaire form textarea {
         min-height: 160px;
+        margin-bottom: 0;
     }
 
     section#contact .columnContact2 {
         padding: 15px 20px;
         height: auto;
         width: 100%;
-        margin-bottom: 20px;
+        margin-bottom: 0;
+        margin-top: 20px;
         min-width: auto;
     }
 
@@ -1614,13 +1616,13 @@ section#contact .contacts .formulaire form .contactBtn {
     }
 
     section#contact .columnContact {
-        margin-block: 20px;
+        margin-top: 64px;
         width: 80vw;
         min-width: 270px;
     }
 
     section#contact .contacts .formulaire form .row.second {
-        margin-block: 10px 30px;
+        margin-block: 10px 0;
     }
 
     section#contact .columnContact iframe {
@@ -1633,13 +1635,8 @@ section#contact .contacts .formulaire form .contactBtn {
 
     /* shadows */
     section#nous .nous,
-    section#events .grid .card,
-    section#about img {
+    section#events .grid .card {
         box-shadow: 4px 4px var(--color-noir);
-    }
-
-    section#home h1 span {
-        box-shadow: 3px 3px var(--color-noir);
     }
 
     a.contactBtn,
