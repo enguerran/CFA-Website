@@ -14,6 +14,9 @@
             emailjs.init("");
         })();
     </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/FileSaver.js/2.0.5/FileSaver.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/nwcell/ics.js/ics.min.js"></script>
+
 </head>
 
 <body>
@@ -81,45 +84,119 @@
             <div class="grid">
                 <div class="card">
                     <img src="images/carnaval.webp" alt="Image Evenements">
-                    <h2>Le Carnaval</h2>
-                    <p>Déguisements, défilé, animations, buvette sont les ingrédients incontournables d’un Carnaval
-                        réussi !
-                        Fin mars ou début avril, le Comité des Fêtes et l’ALAE des écoles maternelle et primaire
-                        organisent (pour le plaisir des petits et grands)
-                        le Carnaval du village.</p>
+
+                    <div class="column">
+                        <div class="row">
+                            <h2>Le Carnaval</h2>
+
+                            <div class="btn resp">
+                                <button class="addToCalendar contactBtn" data-title="Le Carnaval"
+                                    data-description="Déguisements, défilé, animations, buvette sont les ingrédients incontournables."
+                                    data-location="Auzielle, France" data-start="2025-03-23 15:00"
+                                    data-end="2025-03-23 18:00">
+                                    Ajouter au calendrier
+                                </button>
+                            </div>
+                        </div>
+
+                        <p>Déguisements, défilé, animations, buvette sont les ingrédients incontournables d’un Carnaval
+                            réussi !
+                            Fin mars ou début avril, le Comité des Fêtes et l’ALAE des écoles maternelle et primaire
+                            organisent (pour le plaisir des petits et grands)
+                            le Carnaval du village.</p>
+
+                        <div class="btn">
+                            <button class="addToCalendar contactBtn" data-title="Le Carnaval"
+                                data-description="Déguisements, défilé, animations, buvette sont les ingrédients incontournables."
+                                data-location="Auzielle, France" data-start="2025-03-23 15:00"
+                                data-end="2025-03-23 18:00">
+                                Ajouter au calendrier
+                            </button>
+                        </div>
+                    </div>
                 </div>
+
                 <div class="card">
                     <img src="images/saint_jean.webp" alt="Image Evenements">
-                    <h2>La Saint-Jean</h2>
-                    <p>Apéritif au son des bandas, repas de village, lampions, feu, bal… <br>
-                        Célébrant le solstice d’été, la fête de la St Jean est l’occasion de réunir tous les
-                        Auziellois(es)
-                        autour d’un repas convivial et d’un bûcher géant.</p>
+
+                    <div class="column">
+                        <div class="row">
+                            <h2>La Saint-Jean</h2>
+
+                            <div class="btn resp">
+                                <button class="addToCalendar contactBtn" data-title="Le Carnaval"
+                                    data-description="Déguisements, défilé, animations, buvette sont les ingrédients incontournables."
+                                    data-location="Auzielle, France" data-start="2025-03-23 15:00"
+                                    data-end="2025-03-23 18:00">
+                                    Ajouter au calendrier
+                                </button>
+                            </div>
+                        </div>
+
+                        <p>Apéritif au son des bandas, repas de village, lampions, feu, bal… <br>
+                            Célébrant le solstice d’été, la fête de la St Jean est l’occasion de réunir tous les
+                            Auziellois(es)
+                            autour d’un repas convivial et d’un bûcher géant.</p>
+
+                        <div class="btn">
+                            <button class="addToCalendar contactBtn" data-title="La Saint-Jean"
+                                data-description="Apéritif au son des bandas, repas de village, lampions, feu, bal…"
+                                data-location="Auzielle, France" data-start="2024-06-24 18:30"
+                                data-end="2024-06-25 02:00">
+                                Ajouter au calendrier
+                            </button>
+                        </div>
+                    </div>
                 </div>
+
                 <div class="card">
                     <img src="images/fete_village.webp" alt="Image Evenements">
-                    <h2>La Fête du Village</h2>
-                    <p>Du vendredi soir au dimanche après-midi, de nombreuses animations et moments conviviaux.
-                        Alors que les enfants reprennent le chemin de l’école, le Comité des Fêtes organise un week-end
-                        festif destiné à toutes les générations.</p>
+
+                    <div class="column">
+                        <div class="row">
+                            <h2>La Fête du Village</h2>
+
+                            <div class="btn resp">
+                                <button class="addToCalendar contactBtn" data-title="Le Carnaval"
+                                    data-description="Déguisements, défilé, animations, buvette sont les ingrédients incontournables."
+                                    data-location="Auzielle, France" data-start="2025-03-23 15:00"
+                                    data-end="2025-03-23 18:00">
+                                    Ajouter au calendrier
+                                </button>
+                            </div>
+                        </div>
+
+                        <p>Du vendredi soir au dimanche après-midi, de nombreuses animations et moments conviviaux.
+                            Alors que les enfants reprennent le chemin de l’école, le Comité des Fêtes organise un
+                            week-end
+                            festif destiné à toutes les générations.</p>
+
+                        <div class="btn">
+                            <button class="addToCalendar contactBtn" data-title="La Fête du Village"
+                                data-description="Du vendredi soir au dimanche après-midi, de nombreuses animations et moments conviviaux."
+                                data-location="Auzielle, France" data-start="2024-09-06 18:30"
+                                data-end="2024-09-08 18:30">
+                                Ajouter au calendrier
+                            </button>
+                        </div>
+                    </div>
                 </div>
             </div>
-        </div>
 
-        <div class="custom-shape-divider-top-1731859965">
-            <svg data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120"
-                preserveAspectRatio="none">
-                <path
-                    d="M0,0V46.29c47.79,22.2,103.59,32.17,158,28,70.36-5.37,136.33-33.31,206.8-37.5C438.64,32.43,512.34,53.67,583,72.05c69.27,18,138.3,24.88,209.4,13.08,36.15-6,69.85-17.84,104.45-29.34C989.49,25,1113-14.29,1200,52.47V0Z"
-                    opacity=".25" class="shape-fill"></path>
-                <path
-                    d="M0,0V15.81C13,36.92,27.64,56.86,47.69,72.05,99.41,111.27,165,111,224.58,91.58c31.15-10.15,60.09-26.07,89.67-39.8,40.92-19,84.73-46,130.83-49.67,36.26-2.85,70.9,9.42,98.6,31.56,31.77,25.39,62.32,62,103.63,73,40.44,10.79,81.35-6.69,119.13-24.28s75.16-39,116.92-43.05c59.73-5.85,113.28,22.88,168.9,38.84,30.2,8.66,59,6.17,87.09-7.5,22.43-10.89,48-26.93,60.65-49.24V0Z"
-                    opacity=".5" class="shape-fill"></path>
-                <path
-                    d="M0,0V5.63C149.93,59,314.09,71.32,475.83,42.57c43-7.64,84.23-20.12,127.61-26.46,59-8.63,112.48,12.24,165.56,35.4C827.93,77.22,886,95.24,951.2,90c86.53-7,172.46-45.71,248.8-84.81V0Z"
-                    class="shape-fill"></path>
-            </svg>
-        </div>
+            <div class="custom-shape-divider-top-1731859965">
+                <svg data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120"
+                    preserveAspectRatio="none">
+                    <path
+                        d="M0,0V46.29c47.79,22.2,103.59,32.17,158,28,70.36-5.37,136.33-33.31,206.8-37.5C438.64,32.43,512.34,53.67,583,72.05c69.27,18,138.3,24.88,209.4,13.08,36.15-6,69.85-17.84,104.45-29.34C989.49,25,1113-14.29,1200,52.47V0Z"
+                        opacity=".25" class="shape-fill"></path>
+                    <path
+                        d="M0,0V15.81C13,36.92,27.64,56.86,47.69,72.05,99.41,111.27,165,111,224.58,91.58c31.15-10.15,60.09-26.07,89.67-39.8,40.92-19,84.73-46,130.83-49.67,36.26-2.85,70.9,9.42,98.6,31.56,31.77,25.39,62.32,62,103.63,73,40.44,10.79,81.35-6.69,119.13-24.28s75.16-39,116.92-43.05c59.73-5.85,113.28,22.88,168.9,38.84,30.2,8.66,59,6.17,87.09-7.5,22.43-10.89,48-26.93,60.65-49.24V0Z"
+                        opacity=".5" class="shape-fill"></path>
+                    <path
+                        d="M0,0V5.63C149.93,59,314.09,71.32,475.83,42.57c43-7.64,84.23-20.12,127.61-26.46,59-8.63,112.48,12.24,165.56,35.4C827.93,77.22,886,95.24,951.2,90c86.53-7,172.46-45.71,248.8-84.81V0Z"
+                        class="shape-fill"></path>
+                </svg>
+            </div>
     </section>
 
     <section id="partners">
@@ -353,6 +430,7 @@
     </script>
 
     <script src="index.js"></script>
+    <script src="events.js"></script>
 </body>
 
 </html>
