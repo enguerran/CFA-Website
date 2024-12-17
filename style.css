@@ -962,6 +962,27 @@ section#contact .contacts .formulaire form .contactBtn {
     }
 }
 
+.credit {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 24px;
+}
+
+.credit a {
+    font-weight: 600;
+    color: var(--color-gris-noir);
+    opacity: 0.5;
+    text-decoration: underline;
+    transition: opacity .3s;
+    font-size: clamp(0.7em, 2vw, 1em);
+}
+
+.credit a:hover {
+    opacity: 1;
+}
+
 /* responsive */
 @media (max-height: 1000px) {
 
