@@ -928,6 +928,7 @@ section#contact .contacts .formulaire form textarea {
     border-radius: 32px;
     border: var(--color-noir) 2.5px solid;
     box-shadow: 4px 4px var(--color-noir);
+    transition: all .3s;
 }
 
 section#contact .contacts .formulaire form input:focus,
