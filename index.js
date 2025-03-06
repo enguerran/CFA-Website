@@ -21,3 +21,22 @@ liens.forEach(liens => {
         }
     })
 })
+
+function openFullImg(imgSrc) {
+    const fullImgBox = document.getElementById("fullImgBox");
+    const fullImg = document.getElementById("fullImg");
+
+    fullImg.src = imgSrc;
+    fullImgBox.style.display = "flex";
+
+    fullImgBox.addEventListener("click", closeFullImg);
+}
+
+function closeFullImg(event) {
+    const fullImgBox = document.getElementById("fullImgBox");
+
+    if (event.target.id === "fullImgBox" || event.target.classList.contains("fa-xmark")) {
+        fullImgBox.style.display = "none";
+        fullImgBox.removeEventListener("click", closeFullImg);
+    }
+}
