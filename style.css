@@ -1507,6 +1507,10 @@ section#subpages iframe {
         width: 78vw;
     }
 
+    section#subpages .row.top {
+        align-items: center;
+    }
+
     section#subpages h1 {
         font-size: 1.4em;
         text-align: center;
@@ -1524,6 +1528,14 @@ section#subpages iframe {
 
     section#subpages img {
         width: 70%;
+    }
+
+    section#subpages .card {
+        width: 60vw;
+    }
+
+    section#subpages iframe {
+        width: 60vw;
     }
 }
 
