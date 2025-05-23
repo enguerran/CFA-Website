@@ -323,7 +323,7 @@ a.contactBtn:hover i,
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
-    padding: 0 10%;
+    padding: 0 5vw;
     background: none;
     position: fixed;
     top: 0;
@@ -828,7 +828,7 @@ section#subpages .card .btn {
 
 section#partners .grid .card a.contactBtn,
 section#events .grid .card .contactBtn,
-section#subpages .card a.contactBtn {
+section#subpages .card .contactBtn {
     font-weight: 400;
     padding: 8px 20px;
     text-transform: none;
@@ -1091,7 +1091,7 @@ section#contact .contacts .formulaire form .contactBtn {
 
 section#subpages {
     flex-direction: column;
-    margin-top: calc(134px);
+    margin-top: 134px;
     align-items: flex-start;
     justify-content: flex-start;
     padding-inline: 5%;
@@ -1111,11 +1111,12 @@ section#subpages .head_subpage h1 {
     font-size: 2.5em;
     font-weight: 600;
     font-family: 'Relieve', sans-serif;
+    text-align: start;
 }
 
 section#subpages .head_subpage i {
     font-size: 1em;
-    margin-top: 8px;
+    margin-top: 4px;
     color: var(--color-primary);
 }
 
@@ -1210,7 +1211,9 @@ section#subpages iframe {
 }
 
 @media (max-width: 1300px) {
-    section#home h1 {
+
+    section#home h1,
+    section#subpages .head_subpage h1 {
         font-size: clamp(1.8em, 4vw, 2.2em);
     }
 
@@ -1507,14 +1510,29 @@ section#subpages iframe {
         width: 78vw;
     }
 
+    section#subpages {
+        margin-top: 90px;
+        padding-block: 0;
+    }
+
     section#subpages .row.top {
         align-items: center;
     }
 
-    section#subpages h1 {
-        font-size: 1.4em;
-        text-align: center;
+    section#subpages .head_subpage {
+        align-items: center;
+        justify-content: center;
         width: 100%;
+        gap: 8px;
+    }
+
+    section#subpages .head_subpage h1 {
+        font-size: 1.4em;
+    }
+
+    section#subpages .head_subpage i {
+        font-size: 0.8em;
+        margin-top: 2px;
     }
 
     section#subpages p {
@@ -1522,7 +1540,7 @@ section#subpages iframe {
     }
 
     section#subpages .row {
-        flex-direction: column;
+        flex-direction: column-reverse;
         gap: 24px;
     }
 
@@ -1540,11 +1558,19 @@ section#subpages iframe {
 }
 
 @media (max-width: 700px) {
+
     section#home h1 {
-        font-size: 1.7em;
         min-width: 310px;
         margin-inline: 5%;
         text-align: center;
+    }
+
+    section#subpages .head_subpage h1 {
+        font-size: 1.7em;
+    }
+
+    section#subpages .head_subpage i {
+        font-size: 0.7em;
     }
 
     section#home .btn {
@@ -1572,6 +1598,14 @@ section#subpages iframe {
     section#events .grid .card,
     section#subpages .card {
         padding: 20px;
+    }
+
+    section#subpages .card {
+        width: 90%;
+    }
+
+    section#subpages iframe {
+        width: 90%;
     }
 
     section#events .grid .card .image_events {
@@ -1644,7 +1678,7 @@ section#subpages iframe {
 
     section#partners .grid .card a.contactBtn,
     section#events .grid .card .contactBtn,
-    section#subpages .card a.contactBtn {
+    section#subpages .card .contactBtn {
         font-size: .95em;
     }
 
@@ -1746,6 +1780,14 @@ section#subpages iframe {
         min-width: 265px;
     }
 
+    section#subpages .head_subpage h1 {
+        font-size: 1.25em;
+    }
+
+    section#subpages .head_subpage i {
+        font-size: 0.6em;
+    }
+
     section#home .btn {
         margin-top: 24px;
     }
@@ -1786,6 +1828,14 @@ section#subpages iframe {
         justify-content: center;
         align-items: center;
         grid-gap: 15px;
+    }
+
+    section#subpages .card {
+        width: 90%;
+    }
+
+    section#subpages iframe {
+        width: 90%;
     }
 
     section#events .grid .card .column {
