@@ -1658,6 +1658,25 @@ section#subpages iframe {
         height: 35vh;
         width: 100%;
     }
+
+    section#subpages h1 {
+        font-size: 1.4em;
+        text-align: center;
+        width: 100%;
+    }
+
+    section#subpages p {
+        font-size: .9em;
+    }
+
+    section#subpages .row {
+        flex-direction: column;
+        gap: 24px;
+    }
+
+    section#subpages img {
+        width: 70%;
+    }
 }
 
 @media (max-width: 450px) {
