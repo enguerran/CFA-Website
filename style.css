@@ -643,7 +643,8 @@ section#partners .grid {
 }
 
 section#events .grid .card,
-section#partners .grid .card {
+section#partners .grid .card,
+section#subpages .card {
     width: 25vw;
     min-width: 350px;
     height: 100%;
@@ -736,7 +737,8 @@ section#events .image_events img {
 }
 
 section#events .grid .card h2,
-section#partners .grid .card h2 {
+section#partners .grid .card h2,
+section#subpages .card h2 {
     font-size: 1.5em;
     margin-block: 32px;
     font-weight: 800;
@@ -744,13 +746,15 @@ section#partners .grid .card h2 {
 }
 
 section#events .grid .card p,
-section#partners .grid .card p {
+section#partners .grid .card p,
+section#subpages .card p {
     font-size: 1em;
     font-weight: 500;
     color: var(--color-gris-noir);
 }
 
-section#events .grid .card p strong {
+section#events .grid .card p strong,
+section#subpages .card p strong {
     font-weight: 700;
     color: var(--color-noir);
 }
@@ -807,21 +811,24 @@ section#partners .grid .card:nth-child(6) {
 }
 
 section#partners .grid .card p,
-section#events .grid .card p {
+section#subpages .card p {
     margin-bottom: 32px;
 }
 
 section#partners .grid .card .btn,
-section#events .grid .card .btn {
+section#subpages .card .btn {
     margin-top: auto;
 }
 
-section#events .grid .card .btn {
+section#events .grid .card .btn,
+section#partners .grid .card .btn,
+section#subpages .card .btn {
     background-color: var(--color-primary-stars);
 }
 
 section#partners .grid .card a.contactBtn,
-section#events .grid .card .contactBtn {
+section#events .grid .card .contactBtn,
+section#subpages .card a.contactBtn {
     font-weight: 400;
     padding: 8px 20px;
     text-transform: none;
@@ -829,7 +836,7 @@ section#events .grid .card .contactBtn {
     color: var(--color-noir);
 }
 
-section#events .grid .card .row {
+section#subpages .card .row {
     display: flex;
     flex-direction: row;
     align-items: center;
@@ -837,7 +844,8 @@ section#events .grid .card .row {
     width: 100%;
 }
 
-section#events .grid .card .column {
+section#events .grid .card .column,
+section#subpages .card .column {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -846,11 +854,17 @@ section#events .grid .card .column {
     width: 100%;
 }
 
-section#events .grid .card .btn.resp {
+section#events .grid .card .column {
+    justify-content: flex-start;
+    height: auto;
+}
+
+section#subpages .card .btn.resp {
     display: none;
 }
 
-section#events .grid .card .contactBtn {
+section#events .grid .card .contactBtn,
+section#subpages .card .contactBtn {
     background-color: var(--color-noir);
     color: var(--color-blanc);
     font-weight: 100;
@@ -1085,10 +1099,24 @@ section#subpages {
     gap: 24px;
 }
 
-section#subpages h1 {
+section#subpages .head_subpage {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+}
+
+section#subpages .head_subpage h1 {
     font-size: 2.5em;
     font-weight: 600;
     font-family: 'Relieve', sans-serif;
+}
+
+section#subpages .head_subpage i {
+    font-size: 1em;
+    margin-top: 8px;
+    color: var(--color-primary);
 }
 
 section#subpages .row {
@@ -1098,6 +1126,11 @@ section#subpages .row {
     justify-content: space-between;
     width: 100%;
     gap: 5%;
+    margin-bottom: 32px;
+}
+
+section#subpages .row.top {
+    align-items: flex-start;
 }
 
 section#subpages p {
@@ -1116,6 +1149,9 @@ section#subpages img {
 section#subpages iframe {
     width: 100%;
     border: none;
+    min-height: 70vh;
+    border-radius: 32px;
+    background-color: var(--color-blanc);
 }
 
 @keyframes fadeIn {
@@ -1228,27 +1264,33 @@ section#subpages iframe {
         white-space: nowrap;
     }
 
-    section#events .grid .card p {
+    /* section#events .grid .card p {
         margin-bottom: 0;
-    }
+    } */
 
-    section#events .grid .card .btn {
+    /* section#events .grid .card .btn {
         display: none;
-    }
+    } */
 
-    section#events .grid .card .btn.resp {
+    /* section#events .grid .card .btn.resp {
         display: flex;
     }
 
     section#events .grid .card .row {
         justify-content: space-between;
         margin-bottom: 24px;
-    }
+    } */
 
     section#events .grid .card .column {
+        justify-content: center;
+        gap: 24px;
+        height: 100%;
+    }
+
+    /* section#events .grid .card .column {
         margin-left: 24px;
         height: auto;
-    }
+    } */
 
     section#partners .grid {
         grid-template-columns: repeat(2, 1fr);
@@ -1335,17 +1377,17 @@ section#subpages iframe {
         min-width: 100px;
     }
 
-    section#events .grid .card p {
+    /* section#events .grid .card p {
         font-size: .95em;
-    }
+    } */
 
-    section#events .grid .card .row {
+    /* section#events .grid .card .row {
         margin-bottom: 20px;
-    }
+    } */
 
-    section#events .grid .card .column {
+    /* section#events .grid .card .column {
         margin-left: 20px;
-    }
+    } */
 
     section#events h1,
     section#partners h1,
@@ -1511,19 +1553,19 @@ section#subpages iframe {
         min-width: 0;
     }
 
-    section#events .grid .card p {
+    /* section#events .grid .card p {
         font-size: .9em;
-    }
+    } */
 
-    section#events .grid .card .row {
+    /* section#events .grid .card .row {
         flex-direction: column;
         gap: 20px;
         margin-bottom: 20px;
-    }
+    } */
 
-    section#events .grid .card .column {
+    /* section#events .grid .card .column {
         margin-left: 20px;
-    }
+    } */
 
     section#partners {
         padding-bottom: 0px;
@@ -1731,9 +1773,15 @@ section#subpages iframe {
         grid-gap: 15px;
     }
 
+    section#events .grid .card .column {
+        justify-content: center;
+        gap: 15px;
+        height: auto;
+    }
+
     section#events .grid .card .image_events {
         width: 100%;
-        height: 130px;
+        height: 148px;
     }
 
     section#events .grid .card h2,

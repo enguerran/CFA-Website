@@ -15,9 +15,9 @@
     <meta property="og:url" content="https://www.comitedesfetesdauzielle.fr" />
     <meta property="og:type" content="website" />
 
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="../style.css">
     <script src="https://kit.fontawesome.com/7a0b90407e.js" crossorigin="anonymous"></script>
-    <link rel="icon" href="images/icon.ico" type="image/x-icon">
+    <link rel="icon" href="../images/icon.ico" type="image/x-icon">
     <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
     <script type="text/javascript">
         (function () {
@@ -33,11 +33,11 @@
     <header>
         <a href="/" class="title">Comité des Fêtes d'Auzielle</a>
         <ul class="nav_links">
-            <li><a href="#">Accueil</a></li>
-            <li><a href="#events">Évènements</a></li>
-            <li><a href="#partners">Nos partenaires</a></li>
-            <li><a href="#about">Qui sommes-nous</a></li>
-            <li><a href="#contact">Nous contacter</a></li>
+            <li><a href="/">Accueil</a></li>
+            <li><a href="/#events">Évènements</a></li>
+            <li><a href="/#partners">Nos partenaires</a></li>
+            <li><a href="/#about">Qui sommes-nous</a></li>
+            <li><a href="/#contact">Nous contacter</a></li>
         </ul>
     </header>
 
@@ -46,12 +46,38 @@
         <i class="fa-solid fa-bars menu_hamburger"></i>
     </div>
 
-    <section>
+    <section id="subpages">
+        <div class="head_subpage">
+            <i class="fa-solid fa-circle"></i>
+            <h1>La fête du village</h1>
+        </div>
 
+        <div class="row top">
+            <iframe id="haWidget" allowtransparency="true" src=""
+                onload="window.addEventListener( 'message', e => { const dataHeight = e.data.height; const haWidgetElement = document.getElementById('haWidget'); haWidgetElement.height = (dataHeight + 32) + 'px' } )"></iframe>
+
+            <div class="card">
+                <div class="column">
+                    <p>Du vendredi soir au dimanche après-midi, de nombreuses animations et moments conviviaux.
+                        Alors que les enfants reprennent le chemin de l’école, le Comité des Fêtes organise un
+                        week-end
+                        festif destiné à toutes les générations.
+                    </p>
+
+                    <div class="btn">
+                        <button class="addToCalendar contactBtn" data-title="La Fête du Village"
+                            data-description="Du vendredi soir au dimanche après-midi, de nombreuses animations et moments conviviaux."
+                            data-location="Auzielle, France" data-start="2024-09-06 18:30" data-end="2024-09-08 18:30">
+                            Ajouter au calendrier
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
     </section>
 
-    <script src="index.js"></script>
-    <script src="events.js"></script>
+    <script src="/index.js"></script>
+    <script src="/events.js"></script>
 </body>
 
 </html>

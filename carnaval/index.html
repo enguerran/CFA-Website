@@ -15,9 +15,9 @@
     <meta property="og:url" content="https://www.comitedesfetesdauzielle.fr" />
     <meta property="og:type" content="website" />
 
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="../style.css">
     <script src="https://kit.fontawesome.com/7a0b90407e.js" crossorigin="anonymous"></script>
-    <link rel="icon" href="images/icon.ico" type="image/x-icon">
+    <link rel="icon" href="../images/icon.ico" type="image/x-icon">
     <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
     <script type="text/javascript">
         (function () {
@@ -33,11 +33,11 @@
     <header>
         <a href="/" class="title">Comité des Fêtes d'Auzielle</a>
         <ul class="nav_links">
-            <li><a href="#">Accueil</a></li>
-            <li><a href="#events">Évènements</a></li>
-            <li><a href="#partners">Nos partenaires</a></li>
-            <li><a href="#about">Qui sommes-nous</a></li>
-            <li><a href="#contact">Nous contacter</a></li>
+            <li><a href="/">Accueil</a></li>
+            <li><a href="/#events">Évènements</a></li>
+            <li><a href="/#partners">Nos partenaires</a></li>
+            <li><a href="/#about">Qui sommes-nous</a></li>
+            <li><a href="/#contact">Nous contacter</a></li>
         </ul>
     </header>
 
@@ -46,12 +46,53 @@
         <i class="fa-solid fa-bars menu_hamburger"></i>
     </div>
 
-    <section>
+    <section id="subpages">
+        <div class="head_subpage">
+            <i class="fa-solid fa-circle"></i>
+            <h1>Le carnaval</h1>
+        </div>
 
+        <div class="row top">
+            <iframe id="haWidget" allowtransparency="true" src=""
+                onload="window.addEventListener( 'message', e => { const dataHeight = e.data.height; const haWidgetElement = document.getElementById('haWidget'); haWidgetElement.height = (dataHeight + 32) + 'px' } )"></iframe>
+
+            <div class="card">
+                <div class="column">
+                    <p><strong>Auzielle fait son CIRQUE le 29 mars ! 🎪</strong><br><br>
+                        🎭 <strong>15h30 - Départ du défilé</strong><br>
+                        Rendez-vous au <strong>Cinéma Studio 7</strong> pour un grand défilé festif à travers le
+                        village !<br>
+                        Petits et grands, venez déguisés et rejoignez la parade organisée par le <strong>Comité des
+                            Fêtes</strong> et l’<strong>ALAE des écoles maternelle et primaire</strong>.<br><br>
+                        🎉 <strong>Arrivée et festivités au Pigeonnier</strong><br>
+                        Après le défilé, rendez-vous au <strong>Pigeonnier</strong> pour un après-midi rempli
+                        d’animations :<br><br>
+                        <strong>- Spectacle de l’ALAE</strong><br>
+                        <strong>- Piñata pour les enfants</strong><br>
+                        <strong>- Goûter convivial</strong> avec crêpes, boissons et gourmandises<br><br>
+                        🍬 <strong>Petite restauration sur place</strong> :<br>
+                        <strong>Crêpes</strong> (sucre ou pâte à tartiner) : 2€<br>
+                        <strong>Boissons</strong> : Eau (1€), Coca/Oasis tropical (2€), Bières (2€)<br>
+                        <strong>Sirops</strong> (grenadine, menthe)<br>
+                        <strong>Chocolat chaud</strong> ☕ et <strong>café</strong> (1€)<br>
+                        <strong>Barbe à papa</strong> (2€) et <strong>sachets de bonbons</strong> (1,50€)<br><br>
+                        <strong>Venez nombreux pour partager un moment festif et gourmand en famille ! 🎭✨</strong>
+                    </p>
+
+                    <div class="btn">
+                        <button class="addToCalendar contactBtn" data-title="Le Carnaval"
+                            data-description="Déguisements, défilé, animations, buvette sont les ingrédients incontournables."
+                            data-location="Auzielle, France" data-start="2025-03-29 15:00" data-end="2025-03-29 18:00">
+                            Ajouter au calendrier
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
     </section>
 
-    <script src="index.js"></script>
-    <script src="events.js"></script>
+    <script src="/index.js"></script>
+    <script src="/events.js"></script>
 </body>
 
 </html>
