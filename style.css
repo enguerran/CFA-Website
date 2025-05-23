@@ -1506,6 +1506,25 @@ section#subpages iframe {
         max-width: none;
         width: 78vw;
     }
+
+    section#subpages h1 {
+        font-size: 1.4em;
+        text-align: center;
+        width: 100%;
+    }
+
+    section#subpages p {
+        font-size: .9em;
+    }
+
+    section#subpages .row {
+        flex-direction: column;
+        gap: 24px;
+    }
+
+    section#subpages img {
+        width: 70%;
+    }
 }
 
 @media (max-width: 700px) {
@@ -1538,7 +1557,8 @@ section#subpages iframe {
         align-items: center;
     }
 
-    section#events .grid .card {
+    section#events .grid .card,
+    section#subpages .card {
         padding: 20px;
     }
 
@@ -1553,9 +1573,9 @@ section#subpages iframe {
         min-width: 0;
     }
 
-    /* section#events .grid .card p {
+    section#subpages .grid .card p {
         font-size: .9em;
-    } */
+    }
 
     /* section#events .grid .card .row {
         flex-direction: column;
@@ -1611,7 +1631,8 @@ section#subpages iframe {
     }
 
     section#partners .grid .card a.contactBtn,
-    section#events .grid .card .contactBtn {
+    section#events .grid .card .contactBtn,
+    section#subpages .card a.contactBtn {
         font-size: .95em;
     }
 
@@ -1700,25 +1721,6 @@ section#subpages iframe {
         height: 35vh;
         width: 100%;
     }
-
-    section#subpages h1 {
-        font-size: 1.4em;
-        text-align: center;
-        width: 100%;
-    }
-
-    section#subpages p {
-        font-size: .9em;
-    }
-
-    section#subpages .row {
-        flex-direction: column;
-        gap: 24px;
-    }
-
-    section#subpages img {
-        width: 70%;
-    }
 }
 
 @media (max-width: 450px) {
@@ -1762,7 +1764,8 @@ section#subpages iframe {
     }
 
     section#events .grid .card,
-    section#partners .grid .card {
+    section#partners .grid .card,
+    section#subpages .card {
         padding: 15px;
         min-width: 0;
         width: 73%;
@@ -1792,6 +1795,7 @@ section#subpages iframe {
 
     section#events .grid .card p,
     section#partners .grid .card p,
+    section#subpages .card p,
     section#nous p,
     section#about p {
         font-size: .9em;
@@ -1955,7 +1959,8 @@ section#subpages iframe {
 
     /* shadows */
     section#nous .nous,
-    section#events .grid .card {
+    section#events .grid .card,
+    section#subpages .card {
         box-shadow: 4px 4px var(--color-noir);
     }
 
@@ -1970,7 +1975,8 @@ section#subpages iframe {
 @media (max-width: 350px) {
 
     section#events .grid .card,
-    section#partners .grid .card {
+    section#partners .grid .card,
+    section#subpages .card {
         width: 81%;
     }
 }
