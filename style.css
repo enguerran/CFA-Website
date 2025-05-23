@@ -345,7 +345,8 @@ section#home,
 section#events,
 section#partners,
 section#about,
-section#contact {
+section#contact,
+section#subpages {
     height: auto;
     width: 100vw;
     display: flex;
@@ -1072,6 +1073,49 @@ section#contact .contacts .formulaire form .column:nth-child(1) {
 
 section#contact .contacts .formulaire form .contactBtn {
     text-transform: none;
+}
+
+section#subpages {
+    flex-direction: column;
+    margin-top: calc(134px);
+    align-items: flex-start;
+    justify-content: flex-start;
+    padding-inline: 5%;
+    padding-block: 52px;
+    gap: 24px;
+}
+
+section#subpages h1 {
+    font-size: 2.5em;
+    font-weight: 600;
+    font-family: 'Relieve', sans-serif;
+}
+
+section#subpages .row {
+    display: flex;
+    flex-direction: row-reverse;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    gap: 5%;
+}
+
+section#subpages p {
+    font-size: 1em;
+    font-weight: 500;
+    color: var(--color-gris-noir);
+    width: 100%;
+}
+
+section#subpages img {
+    width: 28vw;
+    object-fit: contain;
+    border-radius: 8px;
+}
+
+section#subpages iframe {
+    width: 100%;
+    border: none;
 }
 
 @keyframes fadeIn {
