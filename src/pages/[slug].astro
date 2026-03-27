@@ -1,0 +1,47 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { getCollection } from 'astro:content';
+
+export async function getStaticPaths() {
+  const events = await getCollection('events');
+  return events.map((event) => ({
+    params: { slug: event.id },
+    props: { event: event.data },
+  }));
+}
+
+const { event } = Astro.props;
+---
+<BaseLayout title={`${event.title} — Comité des Fêtes d'Auzielle`} description={event.description}>
+  <section id="subpages">
+    <div class="head_subpage">
+      <i class="fa-solid fa-circle"></i>
+      <h1>{event.title}</h1>
+    </div>
+
+    <div class="row top">
+      <div class="card">
+        <div class="column">
+          <p>{event.description}</p>
+          <p>{event.tagline}</p>
+          <p><em>Les informations pour la prochaine édition seront disponibles prochainement.</em></p>
+          <div class="btn">
+            <a class="contactBtn" href={event.helloasso} target="_blank" rel="noopener noreferrer">HelloAsso</a>
+            <a class="contactBtn" href="https://www.facebook.com/CFA31650?locale=fr_FR" target="_blank" rel="noopener noreferrer">Facebook</a>
+            <a class="contactBtn" href="mailto:comitedesfetesdauzielle@gmail.com">Nous contacter</a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    {event.extra_intro && (
+      <div class="row">
+        <p>{event.extra_intro}</p>
+        {event.extra_text && <p><em>{event.extra_text}</em></p>}
+        {event.extra_image_url && (
+          <img src={event.extra_image_url} alt={event.extra_image_alt} />
+        )}
+      </div>
+    )}
+  </section>
+</BaseLayout>
