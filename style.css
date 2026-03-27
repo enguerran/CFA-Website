@@ -645,7 +645,8 @@ section#partners .grid {
 section#events .grid .card,
 section#partners .grid .card,
 section#subpages .card {
-    width: 25vw;
+    width: 60%;
+    max-width: 700px;
     min-width: 350px;
     height: 100%;
     padding: 32px;
@@ -818,6 +819,15 @@ section#subpages .card p {
 section#partners .grid .card .btn,
 section#subpages .card .btn {
     margin-top: auto;
+}
+
+section#subpages .card .btn {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 8px;
+    justify-content: center;
+    background-color: transparent;
 }
 
 section#events .grid .card .btn,
@@ -1092,7 +1102,7 @@ section#contact .contacts .formulaire form .contactBtn {
 section#subpages {
     flex-direction: column;
     margin-top: 134px;
-    align-items: flex-start;
+    align-items: center;
     justify-content: flex-start;
     padding-inline: 5%;
     padding-block: 52px;
@@ -1132,6 +1142,8 @@ section#subpages .row {
 
 section#subpages .row.top {
     align-items: flex-start;
+    justify-content: center;
+    flex-direction: row;
 }
 
 section#subpages p {
@@ -1602,6 +1614,11 @@ section#subpages iframe {
 
     section#subpages .card {
         width: 90%;
+    }
+
+    section#subpages .card .btn {
+        flex-direction: column;
+        align-items: center;
     }
 
     section#subpages iframe {
