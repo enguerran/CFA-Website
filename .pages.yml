@@ -1,0 +1,67 @@
+media:
+  input: public/images
+  output: /images
+
+content:
+  - name: events
+    label: Événements
+    type: file
+    path: src/data/events.json
+    list: true
+    fields:
+      - name: id
+        label: Identifiant (slug URL)
+        type: string
+      - name: title
+        label: Titre
+        type: string
+      - name: image
+        label: Image (nom du fichier dans /images/)
+        type: string
+      - name: description
+        label: Description principale
+        type: text
+      - name: tagline
+        label: Accroche
+        type: string
+      - name: helloasso
+        label: Lien HelloAsso
+        type: string
+      - name: extra_intro
+        label: Intro supplémentaire (optionnel)
+        type: text
+        required: false
+      - name: extra_text
+        label: Texte supplémentaire (optionnel)
+        type: text
+        required: false
+      - name: extra_image_url
+        label: URL image supplémentaire (optionnel)
+        type: string
+        required: false
+      - name: extra_image_alt
+        label: Alt image supplémentaire (optionnel)
+        type: string
+        required: false
+
+  - name: partners
+    label: Partenaires
+    type: file
+    path: src/data/partners.json
+    list: true
+    fields:
+      - name: id
+        label: Identifiant
+        type: string
+      - name: name
+        label: Nom
+        type: string
+      - name: image
+        label: Image (nom du fichier dans /images/)
+        type: string
+      - name: description
+        label: Description
+        type: text
+      - name: url
+        label: Site web
+        type: string
