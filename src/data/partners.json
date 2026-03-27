@@ -1,0 +1,44 @@
+[
+  {
+    "id": "mairie",
+    "name": "La Mairie d'Auzielle",
+    "image": "mairie.webp",
+    "description": "Auzielle offre un large éventail d'activités culturelles et sportives. Bien que de taille relativement modeste, les nombreux clubs et associations contribuent au dynamisme de notre village et entretiennent le lien social entre ses habitants. L'encadrement y est assuré par des animateurs professionnels. Si vous souhaitez élargir l'éventail de ces activités, n'hésitez pas à contacter la mairie !",
+    "url": "https://www.auzielle.fr"
+  },
+  {
+    "id": "sicoval",
+    "name": "Sicoval",
+    "image": "sicoval.webp",
+    "description": "Le Sicoval est un territoire attractif pour les porteurs de projets et les entreprises déjà implantées. Découvrez des séries de témoignages d'acteurs locaux, qui ont marqué l'actualité par leur savoir-faire et leurs projets de développement. Nous soutenons au quotidien ces pépites qui contribuent à l'essor économique de notre territoire. Aujourd'hui, ils vous partagent leur expérience !",
+    "url": "https://www.sicoval.fr"
+  },
+  {
+    "id": "mjc",
+    "name": "MJC Auzielle",
+    "image": "mjc.webp",
+    "description": "Implantée au pôle culturel avec le cinéma Studio 7 et la bibliothèque, la MJC est une association culturelle qui organise des ateliers, animations et manifestations culturelles et ludiques pour tous publics.",
+    "url": "https://mjcauzielle.fr"
+  },
+  {
+    "id": "vival",
+    "name": "Vival — Chez Niva",
+    "image": "vival.webp",
+    "description": "Épicerie et traiteur.",
+    "url": "https://www.facebook.com/CHEZNIVA/about"
+  },
+  {
+    "id": "lisa",
+    "name": "Délices de Lisa",
+    "image": "lisa.webp",
+    "description": "La biscuiterie, entreprise familiale, installée depuis 2008, fabrique et commercialise une large et sympathique gamme.",
+    "url": "https://www.delicesdelisa.fr"
+  },
+  {
+    "id": "aoc",
+    "name": "Banda Les AOC's",
+    "image": "aoc.webp",
+    "description": "« Animation d'Origine Contrôlée » ou AOC est un groupe de musique de rue d'une trentaine de musiciens se produisant dans tout le sud-ouest.",
+    "url": "http://aocs.musique.free.fr"
+  }
+]
