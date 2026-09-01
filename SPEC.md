@@ -1,0 +1,312 @@
+# Spécification — Eleventy + YAML Migration
+
+**Status:** Ready for Implementation  
+**Target:** Transformer le site HTML statique en SSG Eleventy avec données YAML
+
+---
+
+## Problem Statement
+
+Le site du Comité des Fêtes d'Auzielle est actuellement un ensemble de fichiers HTML statiques codés en dur. Chaque mise à jour de contenu (nouvel événement, modifications de texte, images) requiert de dupliquer du HTML et de modifier manuellement les fichiers. Cela est répétitif, source d'erreurs, et peu maintenable.
+
+**Besoin :** Séparer les données (texte, images, titres) du balisage HTML, pour permettre une édition simple du contenu sans toucher au code. Le workflow doit rester ultra-simple (édition de fichiers YAML, build automatique, déploiement sur Vercel).
+
+---
+
+## Solution
+
+Migrer le site vers **Eleventy (11ty)** avec données structurées en **YAML** :
+
+1. **Données centralisées** : événements et partenaires définis en YAML (`data/events.yaml`, `data/partners.yaml`)
+2. **Templates dynamiques** : templates Nunjucks (`src/pages/event.njk`, `src/pages/index.njk`) qui itèrent sur les données
+3. **Génération statique** : `npm run build` génère les pages HTML dans `_site/`
+4. **Design inchangé** : CSS/JS réutilisés tels quels, zéro changement visuel
+5. **Auto-deploy Vercel** : `git push` → Vercel rebuild → live
+
+**Architecture :**
+```
+Source de données (YAML) 
+    ↓
+Eleventy (templating Nunjucks)
+    ↓
+Pages HTML statiques (dist)
+    ↓
+Vercel (auto-deploy)
+```
+
+---
+
+## User Stories
+
+1. **En tant qu'éditeur**, je veux modifier le titre d'un événement dans `data/events.yaml`, afin que le changement soit reflété sur le site après `npm run build`.
+
+2. **En tant qu'éditeur**, je veux ajouter un nouvel événement en ajoutant une entrée dans `data/events.yaml` et une image dans `images/`, afin que la nouvelle page soit générée automatiquement (ex. `/new-event/`).
+
+3. **En tant qu'éditeur**, je veux modifier la description d'un événement sur plusieurs lignes en YAML, afin que le formatage soit préservé en HTML.
+
+4. **En tant qu'éditeur**, je veux que chaque événement ait une image associée, un titre, une description principale, une tagline et un lien HelloAsso, afin que les informations s'affichent correctement sur la page de l'événement et dans la grille d'accueil.
+
+5. **En tant qu'éditeur**, je veux que la Saint-Jean affiche du contenu supplémentaire (intro, texte historique, image externe), afin que certains événements puissent avoir plus de détails que d'autres.
+
+6. **En tant qu'éditeur**, je veux modifier les partenaires (nom, description, image, URL) dans `data/partners.yaml`, afin que les changements apparaissent sur la page d'accueil.
+
+7. **En tant qu'éditeur**, je veux que la page d'accueil soit générée automatiquement à partir des données YAML, afin qu'elle affiche toujours les 3 événements et 6 partenaires sans duplication de code.
+
+8. **En tant que développeur**, je veux configurer Eleventy une fois avec `.eleventy.js`, afin que le build soit reproducible et maintenable.
+
+9. **En tant que développeur**, je veux que `npm run dev` lance un serveur local en mode watch, afin que je puisse tester les changements instantanément.
+
+10. **En tant que développeur**, je veux que `npm run build` génère un répertoire `_site/` complet et prêt à être déployé sur Vercel.
+
+11. **En tant que déploiement**, je veux que Vercel détecte automatiquement Eleventy et lance `npm run build`, afin qu'aucune configuration de déploiement ne soit nécessaire.
+
+12. **En tant qu'éditeur**, je veux que chaque événement ait une URL slug unique (ex. `/carnaval/`, `/fete-saint-jean/`), afin que les pages soient accessibles directement et partageables.
+
+13. **En tant qu'éditeur**, je veux que les sous-pages d'événements réutilisent le même layout que la page d'accueil (header, nav, footer), afin qu'il n'y ait pas de duplication.
+
+14. **En tant qu'éditeur**, je veux que la section "Qui sommes-nous" et "Nous contacter" (formulaire, carte) restent inchangées sur la page d'accueil, afin que le contenu statique soit préservé.
+
+15. **En tant que système**, je veux que les images résident dans `src/assets/images/` et soient copiées automatiquement vers le build, afin que les références YAML pointent vers des chemins simples (ex. `carnaval.jpg`).
+
+16. **En tant qu'éditeur**, je veux que les fichiers YAML soient versionned dans Git, afin que l'historique des changements soit traçable.
+
+17. **En tant que système**, je veux que les fichiers CSS, JS et polices existants soient copiés dans le build sans modification, afin que le design reste 100% identique.
+
+18. **En tant qu'éditeur**, je veux que les liens HelloAsso pointent vers l'URL correcte depuis la donnée YAML, afin qu'une modification unique dans le YAML mette à jour tous les liens.
+
+19. **En tant qu'éditeur**, je veux éditer les données directement en Git (pas de CMS cloud), afin que la solution soit 100% autonome et sans dépendance externe.
+
+20. **En tant qu'éditeur**, je veux une structure claire des YAML (schéma évident, clés prévisibles), afin que je puisse ajouter de nouveaux événements sans relire la doc.
+
+---
+
+## Implementation Decisions
+
+### 1. **Eleventy comme SSG**
+- **Décision :** Utiliser Eleventy v3.x au lieu d'Astro, Gatsby, ou script Node custom.
+- **Raison :** Eleventy est très léger (une seule dépendance, pas de JavaScript frontend obligatoire), courbe d'apprentissage très plate, parfait pour un site statique simple. Zéro complexité ajoutée (pas de TypeScript obligatoire, pas de configuration réseau, pas de CMS cloud).
+- **Alternative écartée :** Astro (trop lourd pour ce cas), Pages CMS (dépendance externe).
+
+### 2. **YAML pour les données**
+- **Décision :** Utiliser YAML pour stocker événements et partenaires, plutôt que JSON.
+- **Raison :** YAML est plus lisible pour du contenu texte long, plus facile à éditer manuellement, traité nativement par Eleventy via `_data/`.
+- **Structure :**
+  - `data/events.yaml` : tableau d'événements, chaque événement a `id`, `title`, `description`, `tagline`, `image`, `helloasso`, et champs optionnels `extra_intro`, `extra_text`, `extra_image_url`.
+  - `data/partners.yaml` : tableau de partenaires, chaque partenaire a `id`, `name`, `image`, `description`, `url`.
+  - `data/site.yaml` : config globale (email, réseaux sociaux, etc.).
+
+### 3. **Deux templates de page**
+- **Décision :** Créer `src/pages/index.njk` (page d'accueil) et `src/pages/[slug].njk` (pages dynamiques des événements).
+- **Raison :** La page d'accueil affiche tous les événements et partenaires ; les pages dynamiques affichent les détails d'un événement. `[slug].njk` génère une page par entrée de `data/events.yaml`.
+- **Eleventy config :** `getStaticPaths()` pour Eleventy n'est pas nécessaire en Nunjucks pur ; la pagination et les collections gèrent cela automatiquement.
+
+### 4. **Layout principal unique**
+- **Décision :** Un seul `src/_includes/layout.njk` pour toutes les pages (header, nav, footer, scripts).
+- **Raison :** Éviter la duplication, centraliser les changements de header/footer, maintenir la cohérence.
+- **Structure :** Layout définit `<head>`, `<body>`, inclut les scripts globaux (`index.js`, `events.js`), et expose un `{% block content %} {% endblock %}` pour le contenu spécifique.
+
+### 5. **CSS/JS inchangés**
+- **Décision :** Copier `style.css`, `index.js`, `events.js` tels quels dans `src/assets/` → `_site/`.
+- **Raison :** Zéro changement visuel, design préservé 100%, aucune refonte.
+- **Implementation :** Eleventy copy files passthrough (`.eleventy.js` configure le copy).
+
+### 6. **Images locales**
+- **Décision :** Images résident dans `src/assets/images/`, copiées dans le build.
+- **Raison :** Assets statiques gérées en local, versionned en Git, références simples en YAML (`carnaval.jpg`).
+
+### 7. **Vercel auto-deploy**
+- **Décision :** `package.json` inclut script `build`, Vercel le détecte et recrée automatiquement.
+- **Raison :** Zéro configuration, Vercel détecte `npm run build` automatiquement. Push → Vercel rebuild → live.
+- **Alternative écartée :** Vercel Env Secrets, branches protégées, etc. (pas nécessaire pour ce besoin).
+
+### 8. **Nunjucks comme moteur de templating**
+- **Décision :** Utiliser Nunjucks (moteur par défaut d'Eleventy) plutôt que Liquid, EJS, ou Handlebars.
+- **Raison :** Nunjucks est puissant, syntaxe claire, loops et conditions simples, idéal pour itérer sur les YAML.
+- **Syntaxe :**
+  ```nunjucks
+  {% for event in events %}
+    <div>{{ event.title }}</div>
+  {% endfor %}
+  ```
+
+### 9. **URLs des événements**
+- **Décision :** Utiliser le slug de l'événement pour générer l'URL (ex. `id: carnaval` → `/carnaval/`).
+- **Raison :** URLs propres et mémorisables, basées sur les données.
+- **Implémentation :** `[slug].njk` avec `permalink: /{{ slug }}/index.html` dans Eleventy.
+
+### 10. **Pas de CMS cloud**
+- **Décision :** Éditeurs modifient les fichiers YAML directement en Git (ou via un éditeur local).
+- **Raison :** Zéro dépendance externe, autonomie complète, historique en Git.
+- **Alternative écartée :** Pages CMS, Decap CMS, ou autre service cloud (dépendances externes).
+
+### 11. **Élément optionnel pour la Saint-Jean**
+- **Décision :** Ajouter champs optionnels `extra_intro`, `extra_text`, `extra_image_url`, `extra_image_alt` pour que certains événements puissent avoir du contenu supplémentaire.
+- **Raison :** La Saint-Jean a du texte historique et une image Wikimedia que les autres événements n'ont pas ; les champs optionnels permettent cette flexibilité sans surcharger les événements simples.
+- **Implémentation :** Template Nunjucks : `{% if event.extra_intro %} ... {% endif %}`.
+
+### 12. **Répertoire de build `_site/`**
+- **Décision :** Eleventy génère le build dans `_site/`, standard Eleventy.
+- **Raison :** Convention Eleventy, `_site/` est ignoré par `.gitignore`, pas d'artefacts en Git.
+- **Vercel :** Vercel sert depuis `_site/` automatiquement si un `.eleventy.js` est détecté.
+
+---
+
+## Testing Decisions
+
+### **What makes a good test**
+- Tester le comportement externe (pages générées, structure HTML) plutôt que les détails d'implémentation (variables Eleventy).
+- Valider que les pages générées contiennent le bon contenu depuis les données YAML.
+- Vérifier que les URLs sont correctes et accessibles.
+
+### **Modules à tester**
+1. **Configuration Eleventy (`.eleventy.js`)** : Vérifier que le build génère `_site/` avec la structure correcte.
+2. **Templates (`index.njk`, `[slug].njk`)** : Vérifier que les données YAML sont interpolées correctement en HTML.
+3. **Collections de données** : Vérifier que les fichiers YAML sont lus et disponibles dans les templates.
+4. **Assets (CSS, JS, images)** : Vérifier que les fichiers statiques sont copiés dans `_site/`.
+
+### **Prior art / Inspiration**
+- Tests Eleventy standard : vérifier le contenu des fichiers générés dans `_site/` après `npm run build`.
+- Snapshot testing : Comparer la sortie HTML générée contre un snapshot de référence (optionnel, Phase 2).
+- E2E (Puppeteer, Playwright) : Lancer le navigateur sur `_site/` servi localement, vérifier les pages (optionnel, Phase 2).
+
+### **Phase 1 (MVP — aujourd'hui)**
+- ✅ Build Eleventy sans erreurs
+- ✅ Vérifier que `_site/index.html` existe et contient les 3 événements
+- ✅ Vérifier que `_site/carnaval/index.html`, `_site/fete-saint-jean/index.html`, `_site/fete-village/index.html` existent
+- ✅ Vérifier que les images sont dans `_site/images/`
+- ✅ Vérifier que le CSS et JS sont dans `_site/`
+- ✅ Test manuel : `npm run dev` → navigateur → vérifier visuellement que le site est identique à l'ancien
+
+### **Phase 2 (Futur — optionnel)**
+- Snapshot tests : comparer `_site/index.html` contre snapshot de référence
+- E2E : vérifier que les formulaires, animations, etc. fonctionnent
+
+---
+
+## Out of Scope
+
+- **Refonte de design** : Le CSS, layout, et JS restent 100% inchangés. Pas de modernisation visuelle.
+- **Intégration iframe HelloAsso** : Phase 2 seulement. Phase 1 = lien simple vers HelloAsso.
+- **Authentification / CMS user-friendly** : Non-techniciens n'éditent pas directement ; l'éditeur (vous) modifie le YAML en Git.
+- **Multilinguisme** : Site reste en français, pas de système de traduction.
+- **Performance tuning** : Pas d'optimisation d'images, compressage, CDN, etc. (Vercel gère déjà).
+- **Tests automatisés complètes** : Phase 1 = tests manuels. Snapshot tests en Phase 2 si pertinent.
+- **Système de commentaires / modération** : Hors scope.
+- **SEO avancée** : Métadonnées basiques suffisent (déjà en place).
+
+---
+
+## Further Notes
+
+### **Schéma YAML — Structure exacte**
+
+#### `data/events.yaml`
+```yaml
+- id: carnaval
+  title: Le Carnaval
+  image: carnaval.jpg
+  description: |
+    Chaque année, le Comité des Fêtes organise le carnaval du village.
+    Au programme : un grand défilé costumé au départ du Cinéma Studio 7,
+    suivi d'animations au Pigeonnier — spectacles, piñata pour les enfants
+    et goûter convivial.
+  tagline: Petits et grands, venez déguisés et rejoignez la parade !
+  helloasso: https://www.helloasso.com/associations/comite-des-fetes-d-auzielle
+
+- id: fete-saint-jean
+  title: Fête de la Saint-Jean
+  image: stjean.jpg
+  description: |
+    Le Comité des Fêtes d'Auzielle célèbre chaque année le solstice d'été
+    au Parc du Pigeonnier. Au programme : apéritif, repas de village,
+    défilé aux lampions, feu de la Saint-Jean et grand bal en plein air.
+  tagline: Animation musicale par la Banda Les AOC's.
+  helloasso: https://www.helloasso.com/associations/comite-des-fetes-d-auzielle
+  extra_intro: Le comité des fêtes d'Auzielle accueille convives et habitants pour célébrer le solstice d'été.
+  extra_text: |
+    Le solstice d'été est fêté depuis longtemps, originellement en lien avec le culte du soleil.
+    Les feux de solstices ou feux solsticiaux païens étaient au Moyen Âge allumés aux points de
+    croisement des chemins, dans les champs, pour empêcher que les sorcières et magiciennes n'y passent
+    pendant cette nuit ; on y brûlait parfois les herbes cueillies le jour de la Saint-Jean, contre
+    la foudre, le tonnerre, les orages et l'on pensait écarter par ces fumigations les démons et les tempêtes.
+  extra_image_url: https://upload.wikimedia.org/wikipedia/commons/9/91/The_Feast_of_Saint_John.jpg
+  extra_image_alt: Personnes fêtant la Saint-Jean autour d'un feu
+
+- id: fete-village
+  title: La Fête du Village
+  image: fete_vilage.jpg
+  description: |
+    Chaque année en septembre, Auzielle est en fête pendant tout un week-end.
+    Au programme : tournois, animations pour les enfants, concours de pétanque,
+    matinale des associations, apéritifs, repas de village et bal.
+  tagline: Un rendez-vous incontournable pour tous les Auziellois !
+  helloasso: https://www.helloasso.com/associations/comite-des-fetes-d-auzielle
+```
+
+#### `data/partners.yaml`
+```yaml
+- id: mairie
+  name: La Mairie d'Auzielle
+  image: mairie.webp
+  description: Auzielle offre un large éventail d'activités culturelles et sportives...
+  url: https://www.auzielle.fr
+
+- id: sicoval
+  name: Sicoval
+  image: sicoval.webp
+  description: Le Sicoval est un territoire attractif pour les porteurs de projets...
+  url: https://www.sicoval.fr
+
+# ... (4 autres partenaires)
+```
+
+#### `data/site.yaml`
+```yaml
+name: Comité des Fêtes d'Auzielle
+email: comitedesfetesdauzielle@gmail.com
+facebook: https://www.facebook.com/CFA31650?locale=fr_FR
+instagram: https://www.instagram.com/comitedauzielle/
+tiktok: https://www.tiktok.com/@comitedauzielle
+helloasso: https://www.helloasso.com/associations/comite-des-fetes-d-auzielle
+```
+
+### **Seams de test**
+
+Le plus haut niveau de test (et le plus utile) est de vérifier que le **build Eleventy génère les fichiers HTML corrects** avec le contenu issu des YAML.
+
+**Seam principal :**
+1. `npm run build`
+2. Vérifier que `_site/index.html` contient `<h2>Le Carnaval</h2>`, `<h2>Fête de la Saint-Jean</h2>`, etc.
+3. Vérifier que `_site/carnaval/index.html` affiche la description du carnaval.
+4. Vérifier que `_site/fete-saint-jean/index.html` affiche le texte historique (contenu extra).
+
+Ce seam valide :
+- La lecture correcte des YAML
+- L'interpolation des données dans les templates
+- La génération correcte des URLs
+- La structure HTML
+
+### **Workflow d'implémentation**
+
+1. **Init Eleventy** : `npm init -y`, `npm install eleventy`, configurer `.eleventy.js`
+2. **Créer structure** : Répertoires `src/pages/`, `src/_includes/`, `src/assets/`
+3. **Extraire données** : Transformer le contenu HTML existant en YAML (`data/events.yaml`, `data/partners.yaml`)
+4. **Créer templates** : `layout.njk`, `index.njk`, `[slug].njk`
+5. **Configurer assets** : Copy CSS, JS, images via `.eleventy.js`
+6. **Tester localement** : `npm run dev`, vérifier visuellement
+7. **Valider build** : `npm run build`, vérifier `_site/`
+8. **Commit & Push** : Git commit de la structure Eleventy
+9. **Vérifier Vercel** : Vercel détecte et deploie automatiquement
+
+---
+
+## Checklist de validation MVP
+
+- [ ] `npm run build` génère sans erreurs
+- [ ] `_site/index.html` contient tous les événements et partenaires
+- [ ] `_site/carnaval/`, `_site/fete-saint-jean/`, `_site/fete-village/` existent
+- [ ] Les images s'affichent (CSS et images copiés correctement)
+- [ ] `npm run dev` fonctionne et live-reload marche
+- [ ] Vercel rebuilde automatiquement après `git push`
+- [ ] Site en production est visuellement identique à l'ancien
+- [ ] Éditer `data/events.yaml` et relancer le build change le site

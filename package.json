@@ -1,0 +1,29 @@
+{
+  "name": "cfa-website",
+  "version": "1.0.0",
+  "description": "https://comite-des-fetes-auzielle.vercel.app/",
+  "main": "index.js",
+  "directories": {
+    "doc": "docs"
+  },
+  "scripts": {
+    "dev": "eleventy --serve",
+    "build": "eleventy",
+    "preview": "eleventy --serve --input=_site"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/enguerran/CFA-Website.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/enguerran/CFA-Website/issues"
+  },
+  "homepage": "https://github.com/enguerran/CFA-Website#readme",
+  "dependencies": {
+    "@11ty/eleventy": "^3.1.6"
+  }
+}
