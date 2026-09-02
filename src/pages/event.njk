@@ -4,9 +4,10 @@ pagination:
   data: events
   size: 1
   alias: event
+# SYNC: ce schéma d'URL doit rester identique au href codé en dur dans
+# src/pages/index.njk (href="/{{ event.id }}/"). Si vous changez ce
+# permalink, mettez à jour index.njk en même temps.
 permalink: "/{{ event.id }}/index.html"
-title: "{{ event.title }} — Comité des Fêtes d'Auzielle"
-description: "{{ event.description }}"
 ---
 
 <section id="subpages">

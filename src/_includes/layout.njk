@@ -4,15 +4,15 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{{ title or "Comité des Fêtes d'Auzielle" }}</title>
+    <title>{{ title or site.name }}</title>
 
     <meta name="keywords" content="comite, fete, auzielle, cfa, village, association" />
     <meta name="description" content="{{ description or "Le comité des fêtes...C'est pour faire la fête !!!" }}" />
     <meta name="robots" content="index" />
-    <meta property="og:title" content="{{ title or "Comité des Fêtes d'Auzielle" }}" />
+    <meta property="og:title" content="{{ title or site.name }}" />
     <meta property="og:description" content="{{ description or "Le comité des fêtes...C'est pour faire la fête !!!" }}" />
     <meta property="og:image" content="/images/icon.ico" />
-    <meta property="og:url" content="https://www.comitedesfetesdauzielle.fr" />
+    <meta property="og:url" content="{{ site.url }}{{ page.url }}" />
     <meta property="og:type" content="website" />
 
     <link rel="stylesheet" href="/style.css">
@@ -20,18 +20,11 @@
     <link rel="icon" href="/images/icon.ico" type="image/x-icon">
 
     <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
-    <script type="text/javascript">
-        (function () {
-            emailjs.init("");
-        })();
-    </script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/FileSaver.js/2.0.5/FileSaver.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/gh/nwcell/ics.js/ics.min.js"></script>
 </head>
 
 <body>
     <header>
-        <a href="/" class="title">Comité des Fêtes d'Auzielle</a>
+        <a href="/" class="title">{{ site.name }}</a>
         <ul class="nav_links">
             <li><a href="/">Accueil</a></li>
             <li><a href="/#events">Évènements</a></li>
@@ -42,7 +35,7 @@
     </header>
 
     <div class="header_responsive">
-        <a href="/" class="title">Comité des Fêtes d'Auzielle</a>
+        <a href="/" class="title">{{ site.name }}</a>
         <i class="fa-solid fa-bars menu_hamburger"></i>
     </div>
 
@@ -50,7 +43,7 @@
 
     <script src="/announcement.js"></script>
     <script src="/index.js"></script>
-    <script src="/events.js"></script>
+    <script src="/contact.js"></script>
 </body>
 
 </html>

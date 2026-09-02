@@ -1,6 +1,5 @@
 ---
 layout: layout.njk
-title: Comité des Fêtes d'Auzielle
 description: Le comité des fêtes...C'est pour faire la fête !!!
 permalink: /index.html
 ---
@@ -62,6 +61,9 @@ permalink: /index.html
                 <div class="column">
                     <h2>{{ event.title }}</h2>
                     <div class="btn">
+                        {# SYNC: ce chemin doit rester identique au permalink dans
+                           src/pages/event.njk (frontmatter, "/{{ event.id }}/index.html").
+                           Si vous changez l'un, changez l'autre. #}
                         <a class="contactBtn" href="/{{ event.id }}/">Découvrir</a>
                     </div>
                 </div>
@@ -107,7 +109,7 @@ permalink: /index.html
 <section id="about">
     <div class="about">
         <h1>À propos de nous</h1>
-        <h2>2013 : Renaissance du Comité des Fêtes d'Auzielle</h2>
+        <h2>2013 : Renaissance du {{ site.name }}</h2>
         <div class="row">
             <p>Cette année-là, nous avons eu le plaisir d'officialiser la création du nouveau comité des fêtes
                 d'Auzielle (C.F.A.). En effet, le précédent comité avait souhaité se retirer après plus de 40 années de
@@ -203,7 +205,7 @@ permalink: /index.html
                     width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy"
                     referrerpolicy="no-referrer-when-downgrade"></iframe>
                 <div class="columnContact2">
-                    <p>Comité des Fêtes d'Auzielle</p>
+                    <p>{{ site.name }}</p>
                     <p>Village</p>
                     <p>Auzielle 31650</p>
                     <p>France</p>
@@ -221,39 +223,3 @@ permalink: /index.html
     <img src="" id="fullImg" alt="Full Image">
     <i class="fa-solid fa-xmark" onclick="closeFullImg()"></i>
 </div>
-
-<script>
-    const USER_ID = '5512K-AZX12fCBtPK';
-
-    const handleSubmit = (e) => {
-        e.preventDefault();
-        const form = document.getElementById('contactForm');
-        const formData = new FormData(form);
-        const name = formData.get('name');
-        const email = formData.get('email');
-        const message = formData.get('message');
-
-        if (!name || !email || !message) {
-            alert('Veuillez remplir tous les champs du formulaire.');
-            return;
-        }
-
-        emailjs.send('service_ajykrdq', 'template_taaikfc', {
-            from_name: formData.get('name'),
-            to_name: 'CFA',
-            from_email: formData.get('email'),
-            to_email: '',
-            message: formData.get('message')
-        }, USER_ID)
-            .then(() => {
-                alert('Merci pour votre message. Je vous contacte très rapidement.');
-            })
-            .catch((error) => {
-                console.error(error);
-                alert("Quelque chose s'est mal passé.");
-            });
-    };
-
-    const form = document.getElementById('contactForm');
-    form.addEventListener('submit', handleSubmit);
-</script>

@@ -1,11 +1,11 @@
 module.exports = function (eleventyConfig) {
   // Copy static assets to the site root (templates and style.css reference
-  // them as root-relative paths: /style.css, /index.js, /events.js,
+  // them as root-relative paths: /style.css, /index.js, /announcement.js,
   // /images/..., and style.css itself uses relative "fonts/..." urls).
   eleventyConfig.addPassthroughCopy({ "src/assets/style.css": "style.css" });
   eleventyConfig.addPassthroughCopy({ "src/assets/index.js": "index.js" });
-  eleventyConfig.addPassthroughCopy({ "src/assets/events.js": "events.js" });
   eleventyConfig.addPassthroughCopy({ "src/assets/announcement.js": "announcement.js" });
+  eleventyConfig.addPassthroughCopy({ "src/assets/contact.js": "contact.js" });
   eleventyConfig.addPassthroughCopy({ "src/assets/images": "images" });
   eleventyConfig.addPassthroughCopy({ "src/assets/fonts": "fonts" });
 

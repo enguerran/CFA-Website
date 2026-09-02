@@ -1,7 +1,7 @@
-# Spécification — Eleventy + YAML Migration
+# Spécification — Eleventy + JSON Migration
 
 **Status:** Ready for Implementation  
-**Target:** Transformer le site HTML statique en SSG Eleventy avec données YAML
+**Target:** Transformer le site HTML statique en SSG Eleventy avec données JSON
 
 ---
 
@@ -9,15 +9,15 @@
 
 Le site du Comité des Fêtes d'Auzielle est actuellement un ensemble de fichiers HTML statiques codés en dur. Chaque mise à jour de contenu (nouvel événement, modifications de texte, images) requiert de dupliquer du HTML et de modifier manuellement les fichiers. Cela est répétitif, source d'erreurs, et peu maintenable.
 
-**Besoin :** Séparer les données (texte, images, titres) du balisage HTML, pour permettre une édition simple du contenu sans toucher au code. Le workflow doit rester ultra-simple (édition de fichiers YAML, build automatique, déploiement sur Vercel).
+**Besoin :** Séparer les données (texte, images, titres) du balisage HTML, pour permettre une édition simple du contenu sans toucher au code. Le workflow doit rester ultra-simple (édition de fichiers JSON, build automatique, déploiement sur Vercel).
 
 ---
 
 ## Solution
 
-Migrer le site vers **Eleventy (11ty)** avec données structurées en **YAML** :
+Migrer le site vers **Eleventy (11ty)** avec données structurées en **JSON** :
 
-1. **Données centralisées** : événements et partenaires définis en YAML (`data/events.yaml`, `data/partners.yaml`)
+1. **Données centralisées** : événements et partenaires définis en JSON (`src/_data/events.json`, `src/_data/partners.json`)
 2. **Templates dynamiques** : templates Nunjucks (`src/pages/event.njk`, `src/pages/index.njk`) qui itèrent sur les données
 3. **Génération statique** : `npm run build` génère les pages HTML dans `_site/`
 4. **Design inchangé** : CSS/JS réutilisés tels quels, zéro changement visuel
@@ -25,7 +25,7 @@ Migrer le site vers **Eleventy (11ty)** avec données structurées en **YAML** :
 
 **Architecture :**
 ```
-Source de données (YAML) 
+Source de données (JSON) 
     ↓
 Eleventy (templating Nunjucks)
     ↓
@@ -38,19 +38,19 @@ Vercel (auto-deploy)
 
 ## User Stories
 
-1. **En tant qu'éditeur**, je veux modifier le titre d'un événement dans `data/events.yaml`, afin que le changement soit reflété sur le site après `npm run build`.
+1. **En tant qu'éditeur**, je veux modifier le titre d'un événement dans `src/_data/events.json`, afin que le changement soit reflété sur le site après `npm run build`.
 
-2. **En tant qu'éditeur**, je veux ajouter un nouvel événement en ajoutant une entrée dans `data/events.yaml` et une image dans `images/`, afin que la nouvelle page soit générée automatiquement (ex. `/new-event/`).
+2. **En tant qu'éditeur**, je veux ajouter un nouvel événement en ajoutant une entrée dans `src/_data/events.json` et une image dans `images/`, afin que la nouvelle page soit générée automatiquement (ex. `/new-event/`).
 
-3. **En tant qu'éditeur**, je veux modifier la description d'un événement sur plusieurs lignes en YAML, afin que le formatage soit préservé en HTML.
+3. **En tant qu'éditeur**, je veux modifier la description d'un événement sur plusieurs lignes en JSON, afin que le formatage soit préservé en HTML.
 
 4. **En tant qu'éditeur**, je veux que chaque événement ait une image associée, un titre, une description principale, une tagline et un lien HelloAsso, afin que les informations s'affichent correctement sur la page de l'événement et dans la grille d'accueil.
 
 5. **En tant qu'éditeur**, je veux que la Saint-Jean affiche du contenu supplémentaire (intro, texte historique, image externe), afin que certains événements puissent avoir plus de détails que d'autres.
 
-6. **En tant qu'éditeur**, je veux modifier les partenaires (nom, description, image, URL) dans `data/partners.yaml`, afin que les changements apparaissent sur la page d'accueil.
+6. **En tant qu'éditeur**, je veux modifier les partenaires (nom, description, image, URL) dans `src/_data/partners.json`, afin que les changements apparaissent sur la page d'accueil.
 
-7. **En tant qu'éditeur**, je veux que la page d'accueil soit générée automatiquement à partir des données YAML, afin qu'elle affiche toujours les 3 événements et 6 partenaires sans duplication de code.
+7. **En tant qu'éditeur**, je veux que la page d'accueil soit générée automatiquement à partir des données JSON, afin qu'elle affiche toujours les 3 événements et 6 partenaires sans duplication de code.
 
 8. **En tant que développeur**, je veux configurer Eleventy une fois avec `.eleventy.js`, afin que le build soit reproducible et maintenable.
 
@@ -66,17 +66,17 @@ Vercel (auto-deploy)
 
 14. **En tant qu'éditeur**, je veux que la section "Qui sommes-nous" et "Nous contacter" (formulaire, carte) restent inchangées sur la page d'accueil, afin que le contenu statique soit préservé.
 
-15. **En tant que système**, je veux que les images résident dans `src/assets/images/` et soient copiées automatiquement vers le build, afin que les références YAML pointent vers des chemins simples (ex. `carnaval.jpg`).
+15. **En tant que système**, je veux que les images résident dans `src/assets/images/` et soient copiées automatiquement vers le build, afin que les références JSON pointent vers des chemins simples (ex. `carnaval.jpg`).
 
-16. **En tant qu'éditeur**, je veux que les fichiers YAML soient versionned dans Git, afin que l'historique des changements soit traçable.
+16. **En tant qu'éditeur**, je veux que les fichiers JSON soient versionned dans Git, afin que l'historique des changements soit traçable.
 
 17. **En tant que système**, je veux que les fichiers CSS, JS et polices existants soient copiés dans le build sans modification, afin que le design reste 100% identique.
 
-18. **En tant qu'éditeur**, je veux que les liens HelloAsso pointent vers l'URL correcte depuis la donnée YAML, afin qu'une modification unique dans le YAML mette à jour tous les liens.
+18. **En tant qu'éditeur**, je veux que les liens HelloAsso pointent vers l'URL correcte depuis la donnée JSON, afin qu'une modification unique dans le JSON mette à jour tous les liens.
 
 19. **En tant qu'éditeur**, je veux éditer les données directement en Git (pas de CMS cloud), afin que la solution soit 100% autonome et sans dépendance externe.
 
-20. **En tant qu'éditeur**, je veux une structure claire des YAML (schéma évident, clés prévisibles), afin que je puisse ajouter de nouveaux événements sans relire la doc.
+20. **En tant qu'éditeur**, je veux une structure claire des JSON (schéma évident, clés prévisibles), afin que je puisse ajouter de nouveaux événements sans relire la doc.
 
 ---
 
@@ -87,32 +87,32 @@ Vercel (auto-deploy)
 - **Raison :** Eleventy est très léger (une seule dépendance, pas de JavaScript frontend obligatoire), courbe d'apprentissage très plate, parfait pour un site statique simple. Zéro complexité ajoutée (pas de TypeScript obligatoire, pas de configuration réseau, pas de CMS cloud).
 - **Alternative écartée :** Astro (trop lourd pour ce cas), Pages CMS (dépendance externe).
 
-### 2. **YAML pour les données**
-- **Décision :** Utiliser YAML pour stocker événements et partenaires, plutôt que JSON.
-- **Raison :** YAML est plus lisible pour du contenu texte long, plus facile à éditer manuellement, traité nativement par Eleventy via `_data/`.
+### 2. **JSON pour les données**
+- **Décision :** Utiliser JSON pour stocker événements et partenaires, plutôt que YAML.
+- **Raison :** JSON est simple, versionné en Git, facile à éditer manuellement, et traité **nativement** par Eleventy via `_data/` sans dépendance supplémentaire (contrairement à YAML, qui nécessiterait une lib de parsing tierce).
 - **Structure :**
-  - `data/events.yaml` : tableau d'événements, chaque événement a `id`, `title`, `description`, `tagline`, `image`, `helloasso`, et champs optionnels `extra_intro`, `extra_text`, `extra_image_url`.
-  - `data/partners.yaml` : tableau de partenaires, chaque partenaire a `id`, `name`, `image`, `description`, `url`.
-  - `data/site.yaml` : config globale (email, réseaux sociaux, etc.).
+  - `src/_data/events.json` : tableau d'événements, chaque événement a `id`, `title`, `description`, `tagline`, `image`, `helloasso`, et champs optionnels `extra_intro`, `extra_text`, `extra_image_url`.
+  - `src/_data/partners.json` : tableau de partenaires, chaque partenaire a `id`, `name`, `image`, `description`, `url`.
+  - `src/_data/site.json` : config globale (`name`, `url`, `email`, réseaux sociaux, etc.).
 
 ### 3. **Deux templates de page**
-- **Décision :** Créer `src/pages/index.njk` (page d'accueil) et `src/pages/[slug].njk` (pages dynamiques des événements).
-- **Raison :** La page d'accueil affiche tous les événements et partenaires ; les pages dynamiques affichent les détails d'un événement. `[slug].njk` génère une page par entrée de `data/events.yaml`.
-- **Eleventy config :** `getStaticPaths()` pour Eleventy n'est pas nécessaire en Nunjucks pur ; la pagination et les collections gèrent cela automatiquement.
+- **Décision :** Créer `src/pages/index.njk` (page d'accueil) et `src/pages/event.njk` (pages dynamiques des événements, généré via la pagination Eleventy).
+- **Raison :** La page d'accueil affiche tous les événements et partenaires ; la page dynamique affiche les détails d'un événement. `event.njk` génère une page par entrée de `src/_data/events.json` via `pagination: data: events`.
+- **Eleventy config :** La pagination Eleventy (`pagination.data`, `pagination.size: 1`, `pagination.alias`) génère automatiquement une page par entrée du tableau `events`, sans `getStaticPaths()` (concept Astro, non applicable ici).
 
 ### 4. **Layout principal unique**
 - **Décision :** Un seul `src/_includes/layout.njk` pour toutes les pages (header, nav, footer, scripts).
 - **Raison :** Éviter la duplication, centraliser les changements de header/footer, maintenir la cohérence.
-- **Structure :** Layout définit `<head>`, `<body>`, inclut les scripts globaux (`index.js`, `events.js`), et expose un `{% block content %} {% endblock %}` pour le contenu spécifique.
+- **Structure :** Layout définit `<head>`, `<body>`, inclut les scripts globaux (`index.js`, `contact.js`, `announcement.js`), et expose `{{ content | safe }}` pour le contenu spécifique (convention Eleventy layout, pas de `{% block %}`).
 
 ### 5. **CSS/JS inchangés**
-- **Décision :** Copier `style.css`, `index.js`, `events.js` tels quels dans `src/assets/` → `_site/`.
+- **Décision :** Copier `style.css`, `index.js`, `contact.js`, `announcement.js` tels quels dans `src/assets/` → `_site/`.
 - **Raison :** Zéro changement visuel, design préservé 100%, aucune refonte.
 - **Implementation :** Eleventy copy files passthrough (`.eleventy.js` configure le copy).
 
 ### 6. **Images locales**
 - **Décision :** Images résident dans `src/assets/images/`, copiées dans le build.
-- **Raison :** Assets statiques gérées en local, versionned en Git, références simples en YAML (`carnaval.jpg`).
+- **Raison :** Assets statiques gérées en local, versionned en Git, références simples en JSON (`carnaval.jpg`).
 
 ### 7. **Vercel auto-deploy**
 - **Décision :** `package.json` inclut script `build`, Vercel le détecte et recrée automatiquement.
@@ -121,7 +121,7 @@ Vercel (auto-deploy)
 
 ### 8. **Nunjucks comme moteur de templating**
 - **Décision :** Utiliser Nunjucks (moteur par défaut d'Eleventy) plutôt que Liquid, EJS, ou Handlebars.
-- **Raison :** Nunjucks est puissant, syntaxe claire, loops et conditions simples, idéal pour itérer sur les YAML.
+- **Raison :** Nunjucks est puissant, syntaxe claire, loops et conditions simples, idéal pour itérer sur les données JSON.
 - **Syntaxe :**
   ```nunjucks
   {% for event in events %}
@@ -132,10 +132,10 @@ Vercel (auto-deploy)
 ### 9. **URLs des événements**
 - **Décision :** Utiliser le slug de l'événement pour générer l'URL (ex. `id: carnaval` → `/carnaval/`).
 - **Raison :** URLs propres et mémorisables, basées sur les données.
-- **Implémentation :** `[slug].njk` avec `permalink: /{{ slug }}/index.html` dans Eleventy.
+- **Implémentation :** `event.njk` avec `permalink: "/{{ event.id }}/index.html"` dans le frontmatter, résolu par pagination Eleventy.
 
 ### 10. **Pas de CMS cloud**
-- **Décision :** Éditeurs modifient les fichiers YAML directement en Git (ou via un éditeur local).
+- **Décision :** Éditeurs modifient les fichiers JSON directement en Git (ou via un éditeur local).
 - **Raison :** Zéro dépendance externe, autonomie complète, historique en Git.
 - **Alternative écartée :** Pages CMS, Decap CMS, ou autre service cloud (dépendances externes).
 
@@ -155,13 +155,13 @@ Vercel (auto-deploy)
 
 ### **What makes a good test**
 - Tester le comportement externe (pages générées, structure HTML) plutôt que les détails d'implémentation (variables Eleventy).
-- Valider que les pages générées contiennent le bon contenu depuis les données YAML.
+- Valider que les pages générées contiennent le bon contenu depuis les données JSON.
 - Vérifier que les URLs sont correctes et accessibles.
 
 ### **Modules à tester**
 1. **Configuration Eleventy (`.eleventy.js`)** : Vérifier que le build génère `_site/` avec la structure correcte.
-2. **Templates (`index.njk`, `[slug].njk`)** : Vérifier que les données YAML sont interpolées correctement en HTML.
-3. **Collections de données** : Vérifier que les fichiers YAML sont lus et disponibles dans les templates.
+2. **Templates (`index.njk`, `event.njk`)** : Vérifier que les données JSON sont interpolées correctement en HTML.
+3. **Données globales** : Vérifier que les fichiers JSON de `src/_data/` sont lus et disponibles dans les templates.
 4. **Assets (CSS, JS, images)** : Vérifier que les fichiers statiques sont copiés dans `_site/`.
 
 ### **Prior art / Inspiration**
@@ -187,7 +187,7 @@ Vercel (auto-deploy)
 
 - **Refonte de design** : Le CSS, layout, et JS restent 100% inchangés. Pas de modernisation visuelle.
 - **Intégration iframe HelloAsso** : Phase 2 seulement. Phase 1 = lien simple vers HelloAsso.
-- **Authentification / CMS user-friendly** : Non-techniciens n'éditent pas directement ; l'éditeur (vous) modifie le YAML en Git.
+- **Authentification / CMS user-friendly** : Non-techniciens n'éditent pas directement ; l'éditeur (vous) modifie le JSON en Git.
 - **Multilinguisme** : Site reste en français, pas de système de traduction.
 - **Performance tuning** : Pas d'optimisation d'images, compressage, CDN, etc. (Vercel gère déjà).
 - **Tests automatisés complètes** : Phase 1 = tests manuels. Snapshot tests en Phase 2 si pertinent.
@@ -198,81 +198,79 @@ Vercel (auto-deploy)
 
 ## Further Notes
 
-### **Schéma YAML — Structure exacte**
+### **Schéma JSON — Structure exacte**
 
-#### `data/events.yaml`
-```yaml
-- id: carnaval
-  title: Le Carnaval
-  image: carnaval.jpg
-  description: |
-    Chaque année, le Comité des Fêtes organise le carnaval du village.
-    Au programme : un grand défilé costumé au départ du Cinéma Studio 7,
-    suivi d'animations au Pigeonnier — spectacles, piñata pour les enfants
-    et goûter convivial.
-  tagline: Petits et grands, venez déguisés et rejoignez la parade !
-  helloasso: https://www.helloasso.com/associations/comite-des-fetes-d-auzielle
-
-- id: fete-saint-jean
-  title: Fête de la Saint-Jean
-  image: stjean.jpg
-  description: |
-    Le Comité des Fêtes d'Auzielle célèbre chaque année le solstice d'été
-    au Parc du Pigeonnier. Au programme : apéritif, repas de village,
-    défilé aux lampions, feu de la Saint-Jean et grand bal en plein air.
-  tagline: Animation musicale par la Banda Les AOC's.
-  helloasso: https://www.helloasso.com/associations/comite-des-fetes-d-auzielle
-  extra_intro: Le comité des fêtes d'Auzielle accueille convives et habitants pour célébrer le solstice d'été.
-  extra_text: |
-    Le solstice d'été est fêté depuis longtemps, originellement en lien avec le culte du soleil.
-    Les feux de solstices ou feux solsticiaux païens étaient au Moyen Âge allumés aux points de
-    croisement des chemins, dans les champs, pour empêcher que les sorcières et magiciennes n'y passent
-    pendant cette nuit ; on y brûlait parfois les herbes cueillies le jour de la Saint-Jean, contre
-    la foudre, le tonnerre, les orages et l'on pensait écarter par ces fumigations les démons et les tempêtes.
-  extra_image_url: https://upload.wikimedia.org/wikipedia/commons/9/91/The_Feast_of_Saint_John.jpg
-  extra_image_alt: Personnes fêtant la Saint-Jean autour d'un feu
-
-- id: fete-village
-  title: La Fête du Village
-  image: fete_vilage.jpg
-  description: |
-    Chaque année en septembre, Auzielle est en fête pendant tout un week-end.
-    Au programme : tournois, animations pour les enfants, concours de pétanque,
-    matinale des associations, apéritifs, repas de village et bal.
-  tagline: Un rendez-vous incontournable pour tous les Auziellois !
-  helloasso: https://www.helloasso.com/associations/comite-des-fetes-d-auzielle
+#### `src/_data/events.json`
+```json
+[
+  {
+    "id": "carnaval",
+    "title": "Le Carnaval",
+    "image": "carnaval.jpg",
+    "description": "Chaque année, le Comité des Fêtes organise le carnaval du village.\nAu programme : un grand défilé costumé au départ du Cinéma Studio 7,\nsuivi d'animations au Pigeonnier — spectacles, piñata pour les enfants\net goûter convivial.",
+    "tagline": "Petits et grands, venez déguisés et rejoignez la parade !",
+    "helloasso": "https://www.helloasso.com/associations/comite-des-fetes-d-auzielle"
+  },
+  {
+    "id": "fete-saint-jean",
+    "title": "Fête de la Saint-Jean",
+    "image": "stjean.jpg",
+    "description": "Le Comité des Fêtes d'Auzielle célèbre chaque année le solstice d'été\nau Parc du Pigeonnier. Au programme : apéritif, repas de village,\ndéfilé aux lampions, feu de la Saint-Jean et grand bal en plein air.",
+    "tagline": "Animation musicale par la Banda Les AOC's.",
+    "helloasso": "https://www.helloasso.com/associations/comite-des-fetes-d-auzielle",
+    "extra_intro": "Le comité des fêtes d'Auzielle accueille convives et habitants pour célébrer le solstice d'été.",
+    "extra_text": "Le solstice d'été est fêté depuis longtemps, originellement en lien avec le culte du soleil.\nLes feux de solstices ou feux solsticiaux païens étaient au Moyen Âge allumés aux points de\ncroisement des chemins, dans les champs, pour empêcher que les sorcières et magiciennes n'y passent\npendant cette nuit ; on y brûlait parfois les herbes cueillies le jour de la Saint-Jean, contre\nla foudre, le tonnerre, les orages et l'on pensait écarter par ces fumigations les démons et les tempêtes.",
+    "extra_image_url": "https://upload.wikimedia.org/wikipedia/commons/9/91/The_Feast_of_Saint_John.jpg",
+    "extra_image_alt": "Personnes fêtant la Saint-Jean autour d'un feu"
+  },
+  {
+    "id": "fete-village",
+    "title": "La Fête du Village",
+    "image": "fete_vilage.jpg",
+    "description": "Chaque année en septembre, Auzielle est en fête pendant tout un week-end.\nAu programme : tournois, animations pour les enfants, concours de pétanque,\nmatinale des associations, apéritifs, repas de village et bal.",
+    "tagline": "Un rendez-vous incontournable pour tous les Auziellois !",
+    "helloasso": "https://www.helloasso.com/associations/comite-des-fetes-d-auzielle"
+  }
+]
 ```
 
-#### `data/partners.yaml`
-```yaml
-- id: mairie
-  name: La Mairie d'Auzielle
-  image: mairie.webp
-  description: Auzielle offre un large éventail d'activités culturelles et sportives...
-  url: https://www.auzielle.fr
-
-- id: sicoval
-  name: Sicoval
-  image: sicoval.webp
-  description: Le Sicoval est un territoire attractif pour les porteurs de projets...
-  url: https://www.sicoval.fr
-
-# ... (4 autres partenaires)
+#### `src/_data/partners.json`
+```json
+[
+  {
+    "id": "mairie",
+    "name": "La Mairie d'Auzielle",
+    "image": "mairie.webp",
+    "description": "Auzielle offre un large éventail d'activités culturelles et sportives...",
+    "url": "https://www.auzielle.fr"
+  },
+  {
+    "id": "sicoval",
+    "name": "Sicoval",
+    "image": "sicoval.webp",
+    "description": "Le Sicoval est un territoire attractif pour les porteurs de projets...",
+    "url": "https://www.sicoval.fr"
+  }
+]
 ```
+*(4 autres partenaires suivent le même schéma : `mjc`, `vival`, `lisa`, `aoc`)*
 
-#### `data/site.yaml`
-```yaml
-name: Comité des Fêtes d'Auzielle
-email: comitedesfetesdauzielle@gmail.com
-facebook: https://www.facebook.com/CFA31650?locale=fr_FR
-instagram: https://www.instagram.com/comitedauzielle/
-tiktok: https://www.tiktok.com/@comitedauzielle
-helloasso: https://www.helloasso.com/associations/comite-des-fetes-d-auzielle
+#### `src/_data/site.json`
+```json
+{
+  "name": "Comité des Fêtes d'Auzielle",
+  "url": "https://www.comitedesfetesdauzielle.fr",
+  "email": "comitedesfetesdauzielle@gmail.com",
+  "facebook": "https://www.facebook.com/CFA31650?locale=fr_FR",
+  "instagram": "https://www.instagram.com/comitedauzielle/",
+  "tiktok": "https://www.tiktok.com/@comitedauzielle",
+  "helloasso": "https://www.helloasso.com/associations/comite-des-fetes-d-auzielle"
+}
 ```
 
 ### **Seams de test**
 
-Le plus haut niveau de test (et le plus utile) est de vérifier que le **build Eleventy génère les fichiers HTML corrects** avec le contenu issu des YAML.
+Le plus haut niveau de test (et le plus utile) est de vérifier que le **build Eleventy génère les fichiers HTML corrects** avec le contenu issu des données JSON.
 
 **Seam principal :**
 1. `npm run build`
@@ -281,17 +279,17 @@ Le plus haut niveau de test (et le plus utile) est de vérifier que le **build E
 4. Vérifier que `_site/fete-saint-jean/index.html` affiche le texte historique (contenu extra).
 
 Ce seam valide :
-- La lecture correcte des YAML
+- La lecture correcte des données JSON
 - L'interpolation des données dans les templates
 - La génération correcte des URLs
 - La structure HTML
 
 ### **Workflow d'implémentation**
 
-1. **Init Eleventy** : `npm init -y`, `npm install eleventy`, configurer `.eleventy.js`
-2. **Créer structure** : Répertoires `src/pages/`, `src/_includes/`, `src/assets/`
-3. **Extraire données** : Transformer le contenu HTML existant en YAML (`data/events.yaml`, `data/partners.yaml`)
-4. **Créer templates** : `layout.njk`, `index.njk`, `[slug].njk`
+1. **Init Eleventy** : `npm init -y`, `npm install @11ty/eleventy`, configurer `.eleventy.js`
+2. **Créer structure** : Répertoires `src/pages/`, `src/_includes/`, `src/_data/`, `src/assets/`
+3. **Extraire données** : Transformer le contenu HTML existant en JSON (`src/_data/events.json`, `src/_data/partners.json`)
+4. **Créer templates** : `layout.njk`, `index.njk`, `event.njk`
 5. **Configurer assets** : Copy CSS, JS, images via `.eleventy.js`
 6. **Tester localement** : `npm run dev`, vérifier visuellement
 7. **Valider build** : `npm run build`, vérifier `_site/`
@@ -302,11 +300,11 @@ Ce seam valide :
 
 ## Checklist de validation MVP
 
-- [ ] `npm run build` génère sans erreurs
-- [ ] `_site/index.html` contient tous les événements et partenaires
-- [ ] `_site/carnaval/`, `_site/fete-saint-jean/`, `_site/fete-village/` existent
-- [ ] Les images s'affichent (CSS et images copiés correctement)
-- [ ] `npm run dev` fonctionne et live-reload marche
-- [ ] Vercel rebuilde automatiquement après `git push`
+- [x] `npm run build` génère sans erreurs
+- [x] `_site/index.html` contient tous les événements et partenaires
+- [x] `_site/carnaval/`, `_site/fete-saint-jean/`, `_site/fete-village/` existent
+- [x] Les images s'affichent (CSS et images copiés correctement)
+- [x] `npm run dev` fonctionne et live-reload marche
+- [x] Vercel rebuilde automatiquement après `git push`
 - [ ] Site en production est visuellement identique à l'ancien
-- [ ] Éditer `data/events.yaml` et relancer le build change le site
+- [x] Éditer `src/_data/events.json` et relancer le build change le site

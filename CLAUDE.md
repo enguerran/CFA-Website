@@ -10,9 +10,9 @@ This file tells Claude (and agents) how to work effectively on this project.
 
 **Current status:**
 - HTML static site (vanilla HTML/CSS/JS)
-- Being migrated to **Eleventy + YAML** for easier content management
+- Migrated to **Eleventy + JSON** for easier content management
 
-**Key decision:** Content (events, partners) will live in YAML files, not hard-coded HTML. Templates (Nunjucks) generate pages at build time.
+**Key decision:** Content (events, partners) lives in JSON files, not hard-coded HTML. Templates (Nunjucks) generate pages at build time.
 
 See `CONTEXT.md` for the full glossary and architectural decisions.
 
@@ -20,7 +20,7 @@ See `CONTEXT.md` for the full glossary and architectural decisions.
 
 ## Before you start a task
 
-1. **Read `CONTEXT.md`** to understand the project's vocabulary (Event, Partner, Eleventy, YAML schema, etc.)
+1. **Read `CONTEXT.md`** to understand the project's vocabulary (Event, Partner, Eleventy, JSON schema, etc.)
 2. **Read the relevant spec** (e.g., `SPEC.md` for the Eleventy migration)
 3. **Check `docs/adr/`** for any hard decisions about why things are the way they are
 
@@ -56,13 +56,13 @@ For this project, smaller tasks can skip straight to `/implement`. Use `/to-tick
 
 ### File structure
 - **Source:** `src/pages/`, `src/_includes/`, `src/assets/`
-- **Data:** `data/events.yaml`, `data/partners.yaml`, `data/site.yaml`
+- **Data:** `src/_data/events.json`, `src/_data/partners.json`, `src/_data/site.json`
 - **Config:** `.eleventy.js`, `package.json`
 - **Build output:** `_site/` (generated, not in Git)
 
 ### Code
 - **Nunjucks templates** for rendering (no JSX, no complex logic)
-- **YAML for data** (simple, easy to edit)
+- **JSON for data** (simple, easy to edit, native Eleventy support)
 - **CSS unchanged** (vanilla, no frameworks)
 - **JS unchanged** (vanilla, no build processing)
 
@@ -87,7 +87,7 @@ Quick reference — see `CONTEXT.md` for full definitions:
 - **Site** (`name`, `email`, social media, etc.)
 - **Eleventy** — Static Site Generator (this is what generates the pages)
 - **Nunjucks** — Templating language (used for `.njk` files)
-- **YAML** — Data format (how we store events and partners)
+- **JSON** — Data format (how we store events and partners)
 
 ---
 
