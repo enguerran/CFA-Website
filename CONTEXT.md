@@ -47,6 +47,9 @@
 3. ✅ **Auto-deploy Vercel** : `git push main` → Vercel détecte changement → rebuild auto
 4. ✅ **Nunjucks pour les templates** (moteur par défaut Eleventy, facile)
 5. ✅ **Garder le CSS/JS actuels** (uniquement refactoriser le HTML)
+6. ✅ **Passthrough copy explicite dans `.eleventy.js`, pas de convention `templateFormats`** : les templates référencent des chemins racine (`/style.css`, `/index.js`, `/images/...`) alors que les sources vivent dans `src/assets/`. Ajouter des extensions à `templateFormats` ne fait que copier en préservant l'arborescence d'entrée, ça ne peut pas aplatir `src/assets/style.css` vers `/style.css`. Le passthrough explicite reste donc nécessaire pour ce remapping.
+7. ❌ ~~Migrer vers `pnpm`~~ — une seule dépendance réelle (`@11ty/eleventy`), aucun bénéfice de dédoublonnage à cette échelle ; migrer ajouterait de la friction (pnpm à installer, champ `packageManager`/corepack pour Vercel) sans gain mesurable. Décision réversible si le projet grossit significativement.
+8. ✅ **`npm ci` comme Install Command Vercel** (réglage dashboard, hors dépôt) : garantit un install reproductible depuis `package-lock.json` versionné plutôt qu'une résolution de plage à chaque build. `pnpm` n'aurait rien changé à ce risque (même registre, mêmes paquets) ; Dependabot est actif sur le dépôt avec 0 alerte ouverte.
 
 ---
 
