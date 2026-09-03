@@ -24,12 +24,4 @@ layout: layout.njk
             </div>
         </div>
     </div>
-
-    {% if extra_intro %}
-    <div class="row">
-        <p>{{ extra_intro }}</p>
-        {% if extra_text %}<p><em>{{ extra_text }}</em></p>{% endif %}
-        {% if extra_image_url %}<img src="{{ extra_image_url }}" alt="{{ extra_image_alt }}" />{% endif %}
-    </div>
-    {% endif %}
 </section>

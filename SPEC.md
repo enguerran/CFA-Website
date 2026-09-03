@@ -140,10 +140,10 @@ Vercel (auto-deploy)
 - **Raison :** Zéro dépendance externe, autonomie complète, historique en Git.
 - **Alternative écartée :** Pages CMS, Decap CMS, ou autre service cloud (dépendances externes).
 
-### 11. **Élément optionnel pour la Saint-Jean**
-- **Décision :** Ajouter champs optionnels `extra_intro`, `extra_text`, `extra_image_url`, `extra_image_alt` pour que certains événements puissent avoir du contenu supplémentaire.
-- **Raison :** La Saint-Jean a du texte historique et une image Wikimedia que les autres événements n'ont pas ; les champs optionnels permettent cette flexibilité sans surcharger les événements simples.
-- **Implémentation :** Template Nunjucks : `{% if event.extra_intro %} ... {% endif %}`.
+### 11. **Contenu supplémentaire pour la Saint-Jean (mise à jour)**
+- **Décision :** Pas de champs frontmatter dédiés (`extra_intro`/`extra_text`/`extra_image_url` retirés). Le texte historique et l'image Wikimedia de la Saint-Jean sont simplement la suite du corps Markdown du fichier — l'image via la syntaxe Markdown native `![alt](url)`.
+- **Raison :** Simplifie le template (plus de condition imbriquée à trois niveaux) et la donnée (un seul événement sur trois avait besoin de ce contenu ; autant l'écrire comme de la prose normale plutôt que le découper en champs dédiés). Accepté avec le changement de mise en page que ça implique : ce contenu apparaît maintenant dans la même carte que la description, plus dans un bloc séparé en dessous.
+- **Implémentation :** Aucune — `{{ content | safe }}` seul dans `event.njk` restitue tout le corps Markdown du fichier.
 
 ### 12. **Répertoire de build `_site/`**
 - **Décision :** Eleventy génère le build dans `_site/`, standard Eleventy.
@@ -223,22 +223,19 @@ title: Fête de la Saint-Jean
 image: stjean.jpg
 tagline: Animation musicale par la Banda Les AOC's.
 helloasso: https://www.helloasso.com/associations/comite-des-fetes-d-auzielle
-extra_intro: Le comité des fêtes d'Auzielle accueille convives et habitants pour célébrer le solstice d'été.
-extra_text: >-
-  Le solstice d'été est fêté depuis longtemps, originellement en lien avec le
-  culte du soleil. Les feux de solstices ou feux solsticiaux païens étaient
-  au Moyen Âge allumés aux points de croisement des chemins, dans les champs,
-  pour empêcher que les sorcières et magiciennes n'y passent pendant cette
-  nuit ; on y brûlait parfois les herbes cueillies le jour de la Saint-Jean,
-  contre la foudre, le tonnerre, les orages et l'on pensait écarter par ces
-  fumigations les démons et les tempêtes.
-extra_image_url: https://upload.wikimedia.org/wikipedia/commons/9/91/The_Feast_of_Saint_John.jpg
-extra_image_alt: Personnes fêtant la Saint-Jean autour d'un feu
 order: 2
 ---
 
 Le Comité des Fêtes d'Auzielle célèbre chaque année le solstice d'été au Parc du Pigeonnier. Au programme : apéritif, repas de village, défilé aux lampions, feu de la Saint-Jean et grand bal en plein air.
+
+Le comité des fêtes d'Auzielle accueille convives et habitants pour célébrer le solstice d'été.
+
+*Le solstice d'été est fêté depuis longtemps, originellement en lien avec le culte du soleil. Les feux de solstices ou feux solsticiaux païens étaient au Moyen Âge allumés aux points de croisement des chemins, dans les champs, pour empêcher que les sorcières et magiciennes n'y passent pendant cette nuit ; on y brûlait parfois les herbes cueillies le jour de la Saint-Jean, contre la foudre, le tonnerre, les orages et l'on pensait écarter par ces fumigations les démons et les tempêtes.*
+
+![Personnes fêtant la Saint-Jean autour d'un feu](https://upload.wikimedia.org/wikipedia/commons/9/91/The_Feast_of_Saint_John.jpg)
 ```
+
+Contenu supplémentaire (texte historique, image) directement dans le corps Markdown — pas de champs frontmatter dédiés. Voir décision #11 ci-dessus.
 
 #### `src/events/fete-village.md`
 ```markdown
