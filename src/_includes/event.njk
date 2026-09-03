@@ -1,10 +1,11 @@
 ---
 layout: layout.njk
 ---
+{%- from "icons.njk" import icon -%}
 
 <section id="subpages">
     <div class="head_subpage">
-        <i class="fa-solid fa-circle"></i>
+        <i class="fa-solid fa-circle">{{ icon("circle") }}</i>
         <h1>{{ title }}</h1>
     </div>
 
