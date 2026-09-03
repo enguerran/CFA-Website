@@ -1,0 +1,27 @@
+---
+layout: layout.njk
+---
+
+<section id="subpages">
+    <div class="head_subpage">
+        <i class="fa-solid fa-circle"></i>
+        <h1>{{ title }}</h1>
+    </div>
+
+    <div id="cfa-hero-announce" data-helloasso-url="{{ site.helloasso }}"></div>
+
+    <div class="row top">
+        <div class="card">
+            <div class="column">
+                {{ content | safe }}
+                <p>{{ tagline }}</p>
+                <p><em>Les informations pour la prochaine édition seront disponibles prochainement.</em></p>
+                <div class="btn">
+                    <a class="contactBtn" href="{{ helloasso or site.helloasso }}" target="_blank" rel="noopener noreferrer">HelloAsso</a>
+                    <a class="contactBtn" href="{{ site.facebook }}" target="_blank" rel="noopener noreferrer">Facebook</a>
+                    <a class="contactBtn" href="mailto:{{ site.email }}">Nous contacter</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
