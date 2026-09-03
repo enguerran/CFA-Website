@@ -8,8 +8,7 @@
   },
   "scripts": {
     "dev": "eleventy --serve",
-    "build": "eleventy",
-    "preview": "eleventy --serve --input=_site"
+    "build": "eleventy"
   },
   "repository": {
     "type": "git",

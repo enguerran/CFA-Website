@@ -1,5 +1,6 @@
 ---
 title: Fête de la Saint-Jean
+card_title: La Saint-Jean
 image: stjean.jpg
 tagline: Animation musicale par la Banda Les AOC's.
 helloasso: https://www.helloasso.com/associations/comite-des-fetes-d-auzielle

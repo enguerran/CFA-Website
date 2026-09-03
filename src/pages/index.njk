@@ -59,7 +59,7 @@ permalink: /index.html
                     <i class="fa-solid fa-expand"></i>
                 </div>
                 <div class="column">
-                    <h2>{{ eventPage.data.title }}</h2>
+                    <h2>{{ eventPage.data.card_title or eventPage.data.title }}</h2>
                     <div class="btn">
                         <a class="contactBtn" href="{{ eventPage.url }}">Découvrir</a>
                     </div>

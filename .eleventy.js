@@ -17,8 +17,14 @@ module.exports = function (eleventyConfig) {
 
   // Collection des événements (src/events/*.md), triée selon le champ
   // "order" de chaque fichier plutôt que la date par défaut d'Eleventy.
+  // Un fichier sans "order" (ou non numérique) est placé en fin de liste
+  // plutôt que de casser le tri (NaN).
   eleventyConfig.addCollection("events", (collectionApi) => {
-    return collectionApi.getFilteredByTag("events").sort((a, b) => a.data.order - b.data.order);
+    return collectionApi.getFilteredByTag("events").sort((a, b) => {
+      const orderA = typeof a.data.order === "number" ? a.data.order : Infinity;
+      const orderB = typeof b.data.order === "number" ? b.data.order : Infinity;
+      return orderA - orderB;
+    });
   });
 
   return {

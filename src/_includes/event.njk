@@ -17,7 +17,7 @@ layout: layout.njk
                 <p>{{ tagline }}</p>
                 <p><em>Les informations pour la prochaine édition seront disponibles prochainement.</em></p>
                 <div class="btn">
-                    <a class="contactBtn" href="{{ helloasso }}" target="_blank" rel="noopener noreferrer">HelloAsso</a>
+                    <a class="contactBtn" href="{{ helloasso or site.helloasso }}" target="_blank" rel="noopener noreferrer">HelloAsso</a>
                     <a class="contactBtn" href="{{ site.facebook }}" target="_blank" rel="noopener noreferrer">Facebook</a>
                     <a class="contactBtn" href="mailto:{{ site.email }}">Nous contacter</a>
                 </div>
