@@ -1,7 +1,7 @@
 # Spécification — Eleventy + JSON Migration
 
-**Status:** Ready for Implementation  
-**Target:** Transformer le site HTML statique en SSG Eleventy avec données JSON
+**Status:** MVP réalisé. Architecture des événements mise à jour depuis — voir `docs/adr/0001-events-as-markdown-files.md` et `CONTEXT.md` pour l'état actuel (événements en fichiers Markdown, partenaires seuls encore en JSON). Ce document garde son intérêt historique pour le reste de la migration (Eleventy, Nunjucks, Vercel, CSS/JS inchangés).  
+**Target:** Transformer le site HTML statique en SSG Eleventy avec données structurées
 
 ---
 
@@ -17,8 +17,8 @@ Le site du Comité des Fêtes d'Auzielle est actuellement un ensemble de fichier
 
 Migrer le site vers **Eleventy (11ty)** avec données structurées en **JSON** :
 
-1. **Données centralisées** : événements et partenaires définis en JSON (`src/_data/events.json`, `src/_data/partners.json`)
-2. **Templates dynamiques** : templates Nunjucks (`src/pages/event.njk`, `src/pages/index.njk`) qui itèrent sur les données
+1. **Données centralisées** : événements en Markdown (`src/events/*.md`), partenaires en JSON (`src/_data/partners.json`)
+2. **Templates dynamiques** : `src/pages/index.njk` itère sur les données ; `src/_includes/event.njk` sert de layout à chaque fichier `src/events/*.md`
 3. **Génération statique** : `npm run build` génère les pages HTML dans `_site/`
 4. **Design inchangé** : CSS/JS réutilisés tels quels, zéro changement visuel
 5. **Auto-deploy Vercel** : `git push` → Vercel rebuild → live
@@ -38,9 +38,9 @@ Vercel (auto-deploy)
 
 ## User Stories
 
-1. **En tant qu'éditeur**, je veux modifier le titre d'un événement dans `src/_data/events.json`, afin que le changement soit reflété sur le site après `npm run build`.
+1. **En tant qu'éditeur**, je veux modifier le titre d'un événement dans son fichier `src/events/<slug>.md`, afin que le changement soit reflété sur le site après `npm run build`.
 
-2. **En tant qu'éditeur**, je veux ajouter un nouvel événement en ajoutant une entrée dans `src/_data/events.json` et une image dans `images/`, afin que la nouvelle page soit générée automatiquement (ex. `/new-event/`).
+2. **En tant qu'éditeur**, je veux ajouter un nouvel événement en créant `src/events/<slug>.md` et une image dans `images/`, afin que la nouvelle page soit générée automatiquement (ex. `/new-event/`).
 
 3. **En tant qu'éditeur**, je veux modifier la description d'un événement sur plusieurs lignes en JSON, afin que le formatage soit préservé en HTML.
 
@@ -87,18 +87,19 @@ Vercel (auto-deploy)
 - **Raison :** Eleventy est très léger (une seule dépendance, pas de JavaScript frontend obligatoire), courbe d'apprentissage très plate, parfait pour un site statique simple. Zéro complexité ajoutée (pas de TypeScript obligatoire, pas de configuration réseau, pas de CMS cloud).
 - **Alternative écartée :** Astro (trop lourd pour ce cas), Pages CMS (dépendance externe).
 
-### 2. **JSON pour les données**
-- **Décision :** Utiliser JSON pour stocker événements et partenaires, plutôt que YAML.
-- **Raison :** JSON est simple, versionné en Git, facile à éditer manuellement, et traité **nativement** par Eleventy via `_data/` sans dépendance supplémentaire (contrairement à YAML, qui nécessiterait une lib de parsing tierce).
+### 2. **Markdown pour les événements, JSON pour le reste**
+- **Décision (mise à jour, voir ADR-0001) :** Un fichier Markdown par événement dans `src/events/`, plutôt qu'un tableau JSON unique. Partenaires et config site restent en JSON.
+- **Raison :** La description d'un événement est de la prose éditable ; Markdown s'y prête mieux qu'une chaîne JSON avec `\n` échappés. Un fichier par événement colle aussi au modèle "1 fichier = 1 page" d'Eleventy.
 - **Structure :**
-  - `src/_data/events.json` : tableau d'événements, chaque événement a `id`, `title`, `description`, `tagline`, `image`, `helloasso`, et champs optionnels `extra_intro`, `extra_text`, `extra_image_url`.
+  - `src/events/<slug>.md` : un événement par fichier — frontmatter (`title`, `image`, `tagline`, `helloasso`, `order`, `extra_*` optionnels) + corps Markdown pour la description.
+  - `src/events/events.json` : données de répertoire partagées (`tags`, `layout`, `permalink`).
   - `src/_data/partners.json` : tableau de partenaires, chaque partenaire a `id`, `name`, `image`, `description`, `url`.
   - `src/_data/site.json` : config globale (`name`, `url`, `email`, réseaux sociaux, etc.).
 
-### 3. **Deux templates de page**
-- **Décision :** Créer `src/pages/index.njk` (page d'accueil) et `src/pages/event.njk` (pages dynamiques des événements, généré via la pagination Eleventy).
-- **Raison :** La page d'accueil affiche tous les événements et partenaires ; la page dynamique affiche les détails d'un événement. `event.njk` génère une page par entrée de `src/_data/events.json` via `pagination: data: events`.
-- **Eleventy config :** La pagination Eleventy (`pagination.data`, `pagination.size: 1`, `pagination.alias`) génère automatiquement une page par entrée du tableau `events`, sans `getStaticPaths()` (concept Astro, non applicable ici).
+### 3. **Layout d'événement + collection Eleventy**
+- **Décision :** Créer `src/pages/index.njk` (page d'accueil) et `src/_includes/event.njk` (layout des pages événement, appliqué à chaque fichier `src/events/*.md`).
+- **Raison :** La page d'accueil affiche tous les événements et partenaires ; le layout événement affiche les détails d'un événement. Chaque fichier Markdown déclare `layout: event.njk` (via les données de répertoire) et Eleventy applique ce layout au rendu du fichier.
+- **Eleventy config :** `eleventyConfig.addCollection("events", ...)` construit `collections.events` à partir du tag `events`, trié sur le champ `order` de chaque fichier. L'URL de chaque page vient de `permalink: "/{{ page.fileSlug }}/index.html"` (slug dérivé du nom de fichier) — `index.njk` lit `eventPage.url` directement, aucune duplication du schéma d'URL.
 
 ### 4. **Layout principal unique**
 - **Décision :** Un seul `src/_includes/layout.njk` pour toutes les pages (header, nav, footer, scripts).
@@ -198,40 +199,67 @@ Vercel (auto-deploy)
 
 ## Further Notes
 
-### **Schéma JSON — Structure exacte**
+### **Schéma des événements — Structure exacte (voir ADR-0001)**
 
-#### `src/_data/events.json`
+Un fichier Markdown par événement dans `src/events/`, nommé `<slug>.md` (le slug devient l'URL, ex. `carnaval.md` → `/carnaval/`). Frontmatter pour les champs structurés, corps Markdown pour la description.
+
+#### `src/events/carnaval.md`
+```markdown
+---
+title: Le Carnaval
+image: carnaval.jpg
+tagline: Petits et grands, venez déguisés et rejoignez la parade !
+helloasso: https://www.helloasso.com/associations/comite-des-fetes-d-auzielle
+order: 1
+---
+
+Chaque année, le Comité des Fêtes organise le carnaval du village. Au programme : un grand défilé costumé au départ du Cinéma Studio 7, suivi d'animations au Pigeonnier — spectacles, piñata pour les enfants et goûter convivial.
+```
+
+#### `src/events/fete-saint-jean.md`
+```markdown
+---
+title: Fête de la Saint-Jean
+image: stjean.jpg
+tagline: Animation musicale par la Banda Les AOC's.
+helloasso: https://www.helloasso.com/associations/comite-des-fetes-d-auzielle
+extra_intro: Le comité des fêtes d'Auzielle accueille convives et habitants pour célébrer le solstice d'été.
+extra_text: >-
+  Le solstice d'été est fêté depuis longtemps, originellement en lien avec le
+  culte du soleil. Les feux de solstices ou feux solsticiaux païens étaient
+  au Moyen Âge allumés aux points de croisement des chemins, dans les champs,
+  pour empêcher que les sorcières et magiciennes n'y passent pendant cette
+  nuit ; on y brûlait parfois les herbes cueillies le jour de la Saint-Jean,
+  contre la foudre, le tonnerre, les orages et l'on pensait écarter par ces
+  fumigations les démons et les tempêtes.
+extra_image_url: https://upload.wikimedia.org/wikipedia/commons/9/91/The_Feast_of_Saint_John.jpg
+extra_image_alt: Personnes fêtant la Saint-Jean autour d'un feu
+order: 2
+---
+
+Le Comité des Fêtes d'Auzielle célèbre chaque année le solstice d'été au Parc du Pigeonnier. Au programme : apéritif, repas de village, défilé aux lampions, feu de la Saint-Jean et grand bal en plein air.
+```
+
+#### `src/events/fete-village.md`
+```markdown
+---
+title: La Fête du Village
+image: fete_vilage.jpg
+tagline: Un rendez-vous incontournable pour tous les Auziellois !
+helloasso: https://www.helloasso.com/associations/comite-des-fetes-d-auzielle
+order: 3
+---
+
+Chaque année en septembre, Auzielle est en fête pendant tout un week-end. Au programme : tournois, animations pour les enfants, concours de pétanque, matinale des associations, apéritifs, repas de village et bal.
+```
+
+#### `src/events/events.json` (données partagées du répertoire)
 ```json
-[
-  {
-    "id": "carnaval",
-    "title": "Le Carnaval",
-    "image": "carnaval.jpg",
-    "description": "Chaque année, le Comité des Fêtes organise le carnaval du village.\nAu programme : un grand défilé costumé au départ du Cinéma Studio 7,\nsuivi d'animations au Pigeonnier — spectacles, piñata pour les enfants\net goûter convivial.",
-    "tagline": "Petits et grands, venez déguisés et rejoignez la parade !",
-    "helloasso": "https://www.helloasso.com/associations/comite-des-fetes-d-auzielle"
-  },
-  {
-    "id": "fete-saint-jean",
-    "title": "Fête de la Saint-Jean",
-    "image": "stjean.jpg",
-    "description": "Le Comité des Fêtes d'Auzielle célèbre chaque année le solstice d'été\nau Parc du Pigeonnier. Au programme : apéritif, repas de village,\ndéfilé aux lampions, feu de la Saint-Jean et grand bal en plein air.",
-    "tagline": "Animation musicale par la Banda Les AOC's.",
-    "helloasso": "https://www.helloasso.com/associations/comite-des-fetes-d-auzielle",
-    "extra_intro": "Le comité des fêtes d'Auzielle accueille convives et habitants pour célébrer le solstice d'été.",
-    "extra_text": "Le solstice d'été est fêté depuis longtemps, originellement en lien avec le culte du soleil.\nLes feux de solstices ou feux solsticiaux païens étaient au Moyen Âge allumés aux points de\ncroisement des chemins, dans les champs, pour empêcher que les sorcières et magiciennes n'y passent\npendant cette nuit ; on y brûlait parfois les herbes cueillies le jour de la Saint-Jean, contre\nla foudre, le tonnerre, les orages et l'on pensait écarter par ces fumigations les démons et les tempêtes.",
-    "extra_image_url": "https://upload.wikimedia.org/wikipedia/commons/9/91/The_Feast_of_Saint_John.jpg",
-    "extra_image_alt": "Personnes fêtant la Saint-Jean autour d'un feu"
-  },
-  {
-    "id": "fete-village",
-    "title": "La Fête du Village",
-    "image": "fete_vilage.jpg",
-    "description": "Chaque année en septembre, Auzielle est en fête pendant tout un week-end.\nAu programme : tournois, animations pour les enfants, concours de pétanque,\nmatinale des associations, apéritifs, repas de village et bal.",
-    "tagline": "Un rendez-vous incontournable pour tous les Auziellois !",
-    "helloasso": "https://www.helloasso.com/associations/comite-des-fetes-d-auzielle"
-  }
-]
+{
+  "tags": "events",
+  "layout": "event.njk",
+  "permalink": "/{{ page.fileSlug }}/index.html"
+}
 ```
 
 #### `src/_data/partners.json`
@@ -288,7 +316,7 @@ Ce seam valide :
 
 1. **Init Eleventy** : `npm init -y`, `npm install @11ty/eleventy`, configurer `.eleventy.js`
 2. **Créer structure** : Répertoires `src/pages/`, `src/_includes/`, `src/_data/`, `src/assets/`
-3. **Extraire données** : Transformer le contenu HTML existant en JSON (`src/_data/events.json`, `src/_data/partners.json`)
+3. **Extraire données** : Transformer le contenu HTML existant en Markdown (`src/events/*.md`) et JSON (`src/_data/partners.json`)
 4. **Créer templates** : `layout.njk`, `index.njk`, `event.njk`
 5. **Configurer assets** : Copy CSS, JS, images via `.eleventy.js`
 6. **Tester localement** : `npm run dev`, vérifier visuellement
@@ -307,4 +335,4 @@ Ce seam valide :
 - [x] `npm run dev` fonctionne et live-reload marche
 - [x] Vercel rebuilde automatiquement après `git push`
 - [ ] Site en production est visuellement identique à l'ancien
-- [x] Éditer `src/_data/events.json` et relancer le build change le site
+- [x] Éditer un fichier `src/events/<slug>.md` et relancer le build change le site

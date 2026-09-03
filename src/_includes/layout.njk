@@ -2,15 +2,17 @@
 <html lang="fr">
 
 <head>
+    {% set pageTitle = title + " — " + site.name if title else site.name %}
+    {% set pageDescription = description or tagline or "Le comité des fêtes...C'est pour faire la fête !!!" %}
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{{ title or site.name }}</title>
+    <title>{{ pageTitle }}</title>
 
     <meta name="keywords" content="comite, fete, auzielle, cfa, village, association" />
-    <meta name="description" content="{{ description or "Le comité des fêtes...C'est pour faire la fête !!!" }}" />
+    <meta name="description" content="{{ pageDescription }}" />
     <meta name="robots" content="index" />
-    <meta property="og:title" content="{{ title or site.name }}" />
-    <meta property="og:description" content="{{ description or "Le comité des fêtes...C'est pour faire la fête !!!" }}" />
+    <meta property="og:title" content="{{ pageTitle }}" />
+    <meta property="og:description" content="{{ pageDescription }}" />
     <meta property="og:image" content="/images/icon.ico" />
     <meta property="og:url" content="{{ site.url }}{{ page.url }}" />
     <meta property="og:type" content="website" />

@@ -1,8 +1,8 @@
 # Comité des Fêtes d'Auzielle — Contexte de conception
 
-**Objectif :** Transformer le site HTML statique en source de données JSON + build automatisé, pour simplifier la mise à jour du contenu (photo, texte, titre, lien, HelloAsso).
+**Objectif :** Transformer le site HTML statique en contenu structuré (Markdown pour les événements, JSON pour les partenaires) + build automatisé, pour simplifier la mise à jour du contenu (photo, texte, titre, lien, HelloAsso).
 
-**Décision architecturale :** Eleventy (11ty) + JSON + Vercel auto-deploy.
+**Décision architecturale :** Eleventy (11ty) + Markdown/JSON + Vercel auto-deploy.
 
 ---
 
@@ -20,7 +20,8 @@
 | Aspect | Choix | Raison |
 |--------|-------|--------|
 | **SSG** | Eleventy 3.x | Léger, courbe plate, pas de TypeScript obligatoire |
-| **Source de données** | JSON (`src/_data/events.json`, `src/_data/partners.json`) | Simple, versionnée en Git, facile à éditer, supportée nativement par Eleventy |
+| **Source de données — événements** | Un fichier Markdown par événement (`src/events/*.md`), frontmatter + prose | Édition de la description en Markdown plutôt qu'en chaîne JSON (voir ADR-0001) |
+| **Source de données — partenaires** | JSON (`src/_data/partners.json`) | Champs courts, pas de prose longue, un seul fichier suffit |
 | **Design/CSS** | Inchangé (réutilisé du vanilla HTML/CSS) | Garder la continuité visuelle |
 | **Build** | `npm run dev` (watch) + `npm run build` (prod) | Standard Eleventy |
 | **Hosting** | Vercel (auto-deploy sur push) | Zéro config, détecte Eleventy automatiquement |
@@ -30,17 +31,18 @@
 
 ## 📋 Terminologie
 
-- **Event** : Événement (carnaval, saint-jean, village). ID = slug URL.
-- **Partner** : Partenaire (mairie, sicoval, mjc, etc.).
-- **Data file** : JSON dans `src/_data/` qui décrit les événements/partenaires.
+- **Event** : Événement (carnaval, saint-jean, village), un fichier `src/events/<slug>.md`. Le slug (= URL) vient automatiquement du nom de fichier.
+- **Partner** : Partenaire (mairie, sicoval, mjc, etc.), une entrée dans `src/_data/partners.json`.
+- **Data file** : JSON dans `src/_data/` qui décrit les partenaires et la config du site.
 - **Eleventy global data** : Convention Eleventy qui charge automatiquement les fichiers `src/_data/*.json` et les rend disponibles aux templates (nom de fichier = nom de variable globale).
+- **Collection** : Ensemble de pages Eleventy regroupées par tag (ex. `collections.events`, généré depuis les fichiers `src/events/*.md` tagués `events`).
 - **Template** : Fichier `.njk` (Nunjucks) qui génère les pages HTML à partir des données.
 
 ---
 
 ## ✅ Décisions confirmées
 
-1. ✅ **Un fichier `src/_data/events.json`** pour tous les événements (plus simple qu'un fichier par événement)
+1. ❌ ~~Un fichier `src/_data/events.json` pour tous les événements~~ — remplacé par un fichier Markdown par événement, voir ADR-0001
 2. ✅ **Un fichier `src/_data/partners.json`** pour tous les partenaires
 3. ✅ **Auto-deploy Vercel** : `git push main` → Vercel détecte changement → rebuild auto
 4. ✅ **Nunjucks pour les templates** (moteur par défaut Eleventy, facile)
@@ -66,19 +68,25 @@
 
 ```
 /
-├── .eleventy.js              # Config Eleventy
+├── .eleventy.js              # Config Eleventy (collection "events" triée par order)
+├── .eleventyignore           # Exclut src/assets/ du traitement de template
 ├── package.json              # npm (@11ty/eleventy, dépendances)
+├── docs/adr/                 # Décisions d'architecture (ADR)
 ├── src/
 │   ├── _data/
-│   │   ├── events.json       # Données événements
 │   │   ├── partners.json     # Données partenaires
 │   │   └── site.json         # Config globale (nom, url, email, réseaux)
+│   ├── events/
+│   │   ├── events.json       # Données partagées (tags, layout, permalink)
+│   │   ├── carnaval.md       # Un événement = un fichier (frontmatter + Markdown)
+│   │   ├── fete-saint-jean.md
+│   │   └── fete-village.md
 │   ├── _includes/
-│   │   └── layout.njk        # Layout principal
+│   │   ├── layout.njk        # Layout principal
+│   │   ├── event.njk         # Layout des pages événement
+│   │   └── about-content.md  # Fragment Markdown "À propos"
 │   ├── pages/
-│   │   ├── index.njk         # Page d'accueil
-│   │   ├── event.njk         # Template dynamique pour chaque événement
-│   │   └── event.11tydata.js # Titre/description calculés (eleventyComputed)
+│   │   └── index.njk         # Page d'accueil
 │   └── assets/
 │       ├── style.css         # CSS actuel (inchangé)
 │       ├── index.js          # JS actuel (inchangé)
@@ -93,14 +101,16 @@
 
 ## 🔄 Workflow d'édition
 
-1. Éditer `src/_data/events.json` ou `src/_data/partners.json`
+1. Éditer un fichier `src/events/<slug>.md` (un événement) ou `src/_data/partners.json` (partenaires)
 2. `npm run build` génère les pages HTML dans `_site/`
 3. `git commit` + `git push`
 4. Vercel détecte le push, rebuild automatique, déploie
 
+Pour ajouter un nouvel événement : créer `src/events/<slug>.md` avec le frontmatter attendu (`title`, `image`, `tagline`, `helloasso`, `order`) — le slug de l'URL et la page se génèrent automatiquement depuis le nom de fichier.
+
 Ou en local dev :
 1. `npm run dev` (mode watch)
-2. Éditer les JSON
+2. Éditer les fichiers
 3. Actualisateur automatique du navigateur
 
 ---

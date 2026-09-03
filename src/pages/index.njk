@@ -52,19 +52,16 @@ permalink: /index.html
     <div class="events">
         <h1>Quels sont les évènements ?</h1>
         <div class="grid">
-            {% for event in events %}
+            {% for eventPage in collections.events %}
             <div class="card">
-                <div class="image_events" onclick="openFullImg('/images/{{ event.image }}')">
-                    <img src="/images/{{ event.image }}" alt="Image {{ event.title }}">
+                <div class="image_events" onclick="openFullImg('/images/{{ eventPage.data.image }}')">
+                    <img src="/images/{{ eventPage.data.image }}" alt="Image {{ eventPage.data.title }}">
                     <i class="fa-solid fa-expand"></i>
                 </div>
                 <div class="column">
-                    <h2>{{ event.title }}</h2>
+                    <h2>{{ eventPage.data.title }}</h2>
                     <div class="btn">
-                        {# SYNC: ce chemin doit rester identique au permalink dans
-                           src/pages/event.njk (frontmatter, "/{{ event.id }}/index.html").
-                           Si vous changez l'un, changez l'autre. #}
-                        <a class="contactBtn" href="/{{ event.id }}/">Découvrir</a>
+                        <a class="contactBtn" href="{{ eventPage.url }}">Découvrir</a>
                     </div>
                 </div>
             </div>

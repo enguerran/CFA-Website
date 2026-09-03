@@ -55,14 +55,15 @@ For this project, smaller tasks can skip straight to `/implement`. Use `/to-tick
 ## Style & Conventions
 
 ### File structure
-- **Source:** `src/pages/`, `src/_includes/`, `src/assets/`
-- **Data:** `src/_data/events.json`, `src/_data/partners.json`, `src/_data/site.json`
-- **Config:** `.eleventy.js`, `package.json`
+- **Source:** `src/pages/`, `src/_includes/`, `src/events/`, `src/assets/`
+- **Events:** one Markdown file per event in `src/events/*.md` (frontmatter + prose body) — see `docs/adr/0001-events-as-markdown-files.md`
+- **Data:** `src/_data/partners.json`, `src/_data/site.json`
+- **Config:** `.eleventy.js`, `.eleventyignore`, `package.json`
 - **Build output:** `_site/` (generated, not in Git)
 
 ### Code
 - **Nunjucks templates** for rendering (no JSX, no complex logic)
-- **JSON for data** (simple, easy to edit, native Eleventy support)
+- **Markdown for event content**, **JSON for partners/site data** (simple, easy to edit, native Eleventy support)
 - **CSS unchanged** (vanilla, no frameworks)
 - **JS unchanged** (vanilla, no build processing)
 
@@ -82,12 +83,12 @@ For this project, smaller tasks can skip straight to `/implement`. Use `/to-tick
 
 Quick reference — see `CONTEXT.md` for full definitions:
 
-- **Event** (`id`, `title`, `description`, `tagline`, `image`, `helloasso`, optional `extra_*` fields)
+- **Event** — one Markdown file (`title`, `image`, `tagline`, `helloasso`, `order` in frontmatter; description as Markdown body; optional `extra_*` fields)
 - **Partner** (`id`, `name`, `image`, `description`, `url`)
 - **Site** (`name`, `email`, social media, etc.)
 - **Eleventy** — Static Site Generator (this is what generates the pages)
 - **Nunjucks** — Templating language (used for `.njk` files)
-- **JSON** — Data format (how we store events and partners)
+- **Collection** — Eleventy concept: pages grouped by tag (`collections.events` from `src/events/*.md`)
 
 ---
 

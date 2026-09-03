@@ -15,6 +15,12 @@ module.exports = function (eleventyConfig) {
   eleventyConfig.addPassthroughCopy({ "src/assets/images": "images" });
   eleventyConfig.addPassthroughCopy({ "src/assets/fonts": "fonts" });
 
+  // Collection des événements (src/events/*.md), triée selon le champ
+  // "order" de chaque fichier plutôt que la date par défaut d'Eleventy.
+  eleventyConfig.addCollection("events", (collectionApi) => {
+    return collectionApi.getFilteredByTag("events").sort((a, b) => a.data.order - b.data.order);
+  });
+
   return {
     dir: {
       input: "src",
@@ -23,5 +29,6 @@ module.exports = function (eleventyConfig) {
       data: "_data",
     },
     templateFormats: ["njk", "md"],
+    markdownTemplateEngine: "njk",
   };
 };
