@@ -91,7 +91,7 @@ Vercel (auto-deploy)
 - **Décision (mise à jour, voir ADR-0001) :** Un fichier Markdown par événement dans `src/events/`, plutôt qu'un tableau JSON unique. Partenaires et config site restent en JSON.
 - **Raison :** La description d'un événement est de la prose éditable ; Markdown s'y prête mieux qu'une chaîne JSON avec `\n` échappés. Un fichier par événement colle aussi au modèle "1 fichier = 1 page" d'Eleventy.
 - **Structure :**
-  - `src/events/<slug>.md` : un événement par fichier — frontmatter (`title`, `image`, `tagline`, `helloasso`, `order`, `extra_*` optionnels) + corps Markdown pour la description.
+  - `src/events/<slug>.md` : un événement par fichier — frontmatter (`title`, `image`, `tagline`, `helloasso`, `order`) + corps Markdown libre pour la description et tout contenu supplémentaire (voir décision #11 : plus de champs `extra_*` dédiés).
   - `src/events/events.json` : données de répertoire partagées (`tags`, `layout`, `permalink`).
   - `src/_data/partners.json` : tableau de partenaires, chaque partenaire a `id`, `name`, `image`, `description`, `url`.
   - `src/_data/site.json` : config globale (`name`, `url`, `email`, réseaux sociaux, etc.).
