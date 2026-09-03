@@ -1075,7 +1075,8 @@ section#subpages p {
 }
 
 section#subpages img {
-    width: 28vw;
+    width: 100%;
+    max-width: 400px;
     object-fit: contain;
     border-radius: 8px;
 }
