@@ -3,6 +3,7 @@ layout: layout.njk
 description: Le comité des fêtes...C'est pour faire la fête !!!
 permalink: /index.html
 ---
+{%- from "icons.njk" import icon -%}
 
 <section id="home">
     <h1>Le comité des fêtes...C'est pour faire la fête !!!</h1>
@@ -10,24 +11,24 @@ permalink: /index.html
     <div id="cfa-hero-announce" data-helloasso-url="{{ site.helloasso }}"></div>
 
     <div class="btn">
-        <a href="#events" class="contactBtn">Nos évènements ! <i class="fa-solid fa-chevron-right"></i></a>
+        <a href="#events" class="contactBtn">Nos évènements ! <i class="fa-solid fa-chevron-right">{{ icon("chevron-right") }}</i></a>
     </div>
 
     <div class="row">
         <a class="link" href="{{ site.facebook }}" target="_blank">
-            <i class="fa-brands fa-facebook"></i>
+            <i class="fa-brands fa-facebook">{{ icon("facebook") }}</i>
             <p>Comite des Fêtes d'Auzielle</p>
         </a>
         <a class="link" href="{{ site.instagram }}" target="_blank">
-            <i class="fa-brands fa-instagram"></i>
+            <i class="fa-brands fa-instagram">{{ icon("instagram") }}</i>
             <p>@comitedauzielle</p>
         </a>
         <a class="link" href="{{ site.tiktok }}" target="_blank">
-            <i class="fa-brands fa-tiktok"></i>
+            <i class="fa-brands fa-tiktok">{{ icon("tiktok") }}</i>
             <p>@comitedauzielle</p>
         </a>
         <a class="link" href="mailto:{{ site.email }}">
-            <i class="fa-solid fa-envelope"></i>
+            <i class="fa-solid fa-envelope">{{ icon("envelope") }}</i>
             <p>{{ site.email }}</p>
         </a>
     </div>
@@ -56,7 +57,7 @@ permalink: /index.html
             <div class="card">
                 <div class="image_events" onclick="openFullImg('/images/{{ eventPage.data.image }}')">
                     <img src="/images/{{ eventPage.data.image }}" alt="Image {{ eventPage.data.title }}">
-                    <i class="fa-solid fa-expand"></i>
+                    <i class="fa-solid fa-expand">{{ icon("expand") }}</i>
                 </div>
                 <div class="column">
                     <h2>{{ eventPage.data.title }}</h2>
@@ -115,13 +116,19 @@ permalink: /index.html
 
     <div class="nous">
         <div class="star"></div>
-        <div class="star2"><i class="fa-solid fa-people-group"></i></div>
+        <div class="star2"><i class="fa-solid fa-people-group">{{ icon("people-group") }}</i></div>
         <h2>Le CFA</h2>
         <p>Le CFA a besoin de sang neuf et des idées nouvelles. Nous ne serons jamais trop nombreux pour faire
             fonctionner le comité des fêtes, organiser des manifestations et animations. Toutes les bonnes volontés
             sont les bienvenues.</p>
     </div>
 </section>
+
+<!-- EmailJS n'est nécessaire qu'ici, pour le formulaire de contact ci-dessous
+     (voir contact.js) — chargé sur cette page uniquement, pas globalement
+     dans layout.njk, et épinglé sur une version exacte plutôt que le tag
+     flottant "@3". -->
+<script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3.12.1/dist/email.min.js"></script>
 
 <section id="contact">
     <div class="custom-shape-divider-bottom-1731860165">
@@ -178,7 +185,7 @@ permalink: /index.html
                     <div class="row second">
                         <div class="btn">
                             <button type="submit" class="contactBtn">
-                                Envoyer le message <i class="fa-solid fa-paper-plane"></i>
+                                Envoyer le message <i class="fa-solid fa-paper-plane">{{ icon("paper-plane") }}</i>
                             </button>
                         </div>
                     </div>
@@ -207,5 +214,5 @@ permalink: /index.html
 
 <div class="full-img" id="fullImgBox" style="display: none;">
     <img src="" id="fullImg" alt="Full Image">
-    <i class="fa-solid fa-xmark" onclick="closeFullImg()"></i>
+    <i class="fa-solid fa-xmark" onclick="closeFullImg()">{{ icon("xmark") }}</i>
 </div>

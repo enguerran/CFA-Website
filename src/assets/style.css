@@ -95,6 +95,20 @@ i {
     font-size: .9em;
 }
 
+/* Icônes SVG auto-hébergées (remplacent le kit FontAwesome externe) : le
+   SVG hérite de la taille/couleur du texte de son parent, comme le faisait
+   la police d'icônes. pointer-events: none pour que le clic soit toujours
+   rapporté sur le <i> parent (cf. closeFullImg() dans index.js qui teste
+   classList.contains("fa-xmark") sur event.target). */
+i svg {
+    width: 1em;
+    height: 1em;
+    display: inline-block;
+    vertical-align: -0.125em;
+    fill: currentColor;
+    pointer-events: none;
+}
+
 img,
 a {
     -webkit-user-drag: none;
