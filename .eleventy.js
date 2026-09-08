@@ -5,10 +5,24 @@ module.exports = function (eleventyConfig) {
   // Nunjucks via {% renderFile %} (ex: src/_includes/about-content.md).
   eleventyConfig.addPlugin(RenderPlugin);
 
-  // Copy static assets to the site root (templates and style.css reference
-  // them as root-relative paths: /style.css, /index.js, /announcement.js,
-  // /images/..., and style.css itself uses relative "fonts/..." urls).
-  eleventyConfig.addPassthroughCopy({ "src/assets/style.css": "style.css" });
+  // Copy static assets to the site root (templates and the CSS files
+  // reference them as root-relative paths: /base.css, /index.js,
+  // /announcement.js, /images/..., and the CSS files themselves use
+  // relative "fonts/..." urls, hence copying each CSS file to the root
+  // rather than into a subfolder).
+  // style.css was split into 10 files (see docs/adr/0003-css-split.md):
+  // loaded in this exact order in layout.njk, matching the original
+  // file's cascade order.
+  eleventyConfig.addPassthroughCopy({ "src/assets/base.css": "base.css" });
+  eleventyConfig.addPassthroughCopy({ "src/assets/header.css": "header.css" });
+  eleventyConfig.addPassthroughCopy({ "src/assets/home.css": "home.css" });
+  eleventyConfig.addPassthroughCopy({ "src/assets/events.css": "events.css" });
+  eleventyConfig.addPassthroughCopy({ "src/assets/partners.css": "partners.css" });
+  eleventyConfig.addPassthroughCopy({ "src/assets/about.css": "about.css" });
+  eleventyConfig.addPassthroughCopy({ "src/assets/contact.css": "contact.css" });
+  eleventyConfig.addPassthroughCopy({ "src/assets/subpages.css": "subpages.css" });
+  eleventyConfig.addPassthroughCopy({ "src/assets/misc.css": "misc.css" });
+  eleventyConfig.addPassthroughCopy({ "src/assets/responsive.css": "responsive.css" });
   eleventyConfig.addPassthroughCopy({ "src/assets/index.js": "index.js" });
   eleventyConfig.addPassthroughCopy({ "src/assets/announcement.js": "announcement.js" });
   eleventyConfig.addPassthroughCopy({ "src/assets/contact.js": "contact.js" });

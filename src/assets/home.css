@@ -1,0 +1,199 @@
+/* sections */
+section#home,
+section#events,
+section#partners,
+section#about,
+section#contact,
+section#subpages {
+    height: auto;
+    width: 100vw;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+}
+
+/* home */
+section#home {
+    height: 100vh;
+    position: relative;
+    flex-direction: column;
+}
+
+section#home h1 {
+    margin-top: 52px;
+    font-size: 2.5em;
+    font-weight: 600;
+    font-family: 'Relieve', sans-serif;
+}
+
+section#home h2 {
+    font-size: 1.5em;
+    font-weight: 700;
+    margin-top: 10px;
+}
+
+section#home .btn {
+    margin-block: 5%;
+}
+
+section#home .row:nth-child(3) {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    gap: 24px;
+    width: 100%;
+    position: absolute;
+    bottom: 52px;
+    left: 0;
+}
+
+section#home .row a.link {
+    gap: 24px;
+    text-decoration: none;
+    border-radius: 32px;
+    font-weight: 600;
+    font-size: 1.1em;
+    /* backdrop-filter: blur(10px); */
+    white-space: nowrap;
+}
+
+section#home .row a.link i {
+    font-size: 1.3em;
+    margin-left: 0;
+}
+
+section#home .row a.link:nth-child(1) {
+    background-color: rgba(218, 195, 255, 0.3);
+    color: hsl(263, 100%, 24%);
+    border-color: hsl(263, 100%, 24%);
+}
+
+section#home .row a.link:nth-child(2) {
+    background-color: rgba(255, 163, 82, 0.3);
+    color: hsla(28, 100%, 24%);
+    border-color: hsl(28, 100%, 24%);
+}
+
+section#home .row a.link:nth-child(3) {
+    background-color: rgba(123, 211, 137, 0.3);
+    color: hsl(130, 50%, 24%);
+    border-color: hsl(130, 50%, 24%);
+}
+
+section#home .row a.link:nth-child(4) {
+    background-color: rgba(143, 191, 224, 0.3);
+    color: hsl(204, 57%, 24%);
+    border-color: hsl(204, 57%, 24%);
+}
+
+/* nous */
+.nous {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    background-color: var(--color-blanc);
+    padding: 64px 48px;
+    margin-inline: auto;
+    border-radius: 32px;
+    border: var(--color-noir) 2.5px solid;
+    box-shadow: 6px 6px var(--color-noir);
+    max-width: 740px;
+    position: relative;
+}
+
+.nous h2 {
+    font-size: 2.5em;
+    font-weight: 700;
+    text-transform: capitalize;
+    font-family: 'Relieve', sans-serif;
+    margin-bottom: 24px;
+    color: var(--color-noir);
+}
+
+.nous p {
+    font-size: 1.1em;
+    font-weight: 600;
+    text-align: center;
+    color: var(--color-gris-noir);
+}
+
+.nous .star {
+    position: absolute;
+    top: -31px;
+    left: -50px;
+    clip-path: polygon(50% 0%, 61% 35%, 98% 35%, 68% 57%, 79% 91%, 50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%);
+    background-color: var(--color-noir);
+    width: 100px;
+    height: 100px;
+    z-index: 1;
+}
+
+.nous .star::before,
+.nous .star2::before {
+    content: "";
+    position: absolute;
+    left: 6.5px;
+    top: 6.5px;
+    clip-path: polygon(50% 0%, 61% 35%, 98% 35%, 68% 57%, 79% 91%, 50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%);
+    background-color: var(--color-blanc);
+    width: 87px;
+    height: 87px;
+    z-index: 2;
+}
+
+.nous .star::after,
+.nous .star2::after {
+    content: "";
+    position: absolute;
+    left: 6.5px;
+    top: 6.5px;
+    clip-path: polygon(50% 0%, 61% 35%, 98% 35%, 68% 57%, 79% 91%, 50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%);
+    background-color: var(--color-primary-stars);
+    width: 87px;
+    height: 87px;
+    z-index: 3;
+}
+
+.nous .star2 {
+    position: absolute;
+    top: -25px;
+    right: -25px;
+    clip-path: circle(50% at 50% 50%);
+    background-color: var(--color-noir);
+    width: 70px;
+    height: 70px;
+    z-index: 1;
+    display: flex;
+    align-items: center;
+    justify-self: center;
+}
+
+.nous .star2 i {
+    color: var(--color-noir);
+    z-index: 9;
+    position: absolute;
+    left: 15px;
+    top: 18.5px;
+    font-size: 2em;
+}
+
+.nous .star2::before {
+    left: 3px;
+    top: 3px;
+    clip-path: circle(50% at 50% 50%);
+    width: 64px;
+    height: 64px;
+}
+
+.nous .star2::after {
+    left: 3px;
+    top: 3px;
+    clip-path: circle(50% at 50% 50%);
+    background-color: var(--color-secondary);
+    width: 64px;
+    height: 64px;
+}

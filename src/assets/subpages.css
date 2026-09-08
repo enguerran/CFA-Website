@@ -1,0 +1,72 @@
+section#subpages {
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    /* 186px = 134px (dégagement du header fixe) + 52px (respiration de
+       section) fusionnés en un seul padding-top : un margin-top ici
+       collapse partiellement au-delà de body (qui a min-height: 100vh),
+       ce qui gonflait document.scrollHeight sans rien afficher de plus
+       (voir issue #23). Le padding ne collapse jamais, même espacement
+       visuel, zéro espace scrollable fantôme. */
+    padding: 186px 5% 52px;
+    gap: 24px;
+}
+
+section#subpages .head_subpage {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+}
+
+section#subpages .head_subpage h1 {
+    font-size: 2.5em;
+    font-weight: 600;
+    font-family: 'Relieve', sans-serif;
+    text-align: start;
+}
+
+section#subpages .head_subpage i {
+    font-size: 1em;
+    margin-top: 4px;
+    color: var(--color-primary);
+}
+
+section#subpages .row {
+    display: flex;
+    flex-direction: row-reverse;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    gap: 5%;
+    margin-bottom: 32px;
+}
+
+section#subpages .row.top {
+    align-items: flex-start;
+    justify-content: center;
+    flex-direction: row;
+}
+
+section#subpages p {
+    font-size: 1em;
+    font-weight: 500;
+    color: var(--color-gris-noir);
+    width: 100%;
+}
+
+section#subpages img {
+    width: 100%;
+    max-width: 400px;
+    object-fit: contain;
+    border-radius: 8px;
+}
+
+section#subpages iframe {
+    width: 100%;
+    border: none;
+    min-height: 70vh;
+    border-radius: 32px;
+    background-color: var(--color-blanc);
+}
