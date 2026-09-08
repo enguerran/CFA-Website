@@ -1022,11 +1022,15 @@ section#contact .contacts .formulaire form .contactBtn {
 
 section#subpages {
     flex-direction: column;
-    margin-top: 134px;
     align-items: center;
     justify-content: flex-start;
-    padding-inline: 5%;
-    padding-block: 52px;
+    /* 186px = 134px (dégagement du header fixe) + 52px (respiration de
+       section) fusionnés en un seul padding-top : un margin-top ici
+       collapse partiellement au-delà de body (qui a min-height: 100vh),
+       ce qui gonflait document.scrollHeight sans rien afficher de plus
+       (voir issue #23). Le padding ne collapse jamais, même espacement
+       visuel, zéro espace scrollable fantôme. */
+    padding: 186px 5% 52px;
     gap: 24px;
 }
 
@@ -1387,8 +1391,8 @@ section#subpages iframe {
     }
 
     section#subpages {
-        margin-top: 90px;
-        padding-block: 0;
+        padding-top: 90px;
+        padding-bottom: 0;
     }
 
     section#subpages .row.top {
