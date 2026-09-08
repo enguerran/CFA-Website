@@ -2,34 +2,31 @@
     const form = document.getElementById('contactForm');
     if (!form) return;
 
-    const USER_ID = '5512K-AZX12fCBtPK';
-
+    // Pas de service d'envoi tiers (voir ADR-0002) : le formulaire ne fait
+    // que préremplir un lien mailto: avec les infos saisies, puis laisse le
+    // client mail habituel de la personne prendre le relais. L'adresse vient
+    // de site.json via data-contact-email, pour ne pas la dupliquer en dur ici.
     const handleSubmit = (e) => {
         e.preventDefault();
         const formData = new FormData(form);
-        const name = formData.get('name');
-        const email = formData.get('email');
-        const message = formData.get('message');
+        const name = (formData.get('name') || '').trim();
+        const email = (formData.get('email') || '').trim();
+        const message = (formData.get('message') || '').trim();
 
         if (!name || !email || !message) {
             alert('Veuillez remplir tous les champs du formulaire.');
             return;
         }
 
-        emailjs.send('service_ajykrdq', 'template_taaikfc', {
-            from_name: formData.get('name'),
-            to_name: 'CFA',
-            from_email: formData.get('email'),
-            to_email: '',
-            message: formData.get('message')
-        }, USER_ID)
-            .then(() => {
-                alert('Merci pour votre message. Je vous contacte très rapidement.');
-            })
-            .catch((error) => {
-                console.error(error);
-                alert("Quelque chose s'est mal passé.");
-            });
+        const contactEmail = form.dataset.contactEmail;
+        const subject = 'Message de ' + name + ' via le site';
+        const body = 'Nom : ' + name + '\n' +
+            'Email : ' + email + '\n\n' +
+            message;
+
+        window.location.href = 'mailto:' + contactEmail +
+            '?subject=' + encodeURIComponent(subject) +
+            '&body=' + encodeURIComponent(body);
     };
 
     form.addEventListener('submit', handleSubmit);

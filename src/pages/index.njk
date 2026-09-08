@@ -124,12 +124,6 @@ permalink: /index.html
     </div>
 </section>
 
-<!-- EmailJS n'est nécessaire qu'ici, pour le formulaire de contact ci-dessous
-     (voir contact.js) — chargé sur cette page uniquement, pas globalement
-     dans layout.njk, et épinglé sur une version exacte plutôt que le tag
-     flottant "@3". -->
-<script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3.12.1/dist/email.min.js"></script>
-
 <section id="contact">
     <div class="custom-shape-divider-bottom-1731860165">
         <svg data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120"
@@ -167,7 +161,7 @@ permalink: /index.html
         </div>
         <div class="rowContact">
             <div class="formulaire">
-                <form id="contactForm">
+                <form id="contactForm" data-contact-email="{{ site.email }}">
                     <div class="row">
                         <div class="column">
                             <label for="name">Votre nom</label>
