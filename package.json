@@ -1,6 +1,7 @@
 {
   "name": "cfa-website",
   "version": "1.0.0",
+  "private": true,
   "description": "https://comite-des-fetes-auzielle.vercel.app/",
   "main": "index.js",
   "directories": {
@@ -24,5 +25,8 @@
   "homepage": "https://github.com/enguerran/CFA-Website#readme",
   "dependencies": {
     "@11ty/eleventy": "^3.1.6"
+  },
+  "engines": {
+    "node": ">=18"
   }
 }
