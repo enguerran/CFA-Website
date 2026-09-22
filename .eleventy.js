@@ -1,10 +1,4 @@
-const { RenderPlugin } = require("@11ty/eleventy");
-
 module.exports = function (eleventyConfig) {
-  // Permet de convertir des fragments Markdown en HTML depuis les templates
-  // Nunjucks via {% renderFile %} (ex: src/_includes/about-content.md).
-  eleventyConfig.addPlugin(RenderPlugin);
-
   // Copy static assets to the site root (templates and the CSS files
   // reference them as root-relative paths: /base.css, /index.js,
   // /announcement.js, /images/..., and the CSS files themselves use
