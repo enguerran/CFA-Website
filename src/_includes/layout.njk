@@ -18,7 +18,20 @@
     <meta property="og:url" content="{{ site.url }}{{ page.url }}" />
     <meta property="og:type" content="website" />
 
-    <link rel="stylesheet" href="/style.css">
+    <!-- style.css scindé en 10 fichiers (voir docs/adr/0003-css-split.md) ;
+         ordre de chargement identique à l'ordre du fichier d'origine, pour
+         préserver la cascade CSS à l'identique (fichier "responsive" en
+         dernier, comme avant). -->
+    <link rel="stylesheet" href="/base.css">
+    <link rel="stylesheet" href="/header.css">
+    <link rel="stylesheet" href="/home.css">
+    <link rel="stylesheet" href="/events.css">
+    <link rel="stylesheet" href="/partners.css">
+    <link rel="stylesheet" href="/about.css">
+    <link rel="stylesheet" href="/contact.css">
+    <link rel="stylesheet" href="/subpages.css">
+    <link rel="stylesheet" href="/misc.css">
+    <link rel="stylesheet" href="/responsive.css">
     <link rel="icon" href="/images/icon.ico" type="image/x-icon">
 </head>
 
