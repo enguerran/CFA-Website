@@ -13,7 +13,9 @@ const md = new MarkdownIt({ html: true }).disable("code");
 // colocalisés dans un seul fichier Markdown par section — front matter pour
 // les champs structurés, corps Markdown pour la prose, même schéma que
 // src/events/*.md (voir ADR-0001). {% renderFile %} ne convient pas ici car
-// il ne parse pas le front matter des fichiers qu'il rend.
+// il ne parse pas le front matter des fichiers qu'il rend — voir ADR-0004
+// pour le détail du raisonnement, dont le compromis sur about-content.md
+// (son sous-titre est un texte en dur, plus templaté sur site.name).
 function readFragment(filename) {
   const filePath = path.join(__dirname, "..", "_includes", filename);
   const raw = fs.readFileSync(filePath, "utf8");
