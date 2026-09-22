@@ -1,12 +1,11 @@
 ---
 layout: layout.njk
-description: Le comité des fêtes...C'est pour faire la fête !!!
 permalink: /index.html
 ---
 {%- from "icons.njk" import icon -%}
 
 <section id="home">
-    <h1>Le comité des fêtes...C'est pour faire la fête !!!</h1>
+    <h1>{{ site.tagline }}</h1>
 
     <div id="cfa-hero-announce" data-helloasso-url="{{ site.helloasso }}"></div>
 
@@ -106,10 +105,10 @@ permalink: /index.html
 
 <section id="about">
     <div class="about">
-        <h1>À propos de nous</h1>
-        <h2>2013 : Renaissance du {{ site.name }}</h2>
+        <h1>{{ editorial.about.title }}</h1>
+        <h2>{{ editorial.about.subtitle }}</h2>
         <div class="row">
-            {% renderFile "./src/_includes/about-content.md" %}
+            {{ editorial.about.body | safe }}
             <img src="/images/cfa.jpg" alt="Image à propos de nous">
         </div>
     </div>
@@ -117,10 +116,8 @@ permalink: /index.html
     <div class="nous">
         <div class="star"></div>
         <div class="star2"><i class="fa-solid fa-people-group">{{ icon("people-group") }}</i></div>
-        <h2>Le CFA</h2>
-        <p>Le CFA a besoin de sang neuf et des idées nouvelles. Nous ne serons jamais trop nombreux pour faire
-            fonctionner le comité des fêtes, organiser des manifestations et animations. Toutes les bonnes volontés
-            sont les bienvenues.</p>
+        <h2>{{ editorial.nous.title }}</h2>
+        {{ editorial.nous.body | safe }}
     </div>
 </section>
 

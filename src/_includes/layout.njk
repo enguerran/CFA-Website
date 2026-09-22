@@ -4,7 +4,7 @@
 
 <head>
     {% set pageTitle = title + " — " + site.name if title else site.name %}
-    {% set pageDescription = description or tagline or "Le comité des fêtes...C'est pour faire la fête !!!" %}
+    {% set pageDescription = description or tagline or site.tagline %}
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{{ pageTitle }}</title>
