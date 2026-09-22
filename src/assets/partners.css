@@ -1,0 +1,116 @@
+/* partners */
+section#partners {
+    padding-block: 100px;
+    background-color: var(--color-background);
+}
+
+section#partners .partners {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+section#partners h1 {
+    color: var(--color-noir);
+}
+
+section#partners .grid {
+    grid-template-columns: repeat(3, 1fr);
+    grid-gap: 70px;
+}
+
+section#partners .grid .card {
+    width: 23vw;
+    min-width: 350px;
+}
+
+section#partners .grid .card:nth-child(1) {
+    background: #dac3ff;
+}
+
+section#partners .grid .card:nth-child(2) {
+    background: #dcf7e7;
+}
+
+section#partners .grid .card:nth-child(3) {
+    background: #ffa352;
+}
+
+section#partners .grid .card:nth-child(4) {
+    background: #F2F3AE;
+}
+
+section#partners .grid .card:nth-child(5) {
+    background: #7bd389;
+}
+
+section#partners .grid .card:nth-child(6) {
+    background: #8FBFE0;
+}
+
+section#partners .grid .card p,
+section#subpages .card p {
+    margin-bottom: 32px;
+}
+
+section#partners .grid .card .btn,
+section#subpages .card .btn {
+    margin-top: auto;
+}
+
+section#subpages .card .btn {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 8px;
+    justify-content: center;
+    background-color: transparent;
+}
+
+section#events .grid .card .btn,
+section#partners .grid .card .btn,
+section#subpages .card .btn {
+    background-color: var(--color-primary-stars);
+}
+
+section#partners .grid .card a.contactBtn,
+section#events .grid .card .contactBtn,
+section#subpages .card .contactBtn {
+    font-weight: 400;
+    padding: 8px 20px;
+    text-transform: none;
+    background-color: var(--color-blanc);
+    color: var(--color-noir);
+}
+
+section#subpages .card .row {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+}
+
+section#events .grid .card .column,
+section#subpages .card .column {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    height: 100%;
+    width: 100%;
+}
+
+section#events .grid .card .column {
+    justify-content: flex-start;
+    height: auto;
+}
+
+section#events .grid .card .contactBtn,
+section#subpages .card .contactBtn {
+    background-color: var(--color-noir);
+    color: var(--color-blanc);
+    font-weight: 100;
+    white-space: nowrap;
+}

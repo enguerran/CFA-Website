@@ -1,0 +1,153 @@
+@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&display=swap');
+
+:root {
+    --color-noir: #222222;
+    --color-gris-noir: #484848;
+    --color-blanc: #FFF;
+    --color-background: #f1f6f1;
+    --color-primary: #cc0d0d;
+    --color-secondary: #8fbfe0;
+    --color-primary-stars: #cc0d0d9a;
+}
+
+@font-face {
+    font-family: 'Satoshi';
+    src: url('fonts/switzer/Switzer-Thin.otf') format('opentype');
+    font-weight: 100;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Satoshi';
+    src: url('fonts/switzer/Switzer-Extralight.otf') format('opentype');
+    font-weight: 200;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Satoshi';
+    src: url('fonts/switzer/Switzer-Light.otf') format('opentype');
+    font-weight: 300;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Satoshi';
+    src: url('fonts/switzer/Switzer-Regular.otf') format('opentype');
+    font-weight: 400;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Satoshi';
+    src: url('fonts/switzer/Switzer-Medium.otf') format('opentype');
+    font-weight: 500;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Satoshi';
+    src: url('fonts/switzer/Switzer-Semibold.otf') format('opentype');
+    font-weight: 600;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Satoshi';
+    src: url('fonts/switzer/Switzer-Bold.otf') format('opentype');
+    font-weight: 700;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Satoshi';
+    src: url('fonts/switzer/Switzer-Extrabold.otf') format('opentype');
+    font-weight: 800;
+    font-style: normal;
+}
+
+
+@font-face {
+    font-family: 'Satoshi';
+    src: url('fonts/switzer/Switzer-Black.otf') format('opentype');
+    font-weight: 900;
+    font-style: normal;
+}
+
+
+@font-face {
+    font-family: 'Relieve';
+    src: url('fonts/Coiny-Regular.ttf') format('opentype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    text-decoration: none;
+    box-sizing: border-box;
+    font-family: 'Satoshi', sans-serif;
+    scroll-behavior: smooth;
+}
+
+i {
+    font-size: .9em;
+}
+
+/* Icônes SVG auto-hébergées (remplacent le kit FontAwesome externe) : le
+   SVG hérite de la taille/couleur du texte de son parent, comme le faisait
+   la police d'icônes. pointer-events: none pour que le clic soit toujours
+   rapporté sur le <i> parent (cf. closeFullImg() dans index.js qui teste
+   classList.contains("fa-xmark") sur event.target). */
+i svg {
+    width: 1em;
+    height: 1em;
+    display: inline-block;
+    vertical-align: -0.125em;
+    fill: currentColor;
+    pointer-events: none;
+}
+
+img,
+a {
+    -webkit-user-drag: none;
+    font-family: 'Satoshi', sans-serif;
+}
+
+html {
+    font-family: 'Satoshi', sans-serif;
+}
+
+/* ascenseur de la page */
+body::-webkit-scrollbar {
+    width: .6em;
+}
+
+body::-webkit-scrollbar-thumb {
+    background-color: var(--color-secondary);
+    border-radius: 25px;
+}
+
+body::-webkit-scrollbar-thumb:hover {
+    background-color: var(--color-primary-stars);
+}
+
+body::-webkit-scrollbar-track {
+    background-color: var(--color-background);
+}
+
+@supports (scrollbar-color: red blue) {
+    body {
+        scrollbar-color: var(--color-blanc) var(--color-background);
+        scrollbar-width: auto;
+    }
+}
+
+body {
+    min-height: 100vh;
+    overflow-y: auto;
+    overflow-x: hidden;
+    background-color: var(--color-background);
+    /* padding-top: 90px; */
+}
